@@ -1,0 +1,481 @@
+text,label
+what is the derivative of x squared,math
+prove that the square root of 2 is irrational,math
+find the integral of cos(x) from 0 to pi,math
+solve the quadratic equation x^2 - 5x + 6 = 0,math
+what is the value of pi to 5 digits,math
+expand the binomial (a + b)^4,math
+find the determinant of a 2 by 2 matrix,math
+what is the chain rule,math
+prove the pythagorean theorem,math
+compute the limit of (1 + 1/n)^n as n approaches infinity,math
+what is a continuous function,math
+find the eigenvalues of a 3 by 3 matrix,math
+what is the difference between a permutation and a combination,math
+solve the system 2x + y = 5 and x - y = 1,math
+find the area of a circle of radius 7,math
+what is the cardinality of the real numbers,math
+prove that there are infinitely many prime numbers,math
+find the gradient of f(x y) = x^2 + y^2,math
+what is the fundamental theorem of calculus,math
+compute the Taylor series of sin(x) around 0,math
+find the inverse of a 2 by 2 matrix,math
+solve the differential equation dy/dx = y,math
+what is a vector space,math
+compute the dot product of two vectors,math
+find the sum of the first 100 natural numbers,math
+what is a group in abstract algebra,math
+solve x^3 - 6x + 4 = 0,math
+find the slope of the line through (1 2) and (3 6),math
+what is the discriminant of a quadratic,math
+expand the determinant of a 3 by 3 matrix using cofactors,math
+what is the law of cosines,math
+compute sin of 60 degrees,math
+find the volume of a sphere of radius 5,math
+what is the surface area of a cube with side 3,math
+prove that e is irrational,math
+find the LCM of 12 and 18,math
+compute 7 factorial,math
+what is the Fibonacci sequence,math
+solve x^2 = 2x + 8,math
+find the perpendicular bisector of a line segment,math
+what is De Morgan's law in set theory,math
+find the partial derivative of x^2 y with respect to y,math
+compute the cross product of two vectors,math
+what is the Euclidean algorithm,math
+find the GCD of 84 and 36,math
+solve the inequality x^2 - 4 > 0,math
+what is a homomorphism in abstract algebra,math
+find the convergence radius of a power series,math
+compute the modular inverse of 3 mod 7,math
+what is mathematical induction,math
+solve the recurrence T(n) = 2T(n/2) + n,math
+what is a metric space,math
+find the inverse function of f(x) = 2x + 1,math
+what is the Cauchy Schwarz inequality,math
+compute the standard deviation of {1 2 3 4 5},math
+what is Bayes theorem,math
+find the probability of rolling a sum of 7 with two dice,math
+solve a simple Diophantine equation 3x + 5y = 1,math
+what is a Riemann sum,math
+find the centroid of a triangle with vertices (0 0) (4 0) (0 6),math
+what is the period of a pendulum,physics
+compute the kinetic energy of a 5 kg object moving at 10 m/s,physics
+derive Newton's second law,physics
+what is the speed of light in vacuum,physics
+how does a refrigerator work thermodynamically,physics
+what is the Doppler effect,physics
+compute the gravitational force between two 10 kg masses 1 m apart,physics
+what is the de Broglie wavelength of an electron,physics
+derive the equation for centripetal acceleration,physics
+what is dark matter,physics
+compute the energy of a photon of wavelength 500 nm,physics
+what is the second law of thermodynamics,physics
+how does superconductivity work,physics
+derive the wave equation,physics
+what is the Schwarzschild radius,physics
+compute the wavelength of a 100 Hz sound wave in air,physics
+what is angular momentum,physics
+derive Snell's law from Fermat's principle,physics
+what is the Heisenberg uncertainty principle,physics
+compute the orbital period of a satellite at 500 km altitude,physics
+what is electromagnetic induction,physics
+derive the formula for capacitance of a parallel plate capacitor,physics
+what is the equivalence principle,physics
+compute the resistance of a copper wire 10 m long with radius 1 mm,physics
+how does a transformer work,physics
+what is the photoelectric effect,physics
+compute the period of an LC circuit with L 1 mH and C 1 microfarad,physics
+what is the Bohr model of the atom,physics
+derive the lensmakers equation,physics
+what is special relativity,physics
+compute the impulse on a 2 kg ball that bounces off a wall at 5 m/s,physics
+what is a Carnot engine,physics
+how does a laser work,physics
+compute the de Broglie wavelength of a 1 kg ball at 1 m/s,physics
+what is gravitational time dilation,physics
+derive Bernoulli's equation,physics
+what is a black body,physics
+compute the buoyant force on a 10 kg object in water,physics
+what is fission and how does it differ from fusion,physics
+derive the equation of motion for projectile motion,physics
+what is the principle of superposition for waves,physics
+compute the impedance of an RLC circuit,physics
+what is a magnetic dipole moment,physics
+derive the formula for the period of a mass spring system,physics
+what is the Curie temperature,physics
+compute the work done by a 100 N force over 5 m,physics
+what is the standard model of particle physics,physics
+how does GPS account for relativistic effects,physics
+compute the moment of inertia of a uniform disk,physics
+what is a phase transition,physics
+derive the formula for escape velocity,physics
+what is plasma in physics,physics
+compute the lift on a wing using the Bernoulli approximation,physics
+what is the Casimir effect,physics
+derive the formula for the speed of sound in an ideal gas,physics
+what is the rocket equation,physics
+compute the gravitational redshift near a neutron star,physics
+what is electroweak unification,physics
+derive the formula for relativistic momentum,physics
+what is the Hubble constant,physics
+what is the function of mitochondria,biology
+how does DNA replication work,biology
+what is the difference between mitosis and meiosis,biology
+explain transcription and translation,biology
+what is photosynthesis,biology
+how do enzymes catalyze reactions,biology
+what is the structure of a cell membrane,biology
+how does the immune system identify pathogens,biology
+what is natural selection,biology
+how do neurons transmit signals,biology
+what is genetic recombination,biology
+how does the heart pump blood,biology
+what is the function of ribosomes,biology
+how do plants transport water,biology
+what is symbiosis,biology
+how do antibodies bind antigens,biology
+what is the structure of DNA,biology
+how does meiosis produce gametes,biology
+what is a gene,biology
+how does the kidney filter blood,biology
+what is cellular respiration,biology
+how do hormones act on target cells,biology
+what is the role of chlorophyll,biology
+how do muscles contract,biology
+what is an ecosystem,biology
+how do bacteria reproduce,biology
+what is mendelian inheritance,biology
+how does the digestive system break down food,biology
+what is the structure of a protein,biology
+how do animals adapt to their environment,biology
+what is a stem cell,biology
+how do viruses infect cells,biology
+what is the central dogma of molecular biology,biology
+how does evolution by natural selection occur,biology
+what is the role of insulin,biology
+how do plants reproduce,biology
+what is biodiversity,biology
+how do red blood cells transport oxygen,biology
+what is the cell cycle,biology
+how does the brain process information,biology
+what is symbiotic mutualism,biology
+how do receptors recognize signaling molecules,biology
+what is a phenotype,biology
+how do antibiotics affect bacteria,biology
+what is mitochondrial DNA,biology
+how do organisms regulate body temperature,biology
+what is the lac operon,biology
+how does the lymphatic system work,biology
+what is convergent evolution,biology
+how do prokaryotes differ from eukaryotes,biology
+what is the structure of an enzyme active site,biology
+how do plants respond to light,biology
+what is RNA splicing,biology
+how do animals navigate over long distances,biology
+what is allopatric speciation,biology
+how do hormones regulate reproduction,biology
+what is the role of stem cells in regeneration,biology
+how does the human eye perceive color,biology
+what is bioluminescence,biology
+how do extremophiles survive,biology
+what causes type 2 diabetes,medicine
+how do mRNA vaccines work,medicine
+what is hypertension,medicine
+how is influenza diagnosed,medicine
+what is the mechanism of action of penicillin,medicine
+how does aspirin reduce inflammation,medicine
+what is leukemia,medicine
+how is malaria transmitted,medicine
+what is the role of insulin in diabetes,medicine
+how does chemotherapy work,medicine
+what is sepsis,medicine
+how is high cholesterol treated,medicine
+what is myocardial infarction,medicine
+how does an MRI scan work,medicine
+what is rheumatoid arthritis,medicine
+how is HIV transmitted,medicine
+what is asthma and how is it managed,medicine
+how do statins lower cholesterol,medicine
+what is Alzheimer's disease,medicine
+how is hepatitis C treated,medicine
+what is dialysis,medicine
+how does cognitive behavioral therapy treat depression,medicine
+what is a stroke,medicine
+how is anemia diagnosed,medicine
+what is the difference between bacteria and viruses,medicine
+how is sepsis treated,medicine
+what is multiple sclerosis,medicine
+how does an EKG work,medicine
+what is glaucoma,medicine
+how is tuberculosis treated,medicine
+what is Parkinson's disease,medicine
+how does anesthesia work,medicine
+what is melanoma,medicine
+how does insulin resistance develop,medicine
+what is gestational diabetes,medicine
+how is sickle cell anemia inherited,medicine
+what is the BCG vaccine,medicine
+how do antiviral drugs work,medicine
+what is bipolar disorder,medicine
+how is meningitis diagnosed,medicine
+what is COPD,medicine
+how does dialysis substitute for kidney function,medicine
+what is angina,medicine
+how is breast cancer screened,medicine
+what is cystic fibrosis,medicine
+how do antibiotics differ from antivirals,medicine
+what is osteoporosis,medicine
+how is appendicitis diagnosed,medicine
+what is endometriosis,medicine
+how does the body respond to a vaccine,medicine
+what is sleep apnea,medicine
+how is pneumonia treated,medicine
+what is pancreatitis,medicine
+how do steroids treat inflammation,medicine
+what is rabies,medicine
+how is prostate cancer staged,medicine
+what is preeclampsia,medicine
+how is heart failure diagnosed,medicine
+what is appendicitis,medicine
+how is type 1 diabetes managed,medicine
+what is supply and demand,economics
+how does inflation affect savings,economics
+what is GDP,economics
+how do interest rates affect borrowing,economics
+what is comparative advantage,economics
+how does the Federal Reserve set interest rates,economics
+what is fiscal policy,economics
+how does quantitative easing work,economics
+what is a recession,economics
+how do trade tariffs affect prices,economics
+what is opportunity cost,economics
+how does compound interest grow savings,economics
+what is the law of diminishing returns,economics
+how is unemployment measured,economics
+what is monetary policy,economics
+how does a stock market index work,economics
+what is a bond yield,economics
+how does fractional reserve banking work,economics
+what is the gold standard,economics
+how does a financial crisis spread,economics
+what is purchasing power parity,economics
+how does taxation affect economic growth,economics
+what is a balance of trade deficit,economics
+how does the IMF support economies,economics
+what is hyperinflation,economics
+how does a central bank fight inflation,economics
+what is a labor market equilibrium,economics
+how does globalization affect wages,economics
+what is a public good,economics
+how does insurance pool risk,economics
+what is a derivative in finance,economics
+how does an exchange rate float,economics
+what is comparative versus absolute advantage,economics
+how does foreign direct investment affect a host country,economics
+what is a Keynesian multiplier,economics
+how does a progressive tax system work,economics
+what is a price ceiling,economics
+how does the demand curve respond to a subsidy,economics
+what is regulatory capture,economics
+how do externalities affect market outcomes,economics
+what is moral hazard in economics,economics
+how does a monopoly differ from perfect competition,economics
+what is game theory in economics,economics
+how does the velocity of money affect inflation,economics
+what is the natural rate of unemployment,economics
+how do trade unions affect wages,economics
+what is securitization,economics
+how does a credit rating affect borrowing costs,economics
+what is a sovereign wealth fund,economics
+how do public private partnerships work,economics
+what is shadow banking,economics
+how does behavioral economics differ from neoclassical,economics
+what is a black swan event in finance,economics
+how does the supply of money interact with output,economics
+what is rent seeking,economics
+how is GDP per capita different from median income,economics
+what is economic surplus,economics
+how does deflation harm an economy,economics
+what is the Phillips curve,economics
+how does crowding out work,economics
+when did the Roman empire fall,history
+what caused the French revolution,history
+who was Genghis Khan,history
+when did World War 2 end,history
+what was the Magna Carta,history
+who were the founding fathers of the United States,history
+what was the Cold War,history
+when was the printing press invented,history
+what was the Renaissance,history
+who was Cleopatra,history
+what caused the American civil war,history
+who built the pyramids of Giza,history
+what was the Industrial Revolution,history
+when did the Berlin Wall fall,history
+who was Napoleon Bonaparte,history
+what was the Manhattan Project,history
+when did the Soviet Union collapse,history
+who was Mahatma Gandhi,history
+what caused World War 1,history
+when did Christopher Columbus reach the Americas,history
+what was the Black Death,history
+who was Confucius,history
+what was the Treaty of Versailles,history
+when did India gain independence,history
+who was Ivan the Terrible,history
+what were the Crusades,history
+when was the United Nations founded,history
+who was Alexander the Great,history
+what caused the fall of the Byzantine empire,history
+when did the Meiji restoration begin,history
+who was Charlemagne,history
+what was the Spanish Inquisition,history
+when did the Ming dynasty rule China,history
+who was Joan of Arc,history
+what was the silk road,history
+when did the Ottoman empire collapse,history
+who was Galileo Galilei in his historical context,history
+what was the role of the East India Company,history
+when was the abolition of slavery in the British empire,history
+who was Karl Marx,history
+what was the Bay of Pigs invasion,history
+when did the Vietnam War end,history
+who was Tutankhamun,history
+what was the Cuban Missile Crisis,history
+when did the Maya civilization peak,history
+who was Catherine the Great,history
+what was the Trail of Tears,history
+when did the Aztec empire fall,history
+who was Theodore Roosevelt,history
+what was the Bretton Woods system,history
+when was the European Union founded,history
+who was Marco Polo,history
+what was the Long March in China,history
+when did Apartheid end in South Africa,history
+who was Hannibal,history
+what was the Hundred Years War,history
+when did the Roman republic become an empire,history
+who was Suleiman the Magnificent,history
+what was the partition of India,history
+when was Constantinople conquered by the Ottomans,history
+what is the meaning of life,philosophy
+is free will compatible with determinism,philosophy
+what is consciousness,philosophy
+is morality objective or subjective,philosophy
+what is justice according to Plato,philosophy
+is killing in self defense ever justified,philosophy
+what is the trolley problem,philosophy
+is there a god according to Aquinas,philosophy
+what is the categorical imperative,philosophy
+is knowledge the same as justified true belief,philosophy
+what is the mind body problem,philosophy
+is utilitarianism a defensible ethical theory,philosophy
+what is virtue ethics,philosophy
+is reality fundamentally physical,philosophy
+what is the problem of evil,philosophy
+is altruism truly possible,philosophy
+what is moral relativism,philosophy
+is consciousness reducible to brain activity,philosophy
+what is the nature of time philosophically,philosophy
+is there an objective truth,philosophy
+what is the social contract,philosophy
+is human nature inherently selfish,philosophy
+what is existentialism,philosophy
+is the soul immortal,philosophy
+what is the meaning of beauty,philosophy
+is determinism true,philosophy
+what is the absurd according to Camus,philosophy
+is moral progress real,philosophy
+what is phenomenology,philosophy
+is artificial intelligence capable of consciousness,philosophy
+what is dualism,philosophy
+is forgiveness a moral duty,philosophy
+what is the will to power,philosophy
+is anarchism a coherent political philosophy,philosophy
+what is the unconscious in philosophy of mind,philosophy
+is happiness the highest good,philosophy
+what is the meaning of death,philosophy
+is suicide ever rational,philosophy
+what is the philosophy of language,philosophy
+is logic discovered or invented,philosophy
+what is the no true Scotsman fallacy,philosophy
+is moral realism defensible,philosophy
+what is the Cartesian doubt,philosophy
+is empathy a moral virtue,philosophy
+what is solipsism,philosophy
+is freedom of speech an absolute right,philosophy
+what is the philosophy of mind,philosophy
+is fictionalism a viable position in mathematics,philosophy
+what is the difference between ethics and morality,philosophy
+is hedonism a coherent worldview,philosophy
+what is the principle of charity in argumentation,philosophy
+is religious faith compatible with reason,philosophy
+what is the meaning of suffering,philosophy
+is moral luck a paradox,philosophy
+what is the harm principle,philosophy
+is universal grammar real,philosophy
+what is the philosophy of science,philosophy
+is the simulation hypothesis testable,philosophy
+what is the principle of sufficient reason,philosophy
+is anarchy preferable to authority,philosophy
+what should I have for dinner tonight,general
+how do I plan a trip to Japan,general
+what is the best way to learn a language,general
+how do I make pasta from scratch,general
+what is the meaning of the song bohemian rhapsody,general
+how do I improve my handwriting,general
+what is the best book to start with for a new reader,general
+how do I become more productive,general
+what should I name my new puppy,general
+how do I write a good resume,general
+what is a fun weekend activity in Boston,general
+how do I deal with stress,general
+what is the best running shoe for beginners,general
+how do I choose a college major,general
+what is the difference between espresso and americano,general
+how do I learn to play guitar,general
+what is the best way to organize my closet,general
+how do I plan a budget,general
+what is the most popular video game of 2024,general
+how do I take good photos of food,general
+what is the longest river in the world,general
+how do I build a habit of reading,general
+what should I wear to a wedding,general
+how do I sleep better at night,general
+what is the population of New York City,general
+how do I get better at chess,general
+what is a good gift for a 40th birthday,general
+how do I host a small dinner party,general
+what is the difference between a novel and a novella,general
+how do I write a thank you note,general
+what is the best way to commute in San Francisco,general
+how do I make a sourdough starter,general
+what is the most spoken language in the world,general
+how do I prepare for a job interview,general
+what is the highest mountain on each continent,general
+how do I keep houseplants alive,general
+what is the time difference between Tokyo and Paris,general
+how do I find a good therapist,general
+what is the smallest country in the world,general
+how do I plan a wedding,general
+what is the best yoga pose for beginners,general
+how do I learn to swim as an adult,general
+what is the average lifespan of a cat,general
+how do I take care of leather shoes,general
+what is the largest desert,general
+how do I start a vegetable garden,general
+what is the difference between weather and climate informally,general
+how do I improve my public speaking,general
+what is the most watched film of all time,general
+how do I keep a journal consistently,general
+what is the best alarm clock app,general
+how do I navigate a busy airport,general
+what is the most popular pizza topping,general
+how do I write a cover letter,general
+what is the international phonetic alphabet,general
+how do I get rid of a hiccup,general
+what is the loudest natural sound on earth,general
+how do I dance better at parties,general
+what is the largest city by area,general
+how do I improve my golf swing,general

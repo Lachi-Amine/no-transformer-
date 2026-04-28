@@ -1,0 +1,281 @@
+text,label
+what is the second law of thermodynamics,define
+define mitosis,define
+what does GDP mean,define
+give the definition of justice,define
+what is amylase,define
+define hypertension,define
+what is supply and demand,define
+define a prime number,define
+what is the Magna Carta,define
+define free will,define
+what is photosynthesis,define
+define a derivative in calculus,define
+what is the categorical imperative,define
+define angular momentum,define
+what is a recession,define
+define a stem cell,define
+what is opportunity cost,define
+define a phase transition,define
+what is the Bohr model,define
+define an enzyme,define
+what is hyperinflation,define
+define moral relativism,define
+what is RNA,define
+define a stack data structure,define
+what is a black hole,define
+define an ecosystem,define
+what is a hash function,define
+define an irrational number,define
+what is utilitarianism,define
+define a quantum state,define
+what is herd immunity,define
+define inflation,define
+what is the dual nature of light,define
+define a polynomial,define
+what is the social contract,define
+define a virus,define
+what is a neural network,define
+define entropy in thermodynamics,define
+what is myocardial infarction,define
+define monopolistic competition,define
+how does photosynthesis work,explain_process
+explain the process of DNA replication,explain_process
+how does an mRNA vaccine work,explain_process
+explain the mechanism of action of aspirin,explain_process
+how does a refrigerator cool the air,explain_process
+how is a recession resolved,explain_process
+explain how natural selection produces new species,explain_process
+how does the immune system fight infection,explain_process
+explain how an LC circuit oscillates,explain_process
+how does the heart pump blood,explain_process
+explain the Krebs cycle,explain_process
+how does a laser produce coherent light,explain_process
+explain how a transformer changes voltage,explain_process
+how does insulin regulate blood sugar,explain_process
+explain how stars produce light through fusion,explain_process
+how does fractional reserve banking work,explain_process
+explain the steps of cellular respiration,explain_process
+how does a 4 stroke engine work,explain_process
+explain how photosynthesis stores chemical energy,explain_process
+how does the kidney filter waste,explain_process
+explain how a quartz watch keeps time,explain_process
+how does evolution by natural selection happen,explain_process
+explain the working of a dialysis machine,explain_process
+how does ohm's law apply in a series circuit,explain_process
+explain the mechanism of a chemical reaction,explain_process
+how does a sail boat move against the wind,explain_process
+explain how a vaccine produces immunity,explain_process
+how does antibiotic resistance develop,explain_process
+explain the formation of a hurricane,explain_process
+how does the federal reserve influence inflation,explain_process
+explain how a passport works at a border,explain_process
+how does GPS calculate position,explain_process
+explain the mechanism of muscle contraction,explain_process
+how does a cell divide during mitosis,explain_process
+explain how a bridge supports a load,explain_process
+how does an MRI machine produce an image,explain_process
+explain how a rocket reaches orbit,explain_process
+how does anesthesia put a patient to sleep,explain_process
+explain the process of fermentation,explain_process
+how does a solar cell convert light to electricity,explain_process
+compute the kinetic energy of a 5 kg object moving at 10 m/s,compute
+solve x^2 + 2x + 1 = 0,compute
+find the integral of cos(x) from 0 to pi,compute
+calculate the resistance of a wire of length 10 m and area 1 mm^2,compute
+compute the value of compound interest on 1000 at 5 percent for 10 years,compute
+find the volume of a sphere of radius 3,compute
+solve the system 2x + y = 5 and x - y = 1,compute
+calculate the area under the curve y = x^2 from 0 to 2,compute
+compute the orbital period of a satellite at 200 km altitude,compute
+find the standard deviation of {2 4 4 4 5 5 7 9},compute
+compute the distance between (1 2) and (4 6),compute
+find the period of a pendulum of length 1 m,compute
+solve the quadratic 3x^2 - 4x + 1 = 0,compute
+compute the wavelength of a 100 Hz sound wave in air,compute
+find the cube root of 729,compute
+compute the determinant of [[1 2] [3 4]],compute
+find the eigenvalues of [[2 1] [1 2]],compute
+solve the differential equation dy/dx = 2y,compute
+compute the tax on $50000 income at 22 percent,compute
+find the slope of the line through (1 1) and (4 9),compute
+compute 7 factorial,compute
+solve x^3 = 27,compute
+find the gradient of f(x y) = x^2 y at (1 2),compute
+compute the present value of a $1000 payment in 5 years at 4 percent,compute
+find the sum of the first 50 natural numbers,compute
+compute the expected value of rolling a fair six sided die,compute
+find the maximum of f(x) = -x^2 + 4x + 1,compute
+compute the heat needed to raise 2 kg of water by 20 degrees C,compute
+solve sin(x) = 0.5 for x in (0 2*pi),compute
+find the modular inverse of 5 mod 11,compute
+compute the gravitational force between earth and the moon,compute
+solve the simultaneous linear equations using matrix inversion,compute
+find the probability of drawing two aces from a deck without replacement,compute
+compute the impedance of a series RLC circuit,compute
+find the surface area of a cylinder of radius 3 and height 7,compute
+compute the marginal cost from C(q) = q^2 + 5q,compute
+solve log(x) = 2 base 10,compute
+find the 10th term of the arithmetic sequence 3 7 11,compute
+compute the orbital velocity at 300 km altitude around earth,compute
+find the centroid of a triangle with vertices (0 0) (4 0) (0 6),compute
+compare mitosis and meiosis,compare
+what is the difference between a metaphor and a simile,compare
+compare classical mechanics and quantum mechanics,compare
+how do bacteria and viruses differ,compare
+compare bonds and stocks as investments,compare
+what is the difference between aspirin and ibuprofen,compare
+compare type 1 and type 2 diabetes,compare
+how do socialism and communism differ,compare
+compare a parabola and a hyperbola,compare
+what is the difference between an algorithm and a heuristic,compare
+compare DNA and RNA,compare
+how do supply and demand differ in slope,compare
+compare deontology and utilitarianism,compare
+what is the difference between a virus and a worm,compare
+compare ohms law and kirchhoffs voltage law,compare
+how do absolute and comparative advantage differ,compare
+compare the renaissance and the enlightenment,compare
+what is the difference between a memory leak and memory corruption,compare
+compare igneous and sedimentary rocks,compare
+how do recessions and depressions differ,compare
+compare innate and adaptive immunity,compare
+what is the difference between fission and fusion,compare
+compare TCP and UDP,compare
+how do empiricism and rationalism differ,compare
+compare hot air ballooning and helicopter flight in physics,compare
+what is the difference between mass and weight,compare
+compare Mercury and Venus as planets,compare
+how do bonds and stocks pay returns,compare
+compare a dictatorship and a democracy,compare
+what is the difference between a sonnet and a haiku,compare
+compare aerobic and anaerobic respiration,compare
+how do compressors and pumps differ,compare
+compare RNA polymerase and DNA polymerase,compare
+what is the difference between a polymer and a monomer,compare
+compare a pendulum clock and a quartz clock,compare
+how do common law and civil law systems differ,compare
+compare an eclipse and a transit,compare
+what is the difference between confidence and probability,compare
+compare microeconomics and macroeconomics,compare
+how do antibody and antigen differ,compare
+what will happen to inflation if interest rates rise,predict
+predict the future of artificial intelligence over the next decade,predict
+forecast the GDP growth in the next quarter,predict
+what will happen if the population continues to grow,predict
+predict the climate impact if emissions double,predict
+forecast the impact of a tariff on consumer prices,predict
+what will happen to a star when it runs out of fuel,predict
+predict how a virus might mutate over time,predict
+forecast the demand for a new product after launch,predict
+what will happen if global temperatures rise by 2 degrees,predict
+predict the trajectory of a projectile launched at 30 degrees,predict
+forecast the effect of an interest rate hike on housing,predict
+what will happen to a system in thermal equilibrium,predict
+predict the orbital decay of a satellite,predict
+forecast next quarter's earnings given current trends,predict
+what will happen to a market with a price ceiling,predict
+predict population dynamics under a logistic growth model,predict
+forecast the spread of a disease using SIR,predict
+what will happen if you lower entropy in an isolated system,predict
+predict the result of an election based on polls,predict
+forecast hurricane intensity given sea surface temperature,predict
+what will happen to currency value if the central bank cuts rates,predict
+predict the eclipse path for the next year,predict
+forecast the cost of a college degree in 2030,predict
+what will happen if antibiotic resistance keeps rising,predict
+predict the trajectory of housing prices in 2026,predict
+forecast the unemployment rate after a recession,predict
+what will happen to a star like the sun in 5 billion years,predict
+predict the spread of a wildfire under high winds,predict
+forecast crop yield given precipitation and temperature,predict
+what will happen to bond prices if rates rise,predict
+predict the next phase of the moon,predict
+forecast solar panel adoption rates,predict
+what will happen if you remove a keystone species,predict
+predict the impact of automation on jobs,predict
+forecast a country's debt to GDP ratio,predict
+what will happen if you double the population of predators,predict
+predict the path of a hurricane,predict
+forecast retail sales next holiday season,predict
+what will happen if a black hole approaches a star,predict
+why did the roman empire fall,interpret
+what is the meaning of life,interpret
+interpret the symbolism in Hamlet,interpret
+why is the sky blue,interpret
+what is the significance of the Magna Carta,interpret
+interpret the political consequences of the Treaty of Versailles,interpret
+why do leaves change color in autumn,interpret
+what does the trolley problem tell us about ethics,interpret
+interpret the significance of the moon landing,interpret
+why does ice float on water,interpret
+what is the meaning of consciousness,interpret
+interpret the impact of the printing press on Europe,interpret
+why do we dream,interpret
+what is the significance of the discovery of penicillin,interpret
+interpret Einsteins theory of general relativity,interpret
+why does a magnet attract iron,interpret
+what is the meaning of justice in Plato's republic,interpret
+interpret the role of women in the French revolution,interpret
+why do humans need sleep,interpret
+what is the significance of mendelian inheritance,interpret
+interpret Darwin's theory of evolution in modern terms,interpret
+why do markets sometimes fail,interpret
+what is the meaning of moral progress,interpret
+interpret the cultural impact of the Beatles,interpret
+why is mathematics so effective in physics,interpret
+what is the meaning of beauty,interpret
+interpret the symbolism of the green light in The Great Gatsby,interpret
+why does inflation hurt savers,interpret
+what is the significance of the Higgs boson,interpret
+interpret the meaning of dada in art,interpret
+why do societies form governments,interpret
+what is the meaning of free speech,interpret
+interpret the trade off between liberty and equality,interpret
+why does light bend in glass,interpret
+what is the meaning of the dollar's reserve currency status,interpret
+interpret the role of religion in modern politics,interpret
+why does the placebo effect occur,interpret
+what is the meaning of Schrodinger's cat,interpret
+interpret Foucault's idea of biopower,interpret
+why do empires collapse,interpret
+summarize the history of World War 2,summarize
+give an overview of quantum mechanics,summarize
+summarize the plot of Hamlet,summarize
+give a brief overview of the immune system,summarize
+summarize the causes of the great depression,summarize
+give an overview of supply and demand,summarize
+summarize Einsteins theory of relativity,summarize
+give an overview of the structure of DNA,summarize
+summarize the French revolution,summarize
+give a brief overview of utilitarianism,summarize
+summarize the central dogma of molecular biology,summarize
+give an overview of the cardiovascular system,summarize
+summarize the major causes of climate change,summarize
+give an overview of game theory,summarize
+summarize the events leading to the cold war,summarize
+give a brief overview of mitosis,summarize
+summarize the principles of macroeconomics,summarize
+give an overview of the standard model of physics,summarize
+summarize the plot of 1984,summarize
+give an overview of the krebs cycle,summarize
+summarize the Renaissance,summarize
+give a brief overview of socialism,summarize
+summarize the development of vaccines,summarize
+give an overview of the central nervous system,summarize
+summarize Plato's allegory of the cave,summarize
+give a brief overview of compound interest,summarize
+summarize the moon landing program,summarize
+give an overview of capitalism,summarize
+summarize the periodic table organization,summarize
+give a brief overview of the federal reserve,summarize
+summarize evolution by natural selection,summarize
+give an overview of the photoelectric effect,summarize
+summarize the rise of the internet,summarize
+give a brief overview of behavioral economics,summarize
+summarize the steps of protein synthesis,summarize
+give an overview of Newton's laws of motion,summarize
+summarize the major schools of philosophy,summarize
+give a brief overview of stoic ethics,summarize
+summarize the events of the Apollo 11 mission,summarize
+give an overview of CRISPR gene editing,summarize

@@ -1,0 +1,251 @@
+text,domain,intent,g,y,r
+what is the derivative of x squared,math,define,0.80,0.15,0.05
+compute the integral of cos(x) from 0 to pi,math,compute,0.90,0.08,0.02
+solve x^2 - 4 = 0,math,compute,0.92,0.05,0.03
+what is a continuous function,math,define,0.75,0.20,0.05
+find the eigenvalues of a 2 by 2 matrix,math,compute,0.90,0.07,0.03
+compare integration by parts and substitution,math,compare,0.65,0.25,0.10
+why does the harmonic series diverge,math,interpret,0.55,0.30,0.15
+summarize the foundations of set theory,math,summarize,0.50,0.30,0.20
+find the roots of x^3 - 6x + 4 = 0,math,compute,0.92,0.05,0.03
+what is the chain rule,math,define,0.78,0.17,0.05
+predict the rate of growth of an exponential function,math,predict,0.60,0.35,0.05
+compute 7 factorial,math,compute,0.95,0.04,0.01
+what is a vector space,math,define,0.78,0.17,0.05
+why is there no general formula for fifth degree polynomials,math,interpret,0.55,0.20,0.25
+summarize the proof of the Pythagorean theorem,math,summarize,0.70,0.20,0.10
+find the modular inverse of 3 mod 11,math,compute,0.92,0.05,0.03
+what is mathematical induction,math,define,0.78,0.17,0.05
+compare a permutation and a combination,math,compare,0.70,0.20,0.10
+find the volume of a sphere of radius 5,math,compute,0.92,0.05,0.03
+why is e^(i*pi) + 1 = 0 considered beautiful,math,interpret,0.50,0.20,0.30
+compute the standard deviation of {1 2 3 4 5},math,compute,0.85,0.13,0.02
+what is a homomorphism,math,define,0.78,0.17,0.05
+predict the convergence of a geometric series with ratio 0.5,math,predict,0.65,0.30,0.05
+summarize the development of non Euclidean geometry,math,summarize,0.40,0.25,0.35
+find the area under y = x from 0 to 4,math,compute,0.92,0.05,0.03
+what is the discriminant of a quadratic,math,define,0.85,0.10,0.05
+compare the two main proofs of Fermats last theorem,math,compare,0.50,0.30,0.20
+find the GCD of 36 and 84,math,compute,0.94,0.04,0.02
+what is a metric space,math,define,0.78,0.17,0.05
+why does the central limit theorem hold,math,interpret,0.60,0.30,0.10
+solve sin(x) = 0.5 for x in (0 2*pi),math,compute,0.90,0.07,0.03
+what is Bayes theorem,math,define,0.75,0.20,0.05
+find the gradient of f(x y) = x^2 y at (1 2),math,compute,0.90,0.07,0.03
+predict the limit of (1 + 1/n)^n as n grows,math,predict,0.85,0.10,0.05
+summarize the structure of group theory,math,summarize,0.55,0.25,0.20
+compute the kinetic energy of a 5 kg object at 10 m/s,physics,compute,0.85,0.13,0.02
+what is angular momentum,physics,define,0.75,0.22,0.03
+derive Newtons second law from F = ma,physics,explain_process,0.78,0.18,0.04
+predict the orbital period of a satellite at 500 km,physics,predict,0.78,0.20,0.02
+why is the speed of light constant in all frames,physics,interpret,0.55,0.30,0.15
+compute the Doppler shift of a 100 Hz source moving at 30 m/s,physics,compute,0.85,0.13,0.02
+what is the second law of thermodynamics,physics,define,0.70,0.25,0.05
+predict the trajectory of a projectile launched at 45 degrees,physics,predict,0.85,0.13,0.02
+how does an LC circuit oscillate,physics,explain_process,0.70,0.25,0.05
+compare ohms law and kirchhoffs voltage law,physics,compare,0.65,0.30,0.05
+why do superconductors expel magnetic fields,physics,interpret,0.55,0.40,0.05
+compute the gravitational force between two 10 kg masses 1 m apart,physics,compute,0.92,0.06,0.02
+what is the photoelectric effect,physics,define,0.65,0.30,0.05
+derive the Schrodinger equation for a free particle,physics,explain_process,0.75,0.20,0.05
+how does a transformer step up voltage,physics,explain_process,0.70,0.25,0.05
+predict the de Broglie wavelength of a 1 kg ball at 1 m/s,physics,predict,0.85,0.13,0.02
+why does time dilate near a black hole,physics,interpret,0.55,0.35,0.10
+summarize special relativity,physics,summarize,0.50,0.35,0.15
+compute the lift on a wing using Bernoulli approximation,physics,compute,0.65,0.32,0.03
+compare the Bohr model and the quantum mechanical atom,physics,compare,0.55,0.40,0.05
+derive the equation for centripetal acceleration,physics,explain_process,0.85,0.12,0.03
+predict the period of a pendulum of length 0.5 m,physics,predict,0.88,0.10,0.02
+why is entropy always increasing in isolated systems,physics,interpret,0.60,0.35,0.05
+how does an MRI scan produce an image,physics,explain_process,0.55,0.40,0.05
+compute the resistance of a 10 m copper wire of radius 1 mm,physics,compute,0.85,0.13,0.02
+what is dark matter,physics,define,0.40,0.55,0.05
+predict the eclipse path for the next year,physics,predict,0.85,0.13,0.02
+compare the Carnot cycle and the Otto cycle,physics,compare,0.65,0.30,0.05
+summarize quantum field theory in plain language,physics,summarize,0.50,0.35,0.15
+why does electromagnetic induction work,physics,interpret,0.65,0.30,0.05
+compute the orbital velocity at 300 km altitude,physics,compute,0.88,0.10,0.02
+how does a laser produce coherent light,physics,explain_process,0.60,0.35,0.05
+predict the temperature of a black hole of solar mass,physics,predict,0.65,0.30,0.05
+what is the equivalence principle,physics,define,0.60,0.30,0.10
+why is the universe expanding,physics,interpret,0.30,0.50,0.20
+what is mitosis,biology,define,0.20,0.70,0.10
+how does DNA replication work,biology,explain_process,0.15,0.75,0.10
+compare prokaryotic and eukaryotic cells,biology,compare,0.15,0.75,0.10
+why do organisms age,biology,interpret,0.10,0.60,0.30
+summarize evolution by natural selection,biology,summarize,0.10,0.70,0.20
+predict the impact of a keystone species removal,biology,predict,0.10,0.70,0.20
+what is photosynthesis,biology,define,0.20,0.70,0.10
+how do enzymes catalyze reactions,biology,explain_process,0.20,0.70,0.10
+compare DNA and RNA,biology,compare,0.20,0.70,0.10
+why do leaves change color in autumn,biology,interpret,0.15,0.65,0.20
+summarize cellular respiration,biology,summarize,0.20,0.70,0.10
+predict the spread of an invasive species in a new ecosystem,biology,predict,0.10,0.70,0.20
+what is a stem cell,biology,define,0.15,0.75,0.10
+how do antibodies recognize antigens,biology,explain_process,0.15,0.75,0.10
+compare innate and adaptive immunity,biology,compare,0.15,0.75,0.10
+why does sickle cell trait persist in malarial regions,biology,interpret,0.10,0.65,0.25
+summarize the central dogma of molecular biology,biology,summarize,0.20,0.70,0.10
+predict the population dynamics of a predator prey system,biology,predict,0.15,0.75,0.10
+what is a gene,biology,define,0.20,0.70,0.10
+how do plants reproduce,biology,explain_process,0.15,0.75,0.10
+compare meiosis and mitosis,biology,compare,0.20,0.70,0.10
+why do humans need sleep,biology,interpret,0.10,0.65,0.25
+summarize the cell cycle,biology,summarize,0.20,0.70,0.10
+predict crop yield from rainfall and temperature,biology,predict,0.15,0.75,0.10
+what is photosynthesis respiration coupling,biology,define,0.15,0.75,0.10
+how do hormones act on target cells,biology,explain_process,0.15,0.75,0.10
+compare aerobic and anaerobic respiration,biology,compare,0.20,0.70,0.10
+why do some species exhibit altruistic behavior,biology,interpret,0.10,0.55,0.35
+summarize mendelian inheritance,biology,summarize,0.25,0.65,0.10
+predict how a virus may mutate over a year,biology,predict,0.10,0.75,0.15
+what is a protein,biology,define,0.20,0.75,0.05
+how does the immune system fight infection,biology,explain_process,0.15,0.75,0.10
+compare innate behavior and learned behavior,biology,compare,0.10,0.70,0.20
+why do some plants flower in spring,biology,interpret,0.15,0.65,0.20
+summarize the structure and function of mitochondria,biology,summarize,0.20,0.70,0.10
+what causes type 2 diabetes,medicine,define,0.10,0.80,0.10
+how do mRNA vaccines work,medicine,explain_process,0.15,0.75,0.10
+compare type 1 and type 2 diabetes,medicine,compare,0.15,0.75,0.10
+why is antibiotic resistance growing,medicine,interpret,0.10,0.65,0.25
+summarize the development of penicillin,medicine,summarize,0.10,0.70,0.20
+predict the spread of an influenza outbreak,medicine,predict,0.10,0.80,0.10
+what is hypertension,medicine,define,0.15,0.80,0.05
+how does aspirin reduce inflammation,medicine,explain_process,0.20,0.70,0.10
+compare statins and PCSK9 inhibitors,medicine,compare,0.20,0.70,0.10
+why do some people respond differently to the same drug,medicine,interpret,0.10,0.70,0.20
+summarize the major causes of stroke,medicine,summarize,0.10,0.75,0.15
+predict the long term outcomes of treated hypertension,medicine,predict,0.10,0.80,0.10
+what is leukemia,medicine,define,0.10,0.80,0.10
+how is sepsis treated,medicine,explain_process,0.10,0.80,0.10
+compare CT and MRI imaging,medicine,compare,0.25,0.65,0.10
+why do vaccines need boosters,medicine,interpret,0.10,0.70,0.20
+summarize the mechanism of action of statins,medicine,summarize,0.20,0.70,0.10
+predict the impact of a new diabetes drug,medicine,predict,0.10,0.75,0.15
+what is myocardial infarction,medicine,define,0.10,0.80,0.10
+how does chemotherapy damage cancer cells,medicine,explain_process,0.15,0.75,0.10
+compare bacterial and viral pneumonia,medicine,compare,0.10,0.80,0.10
+why does the placebo effect occur,medicine,interpret,0.05,0.55,0.40
+summarize the management of asthma,medicine,summarize,0.10,0.80,0.10
+predict the lifetime risk of breast cancer for an average woman,medicine,predict,0.05,0.85,0.10
+what is rheumatoid arthritis,medicine,define,0.10,0.80,0.10
+how does dialysis substitute for kidney function,medicine,explain_process,0.20,0.70,0.10
+compare radiation therapy and chemotherapy,medicine,compare,0.15,0.75,0.10
+why do some pathogens evade the immune system,medicine,interpret,0.10,0.70,0.20
+summarize the discovery of insulin,medicine,summarize,0.10,0.65,0.25
+predict the demand for vaccines in a pandemic,medicine,predict,0.05,0.75,0.20
+what is supply and demand,economics,define,0.20,0.70,0.10
+how does inflation affect savings,economics,explain_process,0.20,0.70,0.10
+compare bonds and stocks as investments,economics,compare,0.20,0.65,0.15
+why did the 2008 financial crisis happen,economics,interpret,0.05,0.55,0.40
+summarize quantitative easing,economics,summarize,0.15,0.70,0.15
+predict next quarters inflation given current rates,economics,predict,0.10,0.80,0.10
+what is GDP,economics,define,0.25,0.65,0.10
+how does compound interest grow savings,economics,explain_process,0.55,0.40,0.05
+compare fiscal policy and monetary policy,economics,compare,0.10,0.65,0.25
+why does inflation hurt savers,economics,interpret,0.15,0.55,0.30
+summarize the keynesian theory of aggregate demand,economics,summarize,0.10,0.55,0.35
+predict consumer spending after a tax cut,economics,predict,0.10,0.75,0.15
+what is a recession,economics,define,0.15,0.75,0.10
+how do interest rates affect borrowing,economics,explain_process,0.25,0.65,0.10
+compare comparative and absolute advantage,economics,compare,0.30,0.55,0.15
+why do markets sometimes fail,economics,interpret,0.10,0.45,0.45
+summarize the federal reserve,economics,summarize,0.10,0.65,0.25
+predict the long term return of a balanced portfolio,economics,predict,0.20,0.70,0.10
+what is opportunity cost,economics,define,0.30,0.55,0.15
+how does the IMF support economies in crisis,economics,explain_process,0.05,0.60,0.35
+compare a tariff and a quota,economics,compare,0.15,0.65,0.20
+why is GDP an imperfect measure of welfare,economics,interpret,0.05,0.50,0.45
+summarize the impact of automation on labor markets,economics,summarize,0.05,0.55,0.40
+predict the effect of a 1 percent rate hike on housing demand,economics,predict,0.10,0.75,0.15
+what is a monopoly,economics,define,0.15,0.65,0.20
+how does fractional reserve banking work,economics,explain_process,0.25,0.65,0.10
+compare hyperinflation and deflation effects on debt,economics,compare,0.15,0.65,0.20
+why are some economies more resilient than others,economics,interpret,0.05,0.50,0.45
+summarize the great depression,economics,summarize,0.05,0.55,0.40
+predict the unemployment rate one year after a recession,economics,predict,0.10,0.75,0.15
+what was the Magna Carta,history,define,0.05,0.45,0.50
+when did the Roman empire fall,history,define,0.05,0.55,0.40
+why did the Soviet Union collapse,history,interpret,0.02,0.18,0.80
+summarize the French revolution,history,summarize,0.05,0.30,0.65
+compare the American and French revolutions,history,compare,0.05,0.20,0.75
+predict how WW1 might have ended without American entry,history,predict,0.02,0.18,0.80
+who was Genghis Khan,history,define,0.05,0.50,0.45
+how did the Berlin Wall fall,history,explain_process,0.05,0.30,0.65
+compare the Renaissance and the Enlightenment,history,compare,0.05,0.20,0.75
+why did the British empire decline,history,interpret,0.02,0.18,0.80
+summarize the cold war,history,summarize,0.05,0.25,0.70
+predict the alternative outcomes of the Cuban missile crisis,history,predict,0.02,0.18,0.80
+what was the silk road,history,define,0.05,0.45,0.50
+how did the printing press change Europe,history,explain_process,0.05,0.25,0.70
+compare the fall of the western and eastern Roman empires,history,compare,0.05,0.25,0.70
+why did colonial empires expand in the 19th century,history,interpret,0.02,0.18,0.80
+summarize the Manhattan project,history,summarize,0.10,0.40,0.50
+predict whether the European Union will expand further,history,predict,0.02,0.18,0.80
+what was the partition of India,history,define,0.05,0.40,0.55
+how did the bubonic plague spread across Europe,history,explain_process,0.05,0.55,0.40
+compare WW1 and WW2 origins,history,compare,0.02,0.18,0.80
+why did the Aztec empire collapse,history,interpret,0.02,0.30,0.68
+summarize the abolition of slavery in the British empire,history,summarize,0.05,0.25,0.70
+predict the long term outcome of decolonization in Africa,history,predict,0.02,0.18,0.80
+what was the Bay of Pigs invasion,history,define,0.05,0.40,0.55
+how did the gold standard collapse,history,explain_process,0.10,0.30,0.60
+compare the Russian and Chinese revolutions,history,compare,0.02,0.18,0.80
+why did Rome adopt Christianity,history,interpret,0.02,0.18,0.80
+summarize the meiji restoration,history,summarize,0.05,0.30,0.65
+predict the consequences of brexit on the UK economy,history,predict,0.05,0.45,0.50
+what is consciousness,philosophy,define,0.10,0.30,0.60
+is free will compatible with determinism,philosophy,interpret,0.05,0.10,0.85
+compare deontological and utilitarian ethics,philosophy,compare,0.05,0.15,0.80
+why is there something rather than nothing,philosophy,interpret,0.05,0.10,0.85
+summarize Plato's theory of forms,philosophy,summarize,0.05,0.15,0.80
+predict whether AI will achieve consciousness,philosophy,predict,0.05,0.30,0.65
+what is the categorical imperative,philosophy,define,0.10,0.20,0.70
+how does the trolley problem challenge consequentialism,philosophy,explain_process,0.05,0.10,0.85
+compare empiricism and rationalism,philosophy,compare,0.10,0.15,0.75
+why is moral realism contested,philosophy,interpret,0.05,0.10,0.85
+summarize existentialism,philosophy,summarize,0.05,0.15,0.80
+predict the future of moral progress,philosophy,predict,0.02,0.18,0.80
+what is the mind body problem,philosophy,define,0.10,0.25,0.65
+how does virtue ethics differ from rule based ethics,philosophy,explain_process,0.05,0.15,0.80
+compare Plato and Aristotle on knowledge,philosophy,compare,0.05,0.15,0.80
+why do humans seek meaning,philosophy,interpret,0.05,0.20,0.75
+summarize the social contract tradition,philosophy,summarize,0.05,0.15,0.80
+predict whether anarchism could ever be stable,philosophy,predict,0.02,0.18,0.80
+what is the problem of evil,philosophy,define,0.05,0.15,0.80
+how does Kant ground moral duty,philosophy,explain_process,0.05,0.15,0.80
+compare hard determinism and libertarian free will,philosophy,compare,0.05,0.10,0.85
+why is the simulation hypothesis difficult to refute,philosophy,interpret,0.05,0.20,0.75
+summarize utilitarianism,philosophy,summarize,0.05,0.20,0.75
+predict whether moral facts could ever be empirically verified,philosophy,predict,0.05,0.15,0.80
+what is solipsism,philosophy,define,0.05,0.15,0.80
+how do philosophers argue about personal identity over time,philosophy,explain_process,0.05,0.10,0.85
+compare consequentialism and virtue ethics on lying,philosophy,compare,0.05,0.10,0.85
+why do we trust scientific knowledge,philosophy,interpret,0.10,0.40,0.50
+summarize the harm principle,philosophy,summarize,0.05,0.20,0.75
+predict whether moral progress is inevitable,philosophy,predict,0.02,0.18,0.80
+what is the meaning of life,general,interpret,0.05,0.10,0.85
+how do I learn to play guitar,general,explain_process,0.20,0.50,0.30
+summarize the rules of chess,general,summarize,0.40,0.40,0.20
+compare iPhone and Android,general,compare,0.20,0.55,0.25
+why do we dream,general,interpret,0.10,0.55,0.35
+predict next year's most popular travel destination,general,predict,0.05,0.55,0.40
+what should I name my puppy,general,interpret,0.05,0.30,0.65
+how do I improve my public speaking,general,explain_process,0.10,0.50,0.40
+compare cats and dogs as pets,general,compare,0.05,0.55,0.40
+summarize how to plan a trip to Japan,general,summarize,0.10,0.65,0.25
+why is the sky blue,general,interpret,0.45,0.45,0.10
+predict the trend of remote work over the next decade,general,predict,0.05,0.55,0.40
+what is the best book to read this year,general,interpret,0.02,0.28,0.70
+how do I make sourdough bread,general,explain_process,0.15,0.65,0.20
+compare watching films at home and in theaters,general,compare,0.05,0.45,0.50
+summarize the best ways to manage stress,general,summarize,0.10,0.55,0.35
+why do humans need sleep,general,interpret,0.10,0.60,0.30
+predict whether artificial intelligence will replace coders,general,predict,0.10,0.50,0.40
+what is the moral implication of climate change,general,interpret,0.05,0.30,0.65
+how do I start meditating,general,explain_process,0.10,0.45,0.45
+compare the consequences of a tariff and a subsidy,general,compare,0.15,0.55,0.30
+summarize the implications of CRISPR for ethics,general,summarize,0.05,0.40,0.55
+why do markets crash,general,interpret,0.05,0.55,0.40
+predict whether quantum computing will break encryption,general,predict,0.20,0.55,0.25
+what does the future hold for renewable energy,general,interpret,0.05,0.55,0.40

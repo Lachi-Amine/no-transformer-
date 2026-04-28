@@ -1,0 +1,284 @@
+# Formal knowledge entries — equations, axioms, closed-form laws.
+# Used by the GREEN engine.
+
+- id: pythagoras-001
+  domain: math
+  tags: [geometry, theorem, triangle]
+  keywords: [pythagoras, pythagorean, triangle, hypotenuse, right, leg]
+  equation: "a**2 + b**2 = c**2"
+  variables:
+    a: leg of right triangle
+    b: leg of right triangle
+    c: hypotenuse
+  text: |
+    Pythagorean theorem: for a right triangle with legs a and b and hypotenuse c,
+    a^2 + b^2 = c^2.
+  sources: [textbook:euclidean-geometry]
+
+- id: quadratic-formula-001
+  domain: math
+  tags: [algebra, polynomial, roots]
+  keywords: [quadratic, formula, roots, polynomial, discriminant]
+  equation: "x = (-b + sqrt(b**2 - 4*a*c)) / (2*a)"
+  variables:
+    a: coefficient of x^2
+    b: coefficient of x
+    c: constant term
+    x: root
+  text: |
+    Quadratic formula: the roots of ax^2 + bx + c = 0 are
+    x = (-b ± sqrt(b^2 - 4ac)) / (2a).
+  sources: [textbook:algebra]
+
+- id: arithmetic-series-001
+  domain: math
+  tags: [series, sequence, sum]
+  keywords: [arithmetic, series, sum, sequence]
+  equation: "S = n*(a1 + an)/2"
+  variables:
+    S: sum of the series
+    n: number of terms
+    a1: first term
+    an: last term
+  text: |
+    Sum of an arithmetic series: S = n(a_1 + a_n) / 2 where n is the number of terms.
+  sources: [textbook:algebra]
+
+- id: geometric-series-001
+  domain: math
+  tags: [series, sequence, sum]
+  keywords: [geometric, series, sum, ratio]
+  equation: "S = a*(1 - r**n)/(1 - r)"
+  variables:
+    S: finite sum
+    a: first term
+    r: common ratio (r != 1)
+    n: number of terms
+  text: |
+    Sum of a finite geometric series with first term a and common ratio r (r != 1):
+    S = a (1 - r^n) / (1 - r).
+  sources: [textbook:algebra]
+
+- id: trig-identity-001
+  domain: math
+  tags: [trigonometry, identity]
+  keywords: [trig, trigonometric, identity, sine, cosine]
+  equation: "sin(x)**2 + cos(x)**2 = 1"
+  variables:
+    x: angle in radians
+  text: |
+    Pythagorean trigonometric identity: sin^2(x) + cos^2(x) = 1 for all real x.
+  sources: [textbook:trigonometry]
+
+- id: euler-identity-001
+  domain: math
+  tags: [complex, identity]
+  keywords: [euler, identity, complex, exponential]
+  equation: "exp(I*pi) + 1 = 0"
+  variables: {}
+  text: |
+    Euler's identity: e^(i*pi) + 1 = 0 — relates five fundamental constants.
+  sources: [textbook:complex-analysis]
+
+- id: newton-second-001
+  domain: physics
+  tags: [mechanics, force, dynamics]
+  keywords: [newton, force, mass, acceleration, second, law]
+  equation: "F = m*a"
+  variables:
+    F: net force (N)
+    m: mass (kg)
+    a: acceleration (m/s^2)
+  text: |
+    Newton's second law: the net force on an object equals its mass times its acceleration,
+    F = m a.
+  sources: [textbook:mechanics]
+
+- id: kinetic-energy-001
+  domain: physics
+  tags: [mechanics, energy]
+  keywords: [kinetic, energy, mass, velocity, motion]
+  equation: "E = m*v**2/2"
+  variables:
+    E: kinetic energy (J)
+    m: mass (kg)
+    v: speed (m/s)
+  text: |
+    Kinetic energy of a moving object: E = (1/2) m v^2.
+  sources: [textbook:mechanics]
+
+- id: pendulum-period-001
+  domain: physics
+  tags: [oscillation, pendulum, mechanics]
+  keywords: [pendulum, period, oscillation, simple, swing, length]
+  equation: "T = 2*pi*sqrt(L/g)"
+  variables:
+    T: period (s)
+    L: length of pendulum (m)
+    g: gravitational acceleration (m/s^2)
+  text: |
+    Period of a simple pendulum (small angle approximation): T = 2 pi sqrt(L/g).
+  sources: [textbook:mechanics]
+
+- id: hooke-law-001
+  domain: physics
+  tags: [mechanics, elasticity, spring]
+  keywords: [hooke, spring, force, displacement, elastic]
+  equation: "F = -k*x"
+  variables:
+    F: restoring force (N)
+    k: spring constant (N/m)
+    x: displacement from equilibrium (m)
+  text: |
+    Hooke's law: an ideal spring exerts a restoring force F = -k x proportional to its
+    displacement from equilibrium.
+  sources: [textbook:mechanics]
+
+- id: ohm-law-001
+  domain: physics
+  tags: [electricity, circuit]
+  keywords: [ohm, voltage, current, resistance, circuit]
+  equation: "V = I*R"
+  variables:
+    V: voltage (V)
+    I: current (A)
+    R: resistance (ohm)
+  text: |
+    Ohm's law: the voltage across a resistor equals the product of its current and
+    resistance, V = I R.
+  sources: [textbook:electromagnetism]
+
+- id: coulomb-law-001
+  domain: physics
+  tags: [electricity, electrostatics]
+  keywords: [coulomb, charge, force, electrostatic, distance]
+  equation: "F = k*q1*q2/r**2"
+  variables:
+    F: electrostatic force (N)
+    k: Coulomb constant ~ 8.99e9 N m^2 / C^2
+    q1: first charge (C)
+    q2: second charge (C)
+    r: separation (m)
+  text: |
+    Coulomb's law: the force between two point charges is F = k q1 q2 / r^2 along the
+    line joining them.
+  sources: [textbook:electromagnetism]
+
+- id: gravitation-001
+  domain: physics
+  tags: [gravity, mechanics, astronomy]
+  keywords: [gravity, gravitational, newton, mass, distance, attraction]
+  equation: "F = G*m1*m2/r**2"
+  variables:
+    F: gravitational force (N)
+    G: gravitational constant ~ 6.674e-11 N m^2 / kg^2
+    m1: first mass (kg)
+    m2: second mass (kg)
+    r: separation (m)
+  text: |
+    Newton's law of universal gravitation: F = G m1 m2 / r^2 for two point masses.
+  sources: [textbook:mechanics]
+
+- id: kepler-third-001
+  domain: physics
+  tags: [astronomy, orbit, kepler]
+  keywords: [kepler, orbit, period, semi-major, axis, planet]
+  equation: "T**2 = (4*pi**2/(G*M))*a**3"
+  variables:
+    T: orbital period (s)
+    G: gravitational constant
+    M: mass of central body (kg)
+    a: semi-major axis (m)
+  text: |
+    Kepler's third law: T^2 = (4 pi^2 / (G M)) a^3 — the square of the orbital period
+    scales with the cube of the semi-major axis.
+  sources: [textbook:astronomy]
+
+- id: ideal-gas-001
+  domain: physics
+  tags: [thermodynamics, gas]
+  keywords: [ideal, gas, pressure, volume, temperature, mole]
+  equation: "P*V = n*R*T"
+  variables:
+    P: pressure (Pa)
+    V: volume (m^3)
+    n: amount of substance (mol)
+    R: ideal gas constant ~ 8.314 J/(mol K)
+    T: temperature (K)
+  text: |
+    Ideal gas law: P V = n R T relates pressure, volume, amount, and temperature for an
+    ideal gas.
+  sources: [textbook:thermodynamics]
+
+- id: snell-law-001
+  domain: physics
+  tags: [optics, refraction]
+  keywords: [snell, refraction, optics, light, refractive, index]
+  equation: "n1*sin(theta1) = n2*sin(theta2)"
+  variables:
+    n1: refractive index of medium 1
+    n2: refractive index of medium 2
+    theta1: angle of incidence
+    theta2: angle of refraction
+  text: |
+    Snell's law: n1 sin(theta1) = n2 sin(theta2) for light crossing a boundary between
+    two media of different refractive index.
+  sources: [textbook:optics]
+
+- id: wave-speed-001
+  domain: physics
+  tags: [waves, frequency]
+  keywords: [wave, speed, frequency, wavelength]
+  equation: "v = f*lam"
+  variables:
+    v: wave speed (m/s)
+    f: frequency (Hz)
+    lam: wavelength (m)
+  text: |
+    Wave relation: the speed of a periodic wave equals frequency times wavelength,
+    v = f lambda.
+  sources: [textbook:waves]
+
+- id: doppler-classical-001
+  domain: physics
+  tags: [waves, doppler]
+  keywords: [doppler, frequency, source, observer, sound]
+  equation: "f_obs = f*(c + v_o)/(c - v_s)"
+  variables:
+    f_obs: observed frequency
+    f: source frequency
+    c: wave speed in the medium
+    v_o: observer speed toward source
+    v_s: source speed toward observer
+  text: |
+    Classical Doppler shift (toward-motion sign convention):
+    f_observed = f (c + v_o) / (c - v_s).
+  sources: [textbook:waves]
+
+- id: mass-energy-001
+  domain: physics
+  tags: [relativity, energy]
+  keywords: [einstein, mass, energy, equivalence, relativity]
+  equation: "E = m*c**2"
+  variables:
+    E: rest energy (J)
+    m: rest mass (kg)
+    c: speed of light in vacuum (m/s)
+  text: |
+    Einstein's mass-energy equivalence: the rest energy of a body equals its rest mass
+    times the speed of light squared, E = m c^2.
+  sources: [textbook:special-relativity]
+
+- id: schrodinger-ti-001
+  domain: physics
+  tags: [quantum, eigenvalue]
+  keywords: [schrodinger, quantum, eigenvalue, hamiltonian, wavefunction]
+  equation: "H*psi = E*psi"
+  variables:
+    H: Hamiltonian operator
+    psi: wavefunction (eigenstate)
+    E: energy eigenvalue
+  text: |
+    Time-independent Schrödinger equation: H psi = E psi — the Hamiltonian acting on a
+    stationary state returns the same state scaled by its energy eigenvalue.
+  sources: [textbook:quantum-mechanics]

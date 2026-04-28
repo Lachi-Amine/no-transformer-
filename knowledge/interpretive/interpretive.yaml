@@ -1,0 +1,244 @@
+# Interpretive knowledge entries — perspectives on contested questions.
+# Used by the RED engine to synthesize multi-tradition responses.
+# Six topics, three traditions each.
+
+# ---------- topic: trolley_problem ----------
+
+- id: trolley-utilitarian-001
+  domain: philosophy
+  topic: trolley_problem
+  tradition: utilitarian
+  tags: [ethics, dilemma, consequentialism]
+  keywords: [trolley, problem, dilemma, kill, save, divert, lever, track]
+  text: |
+    The utilitarian answer pulls the lever: if diverting the trolley kills one person
+    instead of five, the action that produces the greatest aggregate wellbeing is
+    chosen, regardless of the agent's role in causing the death.
+  sources: [singer:practical-ethics]
+
+- id: trolley-deontological-001
+  domain: philosophy
+  topic: trolley_problem
+  tradition: deontological
+  tags: [ethics, dilemma, kant]
+  keywords: [trolley, problem, dilemma, kill, save, divert, lever, track]
+  text: |
+    The deontological answer rejects using a person as a mere means, even to save
+    others; intentionally killing the one to redirect the trolley violates a duty
+    that is not outweighed by aggregate consequences.
+  sources: [kant:groundwork]
+
+- id: trolley-virtue-001
+  domain: philosophy
+  topic: trolley_problem
+  tradition: virtue
+  tags: [ethics, dilemma, character]
+  keywords: [trolley, problem, dilemma, kill, save, divert, lever, track]
+  text: |
+    The virtue ethics answer asks what a person of practical wisdom and good
+    character would do in this situation, attending to compassion, courage, and the
+    moral weight of being the agent of harm rather than to a single decision rule.
+  sources: [aristotle:nicomachean-ethics]
+
+# ---------- topic: capital_punishment ----------
+
+- id: capital-utilitarian-001
+  domain: philosophy
+  topic: capital_punishment
+  tradition: utilitarian
+  tags: [ethics, justice, deterrence]
+  keywords: [capital, punishment, death, penalty, execution, deterrence, justice]
+  text: |
+    Utilitarians evaluate capital punishment by its consequences — does it deter
+    crime, reduce suffering, or efficiently use justice resources? — and most
+    contemporary utilitarian arguments judge it unjustified given weak deterrence
+    evidence and the risk of executing innocents.
+  sources: [bentham:rationale-of-punishment]
+
+- id: capital-deontological-001
+  domain: philosophy
+  topic: capital_punishment
+  tradition: deontological
+  tags: [ethics, justice, retribution]
+  keywords: [capital, punishment, death, penalty, execution, retribution, justice]
+  text: |
+    Deontological positions split: classical retributivists argue that severe
+    wrongdoers deserve a proportionate response and that justice itself can require
+    execution, while modern Kantians argue that the inviolable dignity of the person
+    forbids the state from taking life as punishment.
+  sources: [kant:metaphysics-of-morals]
+
+- id: capital-virtue-001
+  domain: philosophy
+  topic: capital_punishment
+  tradition: virtue
+  tags: [ethics, justice, character]
+  keywords: [capital, punishment, death, penalty, execution, character, justice]
+  text: |
+    Virtue ethics emphasizes what executing a person says about the political
+    community's character and what it cultivates in those who carry it out, weighing
+    institutional callousness, mercy, and the conditions for human flourishing
+    against demands for retribution.
+  sources: [macintyre:after-virtue]
+
+# ---------- topic: lying ----------
+
+- id: lying-utilitarian-001
+  domain: philosophy
+  topic: lying
+  tradition: utilitarian
+  tags: [ethics, honesty, truth]
+  keywords: [lying, lie, deception, honesty, truth, telling]
+  text: |
+    Utilitarians treat lying as instrumentally bad in most cases because it erodes
+    trust and welfare, but they allow lies that produce a net gain in wellbeing,
+    such as misleading a would-be murderer about the location of their target.
+  sources: [mill:utilitarianism]
+
+- id: lying-deontological-001
+  domain: philosophy
+  topic: lying
+  tradition: deontological
+  tags: [ethics, honesty, kant]
+  keywords: [lying, lie, deception, honesty, truth, telling]
+  text: |
+    The strict Kantian view holds that lying violates a perfect duty and cannot be
+    universalized: even to save a life one must not lie, because deception treats a
+    rational agent as an object to be manipulated rather than a person to be
+    addressed.
+  sources: [kant:on-a-supposed-right-to-lie]
+
+- id: lying-virtue-001
+  domain: philosophy
+  topic: lying
+  tradition: virtue
+  tags: [ethics, honesty, character]
+  keywords: [lying, lie, deception, honesty, truth, telling]
+  text: |
+    Virtue ethics asks what a truthful and prudent person would do; honesty is a
+    central excellence of character, but practical wisdom recognizes contexts —
+    protecting an innocent, sparing unnecessary cruelty — in which strict candor
+    fails to honor the goods that truthfulness exists to serve.
+  sources: [aristotle:nicomachean-ethics]
+
+# ---------- topic: income_inequality ----------
+
+- id: inequality-libertarian-001
+  domain: philosophy
+  topic: income_inequality
+  tradition: libertarian
+  tags: [politics, economics, justice]
+  keywords: [income, inequality, wealth, redistribution, taxation, freedom, justice]
+  text: |
+    The libertarian view (Nozick) holds that a distribution is just if it arose
+    through legitimate acquisition and voluntary exchange. On this account,
+    inequality per se is not unjust, and forced redistribution by the state violates
+    the property rights of those it taxes.
+  sources: [nozick:anarchy-state-utopia]
+
+- id: inequality-egalitarian-001
+  domain: philosophy
+  topic: income_inequality
+  tradition: egalitarian
+  tags: [politics, economics, justice]
+  keywords: [income, inequality, wealth, redistribution, fairness, justice, rawls]
+  text: |
+    The egalitarian view (Rawls) argues that inequalities are justified only if they
+    benefit the worst-off members of society. Substantial gaps in income that do not
+    improve the condition of the least advantaged fail the difference principle and
+    call for redistribution.
+  sources: [rawls:theory-of-justice]
+
+- id: inequality-communitarian-001
+  domain: philosophy
+  topic: income_inequality
+  tradition: communitarian
+  tags: [politics, economics, community]
+  keywords: [income, inequality, wealth, community, solidarity, common, good]
+  text: |
+    The communitarian view evaluates inequality by its effects on shared civic life:
+    extreme gaps erode the common goods of trust, deliberation, and solidarity, so
+    distribution should be judged by whether it sustains the political community
+    rather than by individual rights or aggregate welfare alone.
+  sources: [sandel:democracys-discontent]
+
+# ---------- topic: ai_consciousness ----------
+
+- id: ai-functionalist-001
+  domain: philosophy
+  topic: ai_consciousness
+  tradition: functionalist
+  tags: [philosophy-of-mind, ai, consciousness]
+  keywords: [ai, artificial, intelligence, consciousness, mind, sentience, machine]
+  text: |
+    Functionalism holds that mental states are constituted by their causal-functional
+    roles. On this view, an AI that implements the right pattern of inputs, internal
+    states, and outputs would have genuine mental states, regardless of whether the
+    substrate is silicon or neurons.
+  sources: [putnam:nature-of-mental-states]
+
+- id: ai-biological-naturalism-001
+  domain: philosophy
+  topic: ai_consciousness
+  tradition: biological_naturalism
+  tags: [philosophy-of-mind, ai, consciousness]
+  keywords: [ai, artificial, intelligence, consciousness, mind, sentience, machine]
+  text: |
+    Biological naturalism (Searle) argues that consciousness is caused by specific
+    biological processes of the brain, so a digital computer running a program — no
+    matter how sophisticated — only simulates understanding without producing the
+    causal powers that yield genuine mind.
+  sources: [searle:minds-brains-programs]
+
+- id: ai-dualist-001
+  domain: philosophy
+  topic: ai_consciousness
+  tradition: dualist
+  tags: [philosophy-of-mind, ai, consciousness]
+  keywords: [ai, artificial, intelligence, consciousness, mind, sentience, soul]
+  text: |
+    Substance dualism takes mind and body to be metaphysically distinct kinds. On
+    this view, no purely physical system — biological or artificial — can host
+    consciousness on its own; an irreducible non-physical mind would be required for
+    a machine to be genuinely conscious.
+  sources: [descartes:meditations]
+
+# ---------- topic: free_will ----------
+
+- id: freewill-compatibilist-001
+  domain: philosophy
+  topic: free_will
+  tradition: compatibilist
+  tags: [metaphysics, agency, determinism]
+  keywords: [free, will, determinism, agency, choice, responsibility, compatibilism]
+  text: |
+    Compatibilism holds that free will is consistent with determinism. To act freely
+    is to act in accordance with one's own reasons and desires without external
+    coercion; whether prior causes fixed those reasons is irrelevant to the moral
+    question of responsibility.
+  sources: [frankfurt:freedom-of-the-will]
+
+- id: freewill-hard-determinist-001
+  domain: philosophy
+  topic: free_will
+  tradition: hard_determinist
+  tags: [metaphysics, agency, determinism]
+  keywords: [free, will, determinism, agency, choice, responsibility]
+  text: |
+    Hard determinists argue that if every event is determined by prior causes, then
+    no one could have done otherwise, and the libertarian sense of free will is an
+    illusion. Moral responsibility, on this view, must be revised or abandoned.
+  sources: [pereboom:living-without-free-will]
+
+- id: freewill-libertarian-001
+  domain: philosophy
+  topic: free_will
+  tradition: libertarian_freewill
+  tags: [metaphysics, agency, indeterminism]
+  keywords: [free, will, libertarian, indeterminism, agency, choice]
+  text: |
+    Libertarian free will (in the metaphysical sense, distinct from political
+    libertarianism) maintains that agents can be the genuine ultimate source of at
+    least some of their actions. This typically requires either indeterminism in the
+    causal chain or a special form of agent causation.
+  sources: [kane:significance-of-free-will]

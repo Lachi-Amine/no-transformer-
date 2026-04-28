@@ -1,0 +1,391 @@
+# Empirical knowledge entries — observational facts, mechanisms, models.
+# Used by the YELLOW engine via BM25 retrieval.
+
+# ---------- biology ----------
+
+- id: amylase-001
+  domain: biology
+  tags: [enzyme, digestion]
+  keywords: [amylase, enzyme, starch, hydrolysis, saliva, pancreas, sugar]
+  text: |
+    Amylase is an enzyme that catalyzes the hydrolysis of starch into smaller sugars,
+    primarily maltose and glucose. In mammals it is produced by the salivary glands
+    and the pancreas, and it works by breaking the alpha-1,4 glycosidic bonds that
+    link glucose units in starch.
+  sources: [wikipedia:amylase]
+
+- id: photosynthesis-001
+  domain: biology
+  tags: [plants, energy]
+  keywords: [photosynthesis, chlorophyll, plant, light, glucose, carbon, dioxide, oxygen]
+  text: |
+    Photosynthesis is the process by which plants, algae, and some bacteria convert
+    light energy into chemical energy stored in glucose. Chlorophyll absorbs photons
+    that drive the light-dependent reactions, which in turn power the Calvin cycle
+    where CO2 is fixed into sugars; oxygen is released as a byproduct.
+  sources: [wikipedia:photosynthesis]
+
+- id: dna-001
+  domain: biology
+  tags: [genetics, molecular]
+  keywords: [dna, double, helix, nucleotide, base, pair, gene, watson, crick]
+  text: |
+    DNA is a double-stranded helix of nucleotides whose backbone is alternating sugar
+    and phosphate. Adenine pairs with thymine and cytosine pairs with guanine via
+    hydrogen bonds. The sequence of bases encodes the instructions for building
+    proteins, with each codon of three bases specifying an amino acid.
+  sources: [wikipedia:dna]
+
+- id: mitosis-001
+  domain: biology
+  tags: [cell, division]
+  keywords: [mitosis, cell, division, chromosome, prophase, metaphase, anaphase, telophase]
+  text: |
+    Mitosis is the cell-division process that produces two daughter cells genetically
+    identical to the parent. It proceeds through prophase, metaphase, anaphase, and
+    telophase, during which chromosomes condense, align at the cell equator, separate
+    to opposite poles, and decondense before cytokinesis splits the cell in two.
+  sources: [wikipedia:mitosis]
+
+- id: cellular-respiration-001
+  domain: biology
+  tags: [metabolism, energy]
+  keywords: [cellular, respiration, glycolysis, krebs, mitochondria, atp, glucose]
+  text: |
+    Cellular respiration converts glucose and oxygen into carbon dioxide, water, and
+    ATP. Glycolysis in the cytosol yields a small ATP harvest; the Krebs cycle and
+    oxidative phosphorylation in the mitochondria capture most of the energy by
+    coupling electron transport to a proton gradient that drives ATP synthase.
+  sources: [wikipedia:cellular-respiration]
+
+- id: insulin-001
+  domain: biology
+  tags: [hormone, metabolism]
+  keywords: [insulin, hormone, pancreas, glucose, blood, sugar, diabetes]
+  text: |
+    Insulin is a peptide hormone secreted by beta cells of the pancreatic islets in
+    response to elevated blood glucose. It signals muscle and adipose tissue to take
+    up glucose and the liver to store it as glycogen, lowering blood sugar. Loss of
+    insulin signaling produces the metabolic disorder diabetes mellitus.
+  sources: [wikipedia:insulin]
+
+- id: mendel-001
+  domain: biology
+  tags: [genetics, heredity]
+  keywords: [mendel, mendelian, inheritance, dominant, recessive, allele, gene]
+  text: |
+    Mendelian inheritance describes how discrete factors — alleles of genes — pass
+    from parents to offspring. Each parent contributes one allele per locus; alleles
+    can be dominant or recessive, segregate independently across different loci, and
+    produce offspring genotype ratios that follow simple combinatorial laws.
+  sources: [wikipedia:mendelian-inheritance]
+
+- id: evolution-001
+  domain: biology
+  tags: [evolution, selection]
+  keywords: [evolution, natural, selection, darwin, fitness, adaptation, species]
+  text: |
+    Evolution by natural selection is the change over generations in the heritable
+    traits of populations. Variants that improve survival and reproduction in a given
+    environment leave more descendants, so over time the population's distribution of
+    traits shifts and new species can emerge through reproductive isolation.
+  sources: [wikipedia:natural-selection]
+
+- id: antibody-001
+  domain: biology
+  tags: [immune, protein]
+  keywords: [antibody, immunoglobulin, antigen, immune, b-cell, lymphocyte]
+  text: |
+    Antibodies are Y-shaped immunoglobulin proteins produced by B cells that bind
+    specifically to foreign molecules called antigens. By tagging pathogens for
+    destruction, neutralizing toxins, and activating complement, they form the
+    adaptive humoral arm of the immune response.
+  sources: [wikipedia:antibody]
+
+- id: neuron-001
+  domain: biology
+  tags: [neuroscience, cell]
+  keywords: [neuron, axon, dendrite, synapse, action, potential, neurotransmitter]
+  text: |
+    A neuron is an electrically excitable cell that receives input through dendrites,
+    integrates it at the soma, and transmits an action potential down its axon to
+    synapses, where neurotransmitters are released to communicate with downstream
+    neurons or effector cells.
+  sources: [wikipedia:neuron]
+
+# ---------- medicine ----------
+
+- id: antibiotics-001
+  domain: medicine
+  tags: [drug, infection]
+  keywords: [antibiotic, bacteria, infection, penicillin, resistance]
+  text: |
+    Antibiotics are drugs that kill bacteria or inhibit their growth, typically by
+    targeting bacterial cell walls, ribosomes, or DNA replication machinery distinct
+    from human cells. They are ineffective against viruses, and their overuse drives
+    the spread of resistant strains.
+  sources: [wikipedia:antibiotic]
+
+- id: vaccines-mrna-001
+  domain: medicine
+  tags: [vaccine, immunology]
+  keywords: [vaccine, mrna, immunity, antigen, spike, protein, lipid, nanoparticle]
+  text: |
+    mRNA vaccines deliver a strand of messenger RNA, packaged in lipid nanoparticles,
+    that instructs the recipient's cells to produce a target antigen — typically a
+    surface protein of a pathogen. The immune system responds to that antigen and
+    builds memory, conferring protection on later exposure to the actual pathogen.
+  sources: [cdc:mrna-vaccines]
+
+- id: diabetes-type2-001
+  domain: medicine
+  tags: [disease, metabolism]
+  keywords: [diabetes, type, insulin, resistance, glucose, hyperglycemia]
+  text: |
+    Type 2 diabetes is a chronic metabolic disorder in which tissues become resistant
+    to insulin and the pancreas cannot compensate, producing persistent high blood
+    glucose. Risk factors include obesity, inactivity, and genetic predisposition;
+    management combines diet, exercise, and medications such as metformin.
+  sources: [who:diabetes]
+
+- id: hypertension-001
+  domain: medicine
+  tags: [disease, cardiovascular]
+  keywords: [hypertension, blood, pressure, systolic, diastolic, cardiovascular]
+  text: |
+    Hypertension is sustained elevated blood pressure, typically defined as systolic
+    pressure of 130 mmHg or higher or diastolic of 80 mmHg or higher. It increases
+    the risk of stroke, heart disease, and kidney failure, and is treated through
+    lifestyle changes and antihypertensive drugs.
+  sources: [aha:hypertension]
+
+- id: influenza-001
+  domain: medicine
+  tags: [disease, virus]
+  keywords: [influenza, flu, virus, hemagglutinin, neuraminidase, vaccine, seasonal]
+  text: |
+    Influenza is a respiratory illness caused by influenza A and B viruses whose
+    surface proteins hemagglutinin and neuraminidase mutate rapidly, producing
+    seasonal epidemics. Vaccines are reformulated each year to match the strains
+    expected to circulate.
+  sources: [cdc:influenza]
+
+- id: ct-scan-001
+  domain: medicine
+  tags: [imaging, diagnostic]
+  keywords: [ct, scan, computed, tomography, x-ray, imaging, radiation]
+  text: |
+    A CT scan reconstructs cross-sectional images of the body from a series of X-ray
+    projections taken at many angles. It offers high anatomical detail useful in
+    diagnosing trauma, tumors, and vascular disease, but exposes the patient to
+    ionizing radiation greater than a plain X-ray.
+  sources: [radiologyinfo:ct]
+
+- id: penicillin-001
+  domain: medicine
+  tags: [drug, antibiotic]
+  keywords: [penicillin, fleming, antibiotic, beta-lactam, bacteria, cell-wall]
+  text: |
+    Penicillin, discovered by Alexander Fleming in 1928, was the first widely used
+    antibiotic. It is a beta-lactam that disrupts bacterial cell-wall synthesis,
+    causing susceptible bacteria to lyse. Its introduction radically reduced
+    mortality from infections such as pneumonia and sepsis.
+  sources: [wikipedia:penicillin]
+
+- id: aspirin-001
+  domain: medicine
+  tags: [drug, cardiology]
+  keywords: [aspirin, cyclooxygenase, prostaglandin, platelet, inflammation, pain]
+  text: |
+    Aspirin (acetylsalicylic acid) inhibits cyclooxygenase enzymes COX-1 and COX-2,
+    reducing prostaglandin synthesis. This produces analgesic, antipyretic, and
+    anti-inflammatory effects, and irreversibly inhibits platelet aggregation, which
+    is why low-dose aspirin is used for cardiovascular prophylaxis.
+  sources: [wikipedia:aspirin]
+
+- id: blood-types-001
+  domain: medicine
+  tags: [hematology, transfusion]
+  keywords: [blood, type, abo, rh, antigen, transfusion, compatibility]
+  text: |
+    The ABO and Rh systems classify blood by surface antigens on red cells. ABO is
+    determined by the presence of A and/or B antigens; Rh by the D antigen.
+    Mismatched transfusions can trigger antibodies in the recipient and cause
+    hemolytic reactions, so compatibility testing is essential.
+  sources: [wikipedia:blood-type]
+
+- id: cancer-cell-001
+  domain: medicine
+  tags: [oncology, cell]
+  keywords: [cancer, tumor, mutation, oncogene, suppressor, metastasis, hallmark]
+  text: |
+    Cancer cells acquire a series of mutations that confer the hallmarks of malignancy,
+    including sustained proliferative signaling, evasion of growth suppressors,
+    resistance to programmed cell death, induction of angiogenesis, and the capacity
+    to invade tissue and metastasize.
+  sources: [hanahan-weinberg:hallmarks-of-cancer]
+
+# ---------- economics ----------
+
+- id: supply-demand-001
+  domain: economics
+  tags: [microeconomics, price]
+  keywords: [supply, demand, price, market, equilibrium, quantity]
+  text: |
+    The supply and demand model describes how price and quantity are set in a
+    competitive market. Demand falls as price rises and supply rises as price rises;
+    equilibrium occurs where the curves cross, fixing the market price and quantity
+    transacted.
+  sources: [textbook:microeconomics]
+
+- id: inflation-001
+  domain: economics
+  tags: [macroeconomics, money]
+  keywords: [inflation, cpi, price, level, money, supply, purchasing, power]
+  text: |
+    Inflation is a sustained rise in the general price level, usually measured by the
+    change in a price index such as the CPI. Persistent inflation erodes purchasing
+    power and is influenced by money supply growth, expectations, and supply shocks.
+  sources: [imf:inflation]
+
+- id: gdp-001
+  domain: economics
+  tags: [macroeconomics, output]
+  keywords: [gdp, gross, domestic, product, output, economy, growth]
+  text: |
+    Gross Domestic Product (GDP) is the total market value of final goods and
+    services produced within a country in a given period. Real GDP adjusts for
+    inflation and is the standard scalar used to track economic growth.
+  sources: [worldbank:gdp]
+
+- id: recession-001
+  domain: economics
+  tags: [macroeconomics, cycle]
+  keywords: [recession, contraction, business, cycle, gdp, unemployment]
+  text: |
+    A recession is a significant decline in economic activity spread across the
+    economy, lasting more than a few months. It is most commonly summarized as two
+    consecutive quarters of falling real GDP, accompanied by rising unemployment and
+    falling investment.
+  sources: [nber:business-cycles]
+
+- id: compound-interest-001
+  domain: economics
+  tags: [finance, interest]
+  keywords: [compound, interest, principal, rate, time, growth]
+  text: |
+    Compound interest is interest computed on principal plus accumulated interest, so
+    balances grow geometrically. With principal P, annual rate r, and n years of
+    annual compounding, the balance after n years is A = P (1 + r)^n.
+  sources: [textbook:finance]
+
+- id: comparative-advantage-001
+  domain: economics
+  tags: [trade, ricardo]
+  keywords: [comparative, advantage, trade, ricardo, opportunity, cost]
+  text: |
+    Ricardo's principle of comparative advantage shows that two parties gain from
+    trade when each specializes in producing what they can make at lower opportunity
+    cost, even if one party is absolutely more productive at everything.
+  sources: [ricardo:principles]
+
+- id: opportunity-cost-001
+  domain: economics
+  tags: [microeconomics, choice]
+  keywords: [opportunity, cost, scarcity, choice, alternative]
+  text: |
+    Opportunity cost is the value of the next-best alternative forgone when a choice
+    is made. Because resources are scarce, every decision implicitly trades off other
+    uses of those resources, and rational choice weighs benefits against opportunity
+    costs.
+  sources: [textbook:microeconomics]
+
+- id: federal-reserve-001
+  domain: economics
+  tags: [monetary, central, bank]
+  keywords: [federal, reserve, fed, monetary, policy, interest, rate, central]
+  text: |
+    The Federal Reserve is the central bank of the United States. It conducts
+    monetary policy by setting the federal funds rate target, performing open market
+    operations, and adjusting reserve and capital requirements to influence inflation
+    and employment.
+  sources: [federalreserve:about]
+
+- id: stock-market-001
+  domain: economics
+  tags: [finance, equity]
+  keywords: [stock, market, equity, share, dividend, exchange, ipo]
+  text: |
+    The stock market is the system of exchanges where shares of public companies are
+    issued and traded. Share prices reflect investors' expectations of future cash
+    flows and risk, and companies raise capital by issuing new shares through
+    initial public offerings.
+  sources: [sec:investor-bulletins]
+
+- id: quantitative-easing-001
+  domain: economics
+  tags: [monetary, central, bank]
+  keywords: [quantitative, easing, qe, central, bank, bond, asset, purchase]
+  text: |
+    Quantitative easing is an unconventional monetary policy in which a central bank
+    buys long-term securities — typically government bonds — to inject reserves into
+    the banking system, lower long-term interest rates, and stimulate spending when
+    short-term rates are already near zero.
+  sources: [bis:quantitative-easing]
+
+# ---------- crossover topics ----------
+
+- id: antibiotic-resistance-001
+  domain: medicine
+  tags: [evolution, public-health]
+  keywords: [antibiotic, resistance, bacteria, mutation, selection, mrsa]
+  text: |
+    Antibiotic resistance arises when bacteria carry mutations or acquire genes that
+    let them survive antibiotic exposure. Frequent or improper use selects for these
+    resistant variants, and they spread through reproduction and horizontal gene
+    transfer; resistant strains such as MRSA make once-routine infections deadly.
+  sources: [who:antimicrobial-resistance]
+
+- id: climate-change-001
+  domain: economics
+  tags: [climate, externality]
+  keywords: [climate, change, carbon, emission, temperature, greenhouse, warming]
+  text: |
+    Anthropogenic climate change is the long-term shift in global temperature and
+    weather patterns driven mainly by greenhouse gas emissions from burning fossil
+    fuels. Economically it is treated as a negative externality whose costs fall on
+    parties not involved in the emitting transaction.
+  sources: [ipcc:ar6]
+
+- id: herd-immunity-001
+  domain: medicine
+  tags: [vaccine, public-health]
+  keywords: [herd, immunity, vaccination, threshold, transmission, r0]
+  text: |
+    Herd immunity occurs when enough of a population is immune to a contagious
+    disease that its transmission slows even among the unvaccinated. The threshold
+    depends on the basic reproduction number R0; pathogens with higher R0 require a
+    larger immune fraction to interrupt sustained spread.
+  sources: [cdc:herd-immunity]
+
+- id: market-equilibrium-001
+  domain: economics
+  tags: [microeconomics, equilibrium]
+  keywords: [market, equilibrium, clearing, surplus, shortage, price]
+  text: |
+    A market is in equilibrium when the quantity supplied equals the quantity
+    demanded at the prevailing price. Above equilibrium price, surplus pressures the
+    price down; below it, shortage pressures the price up. Equilibrium therefore
+    represents a self-correcting balance under competitive conditions.
+  sources: [textbook:microeconomics]
+
+- id: photosynthesis-respiration-coupling-001
+  domain: biology
+  tags: [ecology, energy]
+  keywords: [photosynthesis, respiration, oxygen, carbon, cycle, ecosystem]
+  text: |
+    Photosynthesis and cellular respiration are complementary processes that link the
+    biosphere's carbon and oxygen cycles. Plants fix CO2 and release O2; animals and
+    plants alike consume O2 and exhale CO2 during respiration, sustaining a planetary
+    flux of carbon between organic and inorganic forms.
+  sources: [textbook:ecology]

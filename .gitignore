@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
+
+# Trained model artifacts — produced on Colab, not stored in git
+models/*.pkl
+models/*.pt
+models/*.json
+!models/.gitkeep
+
+# Build output
+*.zip
