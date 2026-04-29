@@ -11,6 +11,7 @@ KNOWLEDGE_DIR = Path(__file__).resolve().parent.parent / "knowledge" / "empirica
 _TOKEN_RE = re.compile(r"[a-z]+")
 _BM25_THRESHOLD = 1.0
 _BM25_NORMALIZER = 10.0
+_DOMAIN_FALLBACK_RATIO = 2.0
 
 
 class YellowRetrievalEngine(Engine):
@@ -47,15 +48,19 @@ class YellowRetrievalEngine(Engine):
 
         scores = self._bm25.get_scores(q_tokens)
 
-        candidate_idx = [
-            i for i, e in enumerate(self.entries)
-            if cls.domain == "general" or e.get("domain") == cls.domain
-        ]
+        global_best = max(range(len(self.entries)), key=lambda i: scores[i])
+        global_best_score = float(scores[global_best])
+
         if cls.domain == "general":
             q_set = set(q_tokens)
             candidate_idx = [
-                i for i in candidate_idx
-                if q_set & {k.lower() for k in (self.entries[i].get("keywords") or [])}
+                i for i, e in enumerate(self.entries)
+                if q_set & {k.lower() for k in (e.get("keywords") or [])}
+            ]
+        else:
+            candidate_idx = [
+                i for i, e in enumerate(self.entries)
+                if e.get("domain") == cls.domain
             ]
         if not candidate_idx:
             return None
@@ -63,6 +68,12 @@ class YellowRetrievalEngine(Engine):
         ranked = sorted(candidate_idx, key=lambda i: -scores[i])
         top_idx = ranked[0]
         top_score = float(scores[top_idx])
+
+        if global_best_score > top_score * _DOMAIN_FALLBACK_RATIO and global_best_score >= _BM25_THRESHOLD:
+            top_idx = global_best
+            top_score = global_best_score
+            ranked = sorted(range(len(self.entries)), key=lambda i: -scores[i])
+
         if top_score < _BM25_THRESHOLD:
             return None
         top = self.entries[top_idx]

@@ -116,6 +116,8 @@
     T: period (s)
     L: length of pendulum (m)
     g: gravitational acceleration (m/s^2)
+  defaults:
+    g: 9.81
   text: |
     Period of a simple pendulum (small angle approximation): T = 2 pi sqrt(L/g).
   sources: [textbook:mechanics]
@@ -159,6 +161,8 @@
     q1: first charge (C)
     q2: second charge (C)
     r: separation (m)
+  defaults:
+    k: 8.99e9
   text: |
     Coulomb's law: the force between two point charges is F = k q1 q2 / r^2 along the
     line joining them.
@@ -175,6 +179,8 @@
     m1: first mass (kg)
     m2: second mass (kg)
     r: separation (m)
+  defaults:
+    G: 6.674e-11
   text: |
     Newton's law of universal gravitation: F = G m1 m2 / r^2 for two point masses.
   sources: [textbook:mechanics]
@@ -189,6 +195,8 @@
     G: gravitational constant
     M: mass of central body (kg)
     a: semi-major axis (m)
+  defaults:
+    G: 6.674e-11
   text: |
     Kepler's third law: T^2 = (4 pi^2 / (G M)) a^3 — the square of the orbital period
     scales with the cube of the semi-major axis.
@@ -205,6 +213,8 @@
     n: amount of substance (mol)
     R: ideal gas constant ~ 8.314 J/(mol K)
     T: temperature (K)
+  defaults:
+    R: 8.314
   text: |
     Ideal gas law: P V = n R T relates pressure, volume, amount, and temperature for an
     ideal gas.
@@ -258,12 +268,14 @@
 - id: mass-energy-001
   domain: physics
   tags: [relativity, energy]
-  keywords: [einstein, mass, energy, equivalence, relativity]
+  keywords: [einstein, mass, energy, equivalence, relativity, rest]
   equation: "E = m*c**2"
   variables:
     E: rest energy (J)
     m: rest mass (kg)
     c: speed of light in vacuum (m/s)
+  defaults:
+    c: 2.998e8
   text: |
     Einstein's mass-energy equivalence: the rest energy of a body equals its rest mass
     times the speed of light squared, E = m c^2.

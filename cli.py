@@ -29,7 +29,7 @@ def main() -> int:
     debug = False
     last: Response | None = None
 
-    print("no-transformer reasoning CLI  (M2 — engines live, learned models still stubs)")
+    print("no-transformer reasoning CLI")
     print("type :help for commands\n")
     _print_status(pipeline)
 
