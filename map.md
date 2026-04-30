@@ -338,35 +338,31 @@ Formal entries also carry `equation` and `variables`. Interpretive entries carry
 
 We do these in order. Each milestone is independently demoable.
 
-### M1 — Skeleton (no learning)
-- Create the directory tree.
-- Write `schemas.py`, `features.py` (TF-IDF stub returning zeros), all module files with **stubs only**.
-- Write `cli.py` end-to-end. Typing a question runs the full pipeline on stubs and prints a placeholder response.
-- **Demo**: `python cli.py` works. Ship it.
+### M1 — Skeleton (no learning) ✅
+- Created the directory tree.
+- Wrote `schemas.py`, `features.py` (TF-IDF stub returning zeros), all module files with stubs only.
+- Wrote `cli.py` end-to-end. Pipeline runs on stubs.
 
-### M2 — Engines
-- Implement GREEN (sympy + ~5 formal entries), YELLOW (BM25 + ~10 empirical entries), RED (template + ~5 interpretive entries).
-- Fusion produces a real `FusedEvidence`.
-- **Demo**: math questions get symbolic answers, biology questions retrieve passages, ethics questions get multi-perspective responses — even though the router is still a heuristic stub.
+### M2 — Engines ✅
+- Implemented GREEN (sympy), YELLOW (BM25), RED (template + retrieval).
+- Fusion produces a real `FusedEvidence`. Yellow filters by classified domain.
 
-### M3 — Datasets
-- Hand-write/synthesize the CSVs in `training/datasets/` at **Option B** sizes:
-  - `domains.csv` — 480 rows (60 × 8 domains)
-  - `intents.csv` — 280 rows (40 × 7 intents)
-  - `epistemic.csv` — 250 rows (hand-labeled `g,y,r`)
-  - `confidence.csv` — generated on Colab from labeled QA pairs
-- Add `make_dataset.py` to validate them (label coverage, distribution checks).
+### M3 — Datasets ✅
+- 480 / 280 / 250 rows in `domains.csv` / `intents.csv` / `epistemic.csv`.
+- `training/make_dataset.py` validates label coverage and `g+y+r=1`.
 
-### M4 — Colab training
-- Build `colab_train.ipynb`. Run it. Download `models.zip`. Unzip into `models/`.
-- `:reload` in the CLI swaps stubs for trained artifacts.
-- **Demo**: same questions as M2, now routed by a learned model.
+### M4 — Colab training ✅
+- `colab_train.ipynb` trains TF-IDF, domain, intent, router MLP, confidence regressor.
+- Models pinned to scikit-learn 1.8.0 to match local venv.
+- `:reload` swaps stubs for trained artifacts.
 
-### M5 — Polish
-- `:why` debugging command with full trace.
-- Contradiction detector classifier (optional).
-- More knowledge seeds.
-- Tests for each module (`tests/`).
+### M5 — Polish (partially done)
+- ✅ `:why` debugging command.
+- ✅ More knowledge seeds via auto-derivation from YAML (`expand_dataset.py` adds 251 domain rows + 177 intent rows).
+- ✅ GREEN freeform compute (sympy parses arbitrary equations / integrals / derivatives without needing a YAML entry).
+- ✅ YELLOW multi-passage synthesis (top-3 within domain, 65% score floor).
+- ⏳ Contradiction detector classifier — still rule-based only.
+- ⏳ pytest suite — not started.
 
 ---
 
@@ -377,3 +373,89 @@ We do these in order. Each milestone is independently demoable.
 3. **Stack**: Python 3.11 + `numpy / scikit-learn / torch (CPU, inference) / sympy / rank-bm25 / pyyaml / prompt_toolkit`.
 4. **Model storage**: plain files in `models/`. No Git LFS.
 5. **Training location**: Google Colab only. The user's laptop never runs training. When training is needed, the assistant stops and prompts.
+
+---
+
+## 11. Roadmap beyond M5
+
+Each milestone is independently shippable. Pick any order — they don't depend on each other unless noted.
+
+### M6 — Reliability & trust (1–2 days)
+
+The system answers, but you can't yet tell *why* a particular passage was chosen or whether sources disagree. Fixes that.
+
+- **Source citations in output**: every `Empirically:` / `Formally:` / `Interpretively:` line ends with `[source: amylase-001]`. Already in `EvidenceRecord.support`; just plumb it into the renderer.
+- **Contradiction-aware rendering**: when the contradiction detector fires across records, the renderer prepends `Sources disagree: ...` and lists the conflicting claims.
+- **`:why` upgrade**: show the full reasoning chain — domain probabilities, top-3 router candidates, scoring trace per engine.
+- **pytest suite** under `tests/`:
+  - `test_schemas.py` — round-trip dataclasses, validate `EpistemicVector` invariant
+  - `test_query_processing.py` — tokenization, normalization, entity extraction
+  - `test_engines.py` — fixture queries with expected outputs per engine
+  - `test_orchestrator.py` — golden-file end-to-end on a small set of queries
+  - GitHub Action that runs the suite on every push
+
+### M7 — Knowledge expansion (variable, no training)
+
+Doubling the corpus roughly doubles retrieval coverage. No model retraining strictly needed (auto-derived rows update on next Colab run).
+
+- `knowledge/empirical/` 35 → 70 entries — fill out chemistry, geology, neuroscience, computer science.
+- `knowledge/formal/` 20 → 40 entries — add chemistry stoichiometry, optics formulas, statistics distributions, finance formulas.
+- `knowledge/interpretive/` 18 → 36 entries — add 6 more topics × 3 traditions (e.g. immigration, animal rights, distributive justice).
+- Add a new domain: `chemistry` (or `engineering`). Update `pipeline/schemas.py::DOMAINS`, regenerate auto rows, retrain.
+- Document the YAML schema for contributors in `knowledge/README.md`.
+
+### M8 — Real confidence training (3–5 hrs of human labeling)
+
+The confidence regressor is currently fitted to a heuristic target — it learns the rule, not real correctness. To make it actually predict accuracy:
+
+- Hand-curate `training/datasets/qa_pairs.csv` — 80–150 rows of (query, accepted_answer, ground_truth_correct ∈ {0, 1}).
+- Update Colab's confidence cell to: run the pipeline on each row, compute features, target = `ground_truth_correct`. Train regressor on real labels.
+- Re-train on Colab. New `confidence.pkl`.
+- Now `confidence: 0.81` actually means "81% chance this answer is correct based on its features," not "the dominant epistemic mass is 0.8."
+
+### M9 — Conversational state (2–3 days)
+
+Today every query is independent. Adding a small in-session memory enables follow-ups without a transformer or external state.
+
+- Last N (default 3) `Response` objects kept in a `Pipeline` instance attribute.
+- `pipeline.run(raw)` checks for pronoun coreference (`it`, `that`, `this`) and pulls the last subject from history when found — purely rule-based.
+- New CLI commands:
+  - `:history` — show the last few Q&A
+  - `:forget` — clear the in-session memory
+- New shape in `Response.debug["coref"]` that shows what got resolved, so `:why` explains follow-ups.
+- Test cases: "what is amylase?" → "where is it produced?" → second query should prepend "amylase" entity to its tokens.
+
+### M10 — User feedback loop (1 day)
+
+Currently the system never learns from real use. A trivial logging layer turns CLI sessions into future training data.
+
+- New CLI commands `:good` / `:bad` after a response — append `(query, response.rendered, label)` to `training/datasets/feedback.csv`.
+- Validator (`make_dataset.py`) gains a `feedback.csv` check.
+- Periodic re-train on Colab merges hand + auto + feedback rows.
+- Optional: `:rate 1-5` for graded feedback.
+
+### M11 — Engineering polish (1 day)
+
+Quality-of-life wins, no new behavior.
+
+- `pyproject.toml` instead of `requirements.txt`. Pin everything (numpy, torch, sklearn, sympy).
+- Replace `print` with `logging`; CLI gets `--verbose` and `--quiet`.
+- `config.yaml` for thresholds (BM25 floor, contradiction sensitivity, top-k for yellow). Today they're constants in code.
+- CLI: command history (prompt_toolkit), color (ANSI), tab-complete on commands.
+- `:bench` — print per-stage latency for a single query (good for catching regressions).
+
+### Recommended order
+
+1. **M6** — fast, makes everything else more debuggable. Do this first.
+2. **M11** — small, removes friction (config file, logging, history).
+3. **M7** — biggest coverage win for end users.
+4. **M10** — only meaningful after **M7** (more knowledge → real feedback worth collecting).
+5. **M8** — needs labeled data; collect via M10 first if you don't want to write 80 QA pairs by hand.
+6. **M9** — most ambitious, do last when foundation is solid.
+
+### Things deliberately not in the roadmap
+
+- **Transformer-based components.** Locked out by §0.
+- **External LLM for response wording.** Locked out by §10.
+- **Web fetch / live search.** Possible but would add network dependency and provider risk; revisit after M9.
+- **GUI / web frontend.** Requirement §0 says CLI only.
