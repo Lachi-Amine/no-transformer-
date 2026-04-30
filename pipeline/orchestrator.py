@@ -61,6 +61,9 @@ class Pipeline:
         )
 
 
+_ENGINE_LABELS = {"green": "Formally", "yellow": "Empirically", "red": "Interpretively"}
+
+
 def render(query, cls, epi: EpistemicVector, evidence: FusedEvidence, confidence: float) -> str:
     if not evidence.records:
         return (
@@ -69,22 +72,37 @@ def render(query, cls, epi: EpistemicVector, evidence: FusedEvidence, confidence
         )
 
     lines: list[str] = []
-    by_engine = {"green": [], "yellow": [], "red": []}
+    by_engine: dict[str, list] = {"green": [], "yellow": [], "red": []}
     for r in evidence.records:
         by_engine.setdefault(r.engine, []).append(r)
 
-    if by_engine.get("green"):
-        for r in by_engine["green"]:
-            lines.append(f"Formally: {r.claim}")
-    if by_engine.get("yellow"):
-        for r in by_engine["yellow"]:
-            lines.append(f"Empirically: {r.claim}")
-    if by_engine.get("red"):
-        for r in by_engine["red"]:
-            lines.append(f"Interpretively: {r.claim}")
+    for engine_name in ("green", "yellow", "red"):
+        for record in by_engine.get(engine_name, []):
+            label = _ENGINE_LABELS.get(engine_name, engine_name.capitalize())
+            citation = _format_citation(record.support)
+            line = f"{label}: {record.claim}"
+            if citation:
+                line = f"{line} {citation}"
+            lines.append(line)
 
     if evidence.contradictions:
-        lines.append(
-            f"Note: {len(evidence.contradictions)} contradiction(s) detected across sources."
-        )
+        lines.append("")
+        lines.append(f"Sources disagree ({len(evidence.contradictions)} conflict(s)):")
+        for i, j in evidence.contradictions:
+            if i < len(evidence.records) and j < len(evidence.records):
+                rec_a = evidence.records[i]
+                rec_b = evidence.records[j]
+                lines.append(f"  - [{rec_a.engine}] {rec_a.claim}")
+                lines.append(f"  - [{rec_b.engine}] {rec_b.claim}")
+
     return "\n".join(lines)
+
+
+def _format_citation(support: tuple) -> str:
+    ids = [s for s in support if isinstance(s, str) and s and not s.startswith("freeform")]
+    ids = [s for s in ids if "=" not in s and "*" not in s and "/" not in s]
+    if not ids:
+        return ""
+    if len(ids) == 1:
+        return f"[source: {ids[0]}]"
+    return f"[sources: {', '.join(ids)}]"

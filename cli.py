@@ -126,20 +126,66 @@ def _print_response(resp: Response, debug: bool) -> None:
 
 
 def _explain(resp: Response) -> None:
+    cls = resp.classification
+    epi = resp.epistemic
+
     print()
     print(f"query: {resp.query.raw}")
-    print(f"reason for routing: domain={resp.classification.domain}, intent={resp.classification.intent}")
-    print(f"epistemic blend: g={resp.epistemic.g:.2f}, y={resp.epistemic.y:.2f}, r={resp.epistemic.r:.2f}")
+    print(f"normalized: {resp.query.normalized}")
+    print(f"tokens: {list(resp.query.tokens)}")
+    if resp.query.entities:
+        print(f"entities: {resp.query.entities}")
+    print()
+
+    print(f"domain: {cls.domain}")
+    if cls.domain_probs:
+        top_domains = sorted(cls.domain_probs.items(), key=lambda kv: -kv[1])[:3]
+        for name, prob in top_domains:
+            marker = " <-- chosen" if name == cls.domain else ""
+            print(f"  {prob:.3f}  {name}{marker}")
+
+    print(f"intent: {cls.intent}")
+    if cls.intent_probs:
+        top_intents = sorted(cls.intent_probs.items(), key=lambda kv: -kv[1])[:3]
+        for name, prob in top_intents:
+            marker = " <-- chosen" if name == cls.intent else ""
+            print(f"  {prob:.3f}  {name}{marker}")
+
+    print(f"epistemic: g={epi.g:.3f}  y={epi.y:.3f}  r={epi.r:.3f}")
+    print()
+
+    engine_status = resp.debug.get("engine_status", {})
+    weights = epi.as_weights()
+    if engine_status:
+        print("engines:")
+        for engine_name in ("green", "yellow", "red"):
+            state = engine_status.get(engine_name, "not-called")
+            weight = weights.get(engine_name, 0.0)
+            print(f"  {engine_name:6}  weight={weight:.2f}  status={state}")
+        print()
+
     if not resp.evidence.records:
-        print("no evidence records were produced (engines are stubs in M1).")
+        print("no evidence records were produced.")
     else:
-        print("evidence:")
+        print(f"evidence ({len(resp.evidence.records)} record(s)):")
         for i, rec in enumerate(resp.evidence.records):
-            print(f"  [{i}] ({rec.engine}, score={rec.score:.3f}) {rec.claim}")
-            for s in rec.support:
-                print(f"      - {s}")
+            print(f"  [{i}] {rec.engine} (score={rec.score:.3f})")
+            print(f"      claim: {rec.claim}")
+            if rec.support:
+                print(f"      support: {list(rec.support)}")
+        print()
+
     if resp.evidence.contradictions:
-        print(f"contradictions between records: {list(resp.evidence.contradictions)}")
+        print(f"contradictions ({len(resp.evidence.contradictions)}):")
+        for i, j in resp.evidence.contradictions:
+            if i < len(resp.evidence.records) and j < len(resp.evidence.records):
+                a = resp.evidence.records[i]
+                b = resp.evidence.records[j]
+                print(f"  - [{a.engine}] {a.claim}")
+                print(f"  - [{b.engine}] {b.claim}")
+        print()
+
+    print(f"confidence: {resp.confidence:.3f}")
     print()
 
 

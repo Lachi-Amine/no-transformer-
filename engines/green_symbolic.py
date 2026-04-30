@@ -66,26 +66,27 @@ class GreenSymbolicEngine(Engine):
 
         computed = _try_compute(query.raw, equation, variables, defaults) if equation else None
 
+        entry_id = match.get("id", "")
+
         if computed and cls.intent == "compute":
             return EvidenceRecord(
                 engine="green",
                 claim=f"Computed: {computed}. Using {equation}.",
-                support=(equation, text),
+                support=(entry_id,) if entry_id else (),
                 score=1.0,
             )
         if computed:
             return EvidenceRecord(
                 engine="green",
                 claim=f"{text} Computed: {computed}.",
-                support=(equation,),
+                support=(entry_id,) if entry_id else (),
                 score=1.0,
             )
 
-        support = (equation,) if equation else (match.get("id", ""),)
         return EvidenceRecord(
             engine="green",
             claim=text or equation,
-            support=support,
+            support=(entry_id,) if entry_id else (),
             score=min(1.0, 0.5 + 0.25 * overlap),
         )
 
