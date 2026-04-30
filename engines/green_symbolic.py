@@ -18,6 +18,22 @@ _SYNONYMS = {
     "mass":     ["weight"],
 }
 
+_GLOBAL_CONSTANTS = {
+    "g": 9.81,
+    "c": 2.998e8,
+    "G": 6.674e-11,
+    "k": 8.99e9,
+    "h": 6.626e-34,
+    "R": 8.314,
+}
+
+_MATH_VERBS = (
+    "compute ", "solve ", "calculate ", "evaluate ", "simplify ",
+    "integrate ", "differentiate ", "find the value of ", "the value of ",
+)
+
+_MATH_OP_RE = re.compile(r"[+\-*/^=]|\bsqrt\b|\bsin\b|\bcos\b|\btan\b|\bintegral\b|\bderivative\b|\blog\b|\bexp\b")
+
 _EXPLICIT_RE = re.compile(r"\b([A-Za-z][A-Za-z0-9_]*)\s*=\s*(-?\d+(?:\.\d+)?)")
 _NUMUNIT_RE = re.compile(r"(-?\d+(?:\.\d+)?)\s*([A-Za-z][A-Za-z0-9/^*]*)")
 
@@ -29,11 +45,18 @@ class GreenSymbolicEngine(Engine):
         self.entries = load_knowledge(KNOWLEDGE_DIR)
 
     def run(self, query: Query, cls: Classification) -> EvidenceRecord | None:
-        if not self.entries:
-            return None
+        match, overlap = self._best_match(query) if self.entries else (None, 0)
 
-        match, overlap = self._best_match(query)
         if match is None or overlap == 0:
+            if cls.intent == "compute" or _looks_mathematical(query.raw):
+                free = _freeform_compute(query.raw)
+                if free:
+                    return EvidenceRecord(
+                        engine="green",
+                        claim=f"Computed: {free}",
+                        support=("freeform-sympy",),
+                        score=0.85,
+                    )
             return None
 
         equation = match.get("equation", "")
@@ -180,8 +203,12 @@ def _try_compute(raw: str, equation: str, variables: dict, defaults: dict) -> st
         free = list(expr.free_symbols)
         sub = {s: values[s.name] for s in free if s.name in values}
         for s in free:
-            if s.name in defaults and s not in sub:
+            if s in sub:
+                continue
+            if s.name in defaults:
                 sub[s] = defaults[s.name]
+            elif s.name in _GLOBAL_CONSTANTS:
+                sub[s] = _GLOBAL_CONSTANTS[s.name]
 
         substituted = expr.subs(sub)
         unknowns = [s for s in free if s not in sub]
@@ -209,5 +236,96 @@ def _try_compute(raw: str, equation: str, variables: dict, defaults: dict) -> st
                 unit = " " + m.group(1).strip()
 
         return f"{unknowns[0].name} = {sol_str}{unit}"
+    except Exception:
+        return None
+
+
+def _looks_mathematical(raw: str) -> bool:
+    raw_low = raw.lower()
+    if any(verb in raw_low for verb in _MATH_VERBS):
+        return True
+    if _MATH_OP_RE.search(raw_low):
+        return True
+    return False
+
+
+def _freeform_compute(raw: str) -> str | None:
+    try:
+        import sympy as sp
+        from sympy.parsing.sympy_parser import (
+            parse_expr, standard_transformations, convert_xor,
+        )
+    except ImportError:
+        return None
+
+    transformations = standard_transformations + (convert_xor,)
+    parse = lambda s: parse_expr(s, transformations=transformations)
+
+    text = raw.strip().rstrip("?.").strip()
+    text_low = text.lower()
+    for prefix in (
+        "find the value of ", "what is the value of ", "the value of ",
+        "compute ", "solve ", "calculate ", "evaluate ", "simplify ",
+        "integrate ", "differentiate ", "find ", "what is ", "what's ",
+    ):
+        if text_low.startswith(prefix):
+            text = text[len(prefix):]
+            text_low = text.lower()
+            break
+    text = re.sub(r"\b(\d+)\s+factorial\b", r"factorial(\1)", text, flags=re.IGNORECASE)
+    text = text.strip()
+
+    m = re.match(
+        r"(?:the\s+)?integral\s+of\s+(.+?)\s+from\s+(\S+)\s+to\s+(.+)",
+        text, re.IGNORECASE,
+    )
+    if m:
+        try:
+            f_expr = parse(m.group(1).strip())
+            a_expr = parse(m.group(2).strip())
+            b_expr = parse(m.group(3).strip())
+            x = next(iter(f_expr.free_symbols), sp.Symbol("x"))
+            res = sp.integrate(f_expr, (x, a_expr, b_expr))
+            return f"integral = {res}"
+        except Exception:
+            pass
+
+    m = re.match(
+        r"(?:the\s+)?derivative\s+of\s+(.+?)(?:\s+with\s+respect\s+to\s+(\w+))?$",
+        text, re.IGNORECASE,
+    )
+    if m:
+        try:
+            f_expr = parse(m.group(1).strip())
+            x = sp.Symbol(m.group(2)) if m.group(2) else next(iter(f_expr.free_symbols), sp.Symbol("x"))
+            res = sp.diff(f_expr, x)
+            return f"d/d{x.name} = {res}"
+        except Exception:
+            pass
+
+    if "=" in text and "==" not in text:
+        try:
+            lhs, rhs = text.split("=", 1)
+            lhs_e = parse(lhs.strip())
+            rhs_e = parse(rhs.strip())
+            expr = lhs_e - rhs_e
+            free = list(expr.free_symbols)
+            if len(free) == 1:
+                sols = sp.solve(expr, free[0])
+                if sols:
+                    out = sols[0] if len(sols) == 1 else sols
+                    return f"{free[0].name} = {out}"
+        except Exception:
+            pass
+
+    try:
+        expr = parse(text)
+        if expr.free_symbols:
+            simplified = sp.simplify(expr)
+            return f"= {simplified}"
+        val = sp.N(expr)
+        if hasattr(val, "is_Integer") and val.is_Integer:
+            return f"= {int(val)}"
+        return f"= {val}"
     except Exception:
         return None

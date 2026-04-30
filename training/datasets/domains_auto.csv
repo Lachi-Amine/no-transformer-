@@ -1,0 +1,252 @@
+text,label
+what is pythagoras,math
+what is pythagorean,math
+Pythagorean theorem: for a right triangle with legs a and b and hypotenuse c a^2 + b^2 = c^2,math
+what is quadratic,math
+what is formula,math
+Quadratic formula: the roots of ax^2 + bx + c = 0 are x = (-b ± sqrt(b^2 - 4ac)) / (2a),math
+what is arithmetic,math
+what is series,math
+Sum of an arithmetic series: S = n(a_1 + a_n) / 2 where n is the number of terms,math
+what is geometric,math
+Sum of a finite geometric series with first term a and common ratio r (r != 1): S = a (1 - r^n) / (1 - r),math
+what is trig,math
+what is trigonometric,math
+Pythagorean trigonometric identity: sin^2(x) + cos^2(x) = 1 for all real x,math
+what is euler,math
+what is identity,math
+Euler's identity: e^(i*pi) + 1 = 0 — relates five fundamental constants,math
+what is newton,physics
+what is force,physics
+Newton's second law: the net force on an object equals its mass times its acceleration F = m a,physics
+what is kinetic,physics
+what is energy,physics
+Kinetic energy of a moving object: E = (1/2) m v^2,physics
+what is pendulum,physics
+what is period,physics
+Period of a simple pendulum (small angle approximation): T = 2 pi sqrt(L/g),physics
+what is hooke,physics
+what is spring,physics
+Hooke's law: an ideal spring exerts a restoring force F = -k x proportional to its displacement from equilibrium,physics
+what is ohm,physics
+what is voltage,physics
+Ohm's law: the voltage across a resistor equals the product of its current and resistance V = I R,physics
+what is coulomb,physics
+what is charge,physics
+Coulomb's law: the force between two point charges is F = k q1 q2 / r^2 along the line joining them,physics
+what is gravity,physics
+what is gravitational,physics
+Newton's law of universal gravitation: F = G m1 m2 / r^2 for two point masses,physics
+what is kepler,physics
+what is orbit,physics
+Kepler's third law: T^2 = (4 pi^2 / (G M)) a^3 — the square of the orbital period scales with the cube of the semi-major axis,physics
+what is ideal,physics
+what is gas,physics
+Ideal gas law: P V = n R T relates pressure volume amount and temperature for an ideal gas,physics
+what is snell,physics
+what is refraction,physics
+Snell's law: n1 sin(theta1) = n2 sin(theta2) for light crossing a boundary between two media of different refractive index,physics
+what is wave,physics
+what is speed,physics
+Wave relation: the speed of a periodic wave equals frequency times wavelength v = f lambda,physics
+what is doppler,physics
+what is frequency,physics
+Classical Doppler shift (toward-motion sign convention): f_observed = f (c + v_o) / (c - v_s),physics
+what is einstein,physics
+what is mass,physics
+Einstein's mass-energy equivalence: the rest energy of a body equals its rest mass times the speed of light squared E = m c^2,physics
+what is schrodinger,physics
+what is quantum,physics
+Time-independent Schrödinger equation: H psi = E psi — the Hamiltonian acting on a stationary state returns the same state scaled by its energy eigenvalue,physics
+what is amylase,biology
+how does amylase work,biology
+explain amylase,biology
+what is enzyme,biology
+Amylase is an enzyme that catalyzes the hydrolysis of starch into smaller sugars primarily maltose and glucose,biology
+what is photosynthesis,biology
+how does photosynthesis work,biology
+explain photosynthesis,biology
+what is chlorophyll,biology
+Photosynthesis is the process by which plants algae and some bacteria convert light energy into chemical energy stored in glucose,biology
+what is dna,biology
+how does dna work,biology
+explain dna,biology
+what is double,biology
+DNA is a double-stranded helix of nucleotides whose backbone is alternating sugar and phosphate,biology
+what is mitosis,biology
+how does mitosis work,biology
+explain mitosis,biology
+what is cell,biology
+Mitosis is the cell-division process that produces two daughter cells genetically identical to the parent,biology
+what is cellular,biology
+how does cellular work,biology
+explain cellular,biology
+what is respiration,biology
+Cellular respiration converts glucose and oxygen into carbon dioxide water and ATP,biology
+what is insulin,biology
+how does insulin work,biology
+explain insulin,biology
+what is hormone,biology
+Insulin is a peptide hormone secreted by beta cells of the pancreatic islets in response to elevated blood glucose,biology
+what is mendel,biology
+how does mendel work,biology
+explain mendel,biology
+what is mendelian,biology
+Mendelian inheritance describes how discrete factors — alleles of genes — pass from parents to offspring,biology
+what is evolution,biology
+how does evolution work,biology
+explain evolution,biology
+what is natural,biology
+Evolution by natural selection is the change over generations in the heritable traits of populations,biology
+what is antibody,biology
+how does antibody work,biology
+explain antibody,biology
+what is immunoglobulin,biology
+Antibodies are Y-shaped immunoglobulin proteins produced by B cells that bind specifically to foreign molecules called antigens,biology
+what is neuron,biology
+how does neuron work,biology
+explain neuron,biology
+what is axon,biology
+what is antibiotic,medicine
+how does antibiotic work,medicine
+explain antibiotic,medicine
+what is bacteria,medicine
+Antibiotics are drugs that kill bacteria or inhibit their growth typically by targeting bacterial cell walls ribosomes or DNA replication machinery distinct fro,medicine
+what is vaccine,medicine
+how does vaccine work,medicine
+explain vaccine,medicine
+what is mrna,medicine
+mRNA vaccines deliver a strand of messenger RNA packaged in lipid nanoparticles that instructs the recipient's cells to produce a target antigen — typically a s,medicine
+what is diabetes,medicine
+how does diabetes work,medicine
+explain diabetes,medicine
+what is type,medicine
+Type 2 diabetes is a chronic metabolic disorder in which tissues become resistant to insulin and the pancreas cannot compensate producing persistent high blood ,medicine
+what is hypertension,medicine
+how does hypertension work,medicine
+explain hypertension,medicine
+what is blood,medicine
+Hypertension is sustained elevated blood pressure typically defined as systolic pressure of 130 mmHg or higher or diastolic of 80 mmHg or higher,medicine
+what is influenza,medicine
+how does influenza work,medicine
+explain influenza,medicine
+what is flu,medicine
+Influenza is a respiratory illness caused by influenza A and B viruses whose surface proteins hemagglutinin and neuraminidase mutate rapidly producing seasonal ,medicine
+what is ct,medicine
+how does ct work,medicine
+explain ct,medicine
+what is scan,medicine
+A CT scan reconstructs cross-sectional images of the body from a series of X-ray projections taken at many angles,medicine
+what is penicillin,medicine
+how does penicillin work,medicine
+explain penicillin,medicine
+what is fleming,medicine
+Penicillin discovered by Alexander Fleming in 1928 was the first widely used antibiotic,medicine
+what is aspirin,medicine
+how does aspirin work,medicine
+explain aspirin,medicine
+what is cyclooxygenase,medicine
+Aspirin (acetylsalicylic acid) inhibits cyclooxygenase enzymes COX-1 and COX-2 reducing prostaglandin synthesis,medicine
+how does blood work,medicine
+explain blood,medicine
+The ABO and Rh systems classify blood by surface antigens on red cells,medicine
+what is cancer,medicine
+how does cancer work,medicine
+explain cancer,medicine
+what is tumor,medicine
+what is supply,economics
+how does supply work,economics
+explain supply,economics
+what is demand,economics
+The supply and demand model describes how price and quantity are set in a competitive market,economics
+what is inflation,economics
+how does inflation work,economics
+explain inflation,economics
+what is cpi,economics
+Inflation is a sustained rise in the general price level usually measured by the change in a price index such as the CPI,economics
+what is gdp,economics
+how does gdp work,economics
+explain gdp,economics
+what is gross,economics
+Gross Domestic Product (GDP) is the total market value of final goods and services produced within a country in a given period,economics
+what is recession,economics
+how does recession work,economics
+explain recession,economics
+what is contraction,economics
+A recession is a significant decline in economic activity spread across the economy lasting more than a few months,economics
+what is compound,economics
+how does compound work,economics
+explain compound,economics
+what is interest,economics
+Compound interest is interest computed on principal plus accumulated interest so balances grow geometrically,economics
+what is comparative,economics
+how does comparative work,economics
+explain comparative,economics
+what is advantage,economics
+what is opportunity,economics
+how does opportunity work,economics
+explain opportunity,economics
+what is cost,economics
+Opportunity cost is the value of the next-best alternative forgone when a choice is made,economics
+what is federal,economics
+how does federal work,economics
+explain federal,economics
+what is reserve,economics
+The Federal Reserve is the central bank of the United States,economics
+what is stock,economics
+how does stock work,economics
+explain stock,economics
+what is market,economics
+The stock market is the system of exchanges where shares of public companies are issued and traded,economics
+what is quantitative,economics
+how does quantitative work,economics
+explain quantitative,economics
+what is easing,economics
+what is resistance,medicine
+Antibiotic resistance arises when bacteria carry mutations or acquire genes that let them survive antibiotic exposure,medicine
+what is climate,economics
+how does climate work,economics
+explain climate,economics
+what is change,economics
+Anthropogenic climate change is the long-term shift in global temperature and weather patterns driven mainly by greenhouse gas emissions from burning fossil fue,economics
+what is herd,medicine
+how does herd work,medicine
+explain herd,medicine
+what is immunity,medicine
+Herd immunity occurs when enough of a population is immune to a contagious disease that its transmission slows even among the unvaccinated,medicine
+how does market work,economics
+explain market,economics
+what is equilibrium,economics
+A market is in equilibrium when the quantity supplied equals the quantity demanded at the prevailing price,economics
+Photosynthesis and cellular respiration are complementary processes that link the biosphere's carbon and oxygen cycles,biology
+what is trolley,philosophy
+why is trolley contested,philosophy
+is trolley morally right,philosophy
+what is problem,philosophy
+what is capital,philosophy
+why is capital contested,philosophy
+is capital morally right,philosophy
+what is punishment,philosophy
+what is lying,philosophy
+why is lying contested,philosophy
+is lying morally right,philosophy
+what is lie,philosophy
+what is income,philosophy
+why is income contested,philosophy
+is income morally right,philosophy
+what is inequality,philosophy
+The libertarian view (Nozick) holds that a distribution is just if it arose through legitimate acquisition and voluntary exchange,philosophy
+The egalitarian view (Rawls) argues that inequalities are justified only if they benefit the worst-off members of society,philosophy
+what is ai,philosophy
+why is ai contested,philosophy
+is ai morally right,philosophy
+what is artificial,philosophy
+Functionalism holds that mental states are constituted by their causal-functional roles,philosophy
+Substance dualism takes mind and body to be metaphysically distinct kinds,philosophy
+what is free,philosophy
+why is free contested,philosophy
+is free morally right,philosophy
+what is will,philosophy
+Compatibilism holds that free will is consistent with determinism,philosophy
+Hard determinists argue that if every event is determined by prior causes then no one could have done otherwise and the libertarian sense of free will is an ill,philosophy
+Libertarian free will (in the metaphysical sense distinct from political libertarianism) maintains that agents can be the genuine ultimate source of at least so,philosophy

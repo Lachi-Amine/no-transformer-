@@ -76,19 +76,44 @@ class YellowRetrievalEngine(Engine):
 
         if top_score < _BM25_THRESHOLD:
             return None
-        top = self.entries[top_idx]
-        text = (top.get("text") or "").strip()
-        first_sentence = text.split(".")[0].strip() + "." if text else top.get("id", "")
 
-        support_ids = tuple(
-            (self.entries[i].get("id") or f"entry-{i}")
-            for i in ranked[:3]
-            if scores[i] >= _BM25_THRESHOLD * 0.5
-        )
+        top_domain = self.entries[top_idx].get("domain")
+        secondary_floor = max(_BM25_THRESHOLD * 1.5, top_score * 0.65)
+        selected = []
+        for i in ranked[:3]:
+            if i == top_idx:
+                selected.append(i)
+                continue
+            if self.entries[i].get("domain") != top_domain:
+                continue
+            if float(scores[i]) >= secondary_floor:
+                selected.append(i)
 
+        sentences: list[str] = []
+        support_ids: list[str] = []
+        seen_starts: set[str] = set()
+        for i in selected:
+            e = self.entries[i]
+            text = (e.get("text") or "").strip()
+            if not text:
+                continue
+            sent = text.split(".")[0].strip()
+            if not sent:
+                continue
+            head = sent[:24].lower()
+            if head in seen_starts:
+                continue
+            seen_starts.add(head)
+            sentences.append(sent + ".")
+            support_ids.append(e.get("id") or f"entry-{i}")
+
+        if not sentences:
+            return None
+
+        claim = " ".join(sentences)
         return EvidenceRecord(
             engine="yellow",
-            claim=first_sentence,
-            support=support_ids,
+            claim=claim,
+            support=tuple(support_ids),
             score=min(1.0, top_score / _BM25_NORMALIZER),
         )
