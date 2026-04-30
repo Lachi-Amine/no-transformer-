@@ -249,3 +249,18 @@ summarize the implications of CRISPR for ethics,general,summarize,0.05,0.40,0.55
 why do markets crash,general,interpret,0.05,0.55,0.40
 predict whether quantum computing will break encryption,general,predict,0.20,0.55,0.25
 what does the future hold for renewable energy,general,interpret,0.05,0.55,0.40
+what is the pH of a 0.01 M HCl solution,chemistry,compute,0.85,0.13,0.02
+compute the pH of a buffer with pKa 4.76 and ratio 1,chemistry,compute,0.85,0.13,0.02
+what is the equilibrium constant,chemistry,define,0.55,0.40,0.05
+how does a catalyst affect activation energy,chemistry,explain_process,0.55,0.40,0.05
+compare ionic and covalent bonds,chemistry,compare,0.50,0.45,0.05
+why does water have such a high boiling point,chemistry,interpret,0.45,0.50,0.05
+summarize the periodic table organization,chemistry,summarize,0.50,0.45,0.05
+predict the products of a redox reaction,chemistry,predict,0.55,0.40,0.05
+what is electron configuration,chemistry,define,0.55,0.40,0.05
+how do enzymes accelerate reactions chemically,chemistry,explain_process,0.40,0.55,0.05
+compute the molar mass of glucose,chemistry,compute,0.85,0.13,0.02
+explain Le Chatelier's principle,chemistry,explain_process,0.55,0.40,0.05
+why is hydrogen bonding important for water,chemistry,interpret,0.45,0.45,0.10
+compare exothermic and endothermic reactions,chemistry,compare,0.55,0.40,0.05
+predict the solubility of NaCl in water,chemistry,predict,0.45,0.50,0.05

@@ -11,6 +11,7 @@ META_PATH = Path(__file__).resolve().parent.parent / "models" / "epistemic_route
 _DOMAIN_PRIORS: dict[str, tuple[float, float, float]] = {
     "math":       (0.85, 0.10, 0.05),
     "physics":    (0.75, 0.20, 0.05),
+    "chemistry":  (0.55, 0.40, 0.05),
     "biology":    (0.20, 0.70, 0.10),
     "medicine":   (0.15, 0.75, 0.10),
     "economics":  (0.20, 0.65, 0.15),
@@ -29,9 +30,29 @@ class EpistemicRouter:
 
     def _load_torch_model(self) -> None:
         import torch
+
         meta = json.loads(META_PATH.read_text())
-        self._input_dim = int(meta["input_dim"])
-        self._model = build_mlp(self._input_dim)
+        trained_dim = int(meta["input_dim"])
+
+        from .features import router_features
+        from .schemas import Classification, Query
+
+        dummy_q = Query(raw="", normalized="", tokens=(), entities={})
+        dummy_c = Classification(domain="general", intent="define",
+                                 domain_probs={}, intent_probs={})
+        current_dim = int(router_features(dummy_q, dummy_c).shape[0])
+
+        if current_dim != trained_dim:
+            import warnings
+            warnings.warn(
+                f"epistemic_router input dim mismatch (trained={trained_dim}, "
+                f"current={current_dim}); falling back to heuristic. Retrain on Colab.",
+                UserWarning,
+            )
+            return
+
+        self._input_dim = trained_dim
+        self._model = build_mlp(trained_dim)
         state = torch.load(MODEL_PATH, map_location="cpu")
         self._model.load_state_dict(state)
         self._model.eval()

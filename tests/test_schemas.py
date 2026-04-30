@@ -84,8 +84,9 @@ def test_fused_evidence():
 def test_constants_complete():
     assert "biology" in DOMAINS
     assert "physics" in DOMAINS
+    assert "chemistry" in DOMAINS
     assert "general" in DOMAINS
-    assert len(DOMAINS) == 8
+    assert len(DOMAINS) == 9
 
     assert "define" in INTENTS
     assert "compute" in INTENTS

@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DATASETS = ROOT / "datasets"
 
-DOMAINS = ["math", "physics", "biology", "medicine", "economics",
+DOMAINS = ["math", "physics", "chemistry", "biology", "medicine", "economics",
            "history", "philosophy", "general"]
 INTENTS = ["define", "explain_process", "compute", "compare",
            "predict", "interpret", "summarize"]

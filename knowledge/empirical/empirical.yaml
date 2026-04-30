@@ -389,3 +389,366 @@
     plants alike consume O2 and exhale CO2 during respiration, sustaining a planetary
     flux of carbon between organic and inorganic forms.
   sources: [textbook:ecology]
+
+# ---------- chemistry ----------
+
+- id: ph-001
+  domain: chemistry
+  tags: [acid, base, scale]
+  keywords: [ph, acid, base, hydrogen, ion, scale]
+  text: |
+    pH is the negative base-10 logarithm of the molar hydrogen ion concentration in a
+    solution. The scale runs from 0 (very acidic) to 14 (very basic), with 7 being
+    neutral at 25 °C; each unit corresponds to a tenfold change in [H+].
+  sources: [wikipedia:ph]
+
+- id: periodic-table-001
+  domain: chemistry
+  tags: [elements, structure]
+  keywords: [periodic, table, elements, mendeleev, group, period]
+  text: |
+    The periodic table organizes the chemical elements by atomic number and recurring
+    chemical properties. Columns (groups) share valence-electron configurations, and
+    rows (periods) reflect successive electron shells, so position predicts much of
+    an element's chemistry.
+  sources: [iupac:periodic-table]
+
+- id: ionic-bond-001
+  domain: chemistry
+  tags: [bonding]
+  keywords: [ionic, bond, electron, transfer, salt, cation, anion]
+  text: |
+    An ionic bond forms when one atom transfers one or more electrons to another,
+    producing a positive cation and a negative anion held together by electrostatic
+    attraction. Ionic compounds typically have high melting points and conduct
+    electricity when dissolved or molten.
+  sources: [textbook:general-chemistry]
+
+- id: covalent-bond-001
+  domain: chemistry
+  tags: [bonding]
+  keywords: [covalent, bond, electron, sharing, molecule]
+  text: |
+    A covalent bond is the sharing of one or more electron pairs between two atoms,
+    typically nonmetals. Sharing fills valence shells, producing molecules with
+    discrete shapes; bond polarity depends on electronegativity differences.
+  sources: [textbook:general-chemistry]
+
+- id: redox-001
+  domain: chemistry
+  tags: [reaction, electron]
+  keywords: [redox, oxidation, reduction, electron, transfer]
+  text: |
+    Redox (oxidation-reduction) reactions involve the transfer of electrons. The
+    species that loses electrons is oxidized; the one that gains them is reduced.
+    Redox underpins combustion, corrosion, batteries, and biological respiration.
+  sources: [textbook:general-chemistry]
+
+- id: catalyst-001
+  domain: chemistry
+  tags: [kinetics, reaction]
+  keywords: [catalyst, enzyme, activation, energy, kinetics]
+  text: |
+    A catalyst speeds up a chemical reaction by providing a lower-energy pathway,
+    without being consumed. It lowers the activation energy and so increases the rate
+    of forward and reverse reactions equally; it does not change the equilibrium
+    position.
+  sources: [textbook:general-chemistry]
+
+- id: electron-config-001
+  domain: chemistry
+  tags: [atomic, structure]
+  keywords: [electron, configuration, orbital, shell, aufbau]
+  text: |
+    The electron configuration of an atom is the arrangement of its electrons among
+    quantized energy levels and orbitals. Following the Aufbau order, Pauli exclusion
+    principle, and Hund's rule, one writes notations like 1s2 2s2 2p6 to describe
+    which orbitals are filled.
+  sources: [textbook:general-chemistry]
+
+- id: le-chatelier-001
+  domain: chemistry
+  tags: [equilibrium, kinetics]
+  keywords: [le, chatelier, equilibrium, principle, stress, shift]
+  text: |
+    Le Chatelier's principle: when a system at equilibrium is disturbed by a change
+    in concentration, temperature, or pressure, it adjusts to partially counteract
+    the change. The principle predicts the direction of equilibrium shift but not
+    its magnitude.
+  sources: [textbook:general-chemistry]
+
+- id: polymer-001
+  domain: chemistry
+  tags: [polymers, materials]
+  keywords: [polymer, monomer, chain, plastic, macromolecule]
+  text: |
+    A polymer is a large molecule made of repeating subunits called monomers, joined
+    by covalent bonds. Natural polymers include DNA, proteins, and cellulose;
+    synthetic polymers like polyethylene and PET dominate modern materials.
+  sources: [textbook:polymer-chemistry]
+
+- id: isotope-001
+  domain: chemistry
+  tags: [atomic, nuclear]
+  keywords: [isotope, atomic, mass, number, neutron]
+  text: |
+    Isotopes are atoms of the same element with the same number of protons but
+    different numbers of neutrons, and so different mass numbers. Some are stable;
+    others are radioactive and decay at characteristic rates used for dating and
+    medical imaging.
+  sources: [textbook:general-chemistry]
+
+- id: stoichiometry-001
+  domain: chemistry
+  tags: [reaction, quantity]
+  keywords: [stoichiometry, mole, ratio, balanced, equation, reaction]
+  text: |
+    Stoichiometry is the quantitative study of reactants and products in chemical
+    reactions, governed by the mole ratios in a balanced equation. It lets you
+    predict how much product forms from given reactants and identify the limiting
+    reagent.
+  sources: [textbook:general-chemistry]
+
+- id: solubility-001
+  domain: chemistry
+  tags: [solution, dissolution]
+  keywords: [solubility, solute, solvent, dissolve, concentration]
+  text: |
+    Solubility is the maximum amount of a solute that dissolves in a given solvent
+    at a specified temperature, producing a saturated solution. It depends on
+    intermolecular forces, temperature, and pressure (especially for gases).
+  sources: [textbook:general-chemistry]
+
+# ---------- earth science (under physics) ----------
+
+- id: plate-tectonics-001
+  domain: physics
+  tags: [geology, earth-science]
+  keywords: [plate, tectonic, continental, drift, fault, subduction, mantle]
+  text: |
+    Plate tectonics is the theory that Earth's lithosphere is divided into rigid
+    plates that drift on the underlying ductile asthenosphere. Their interactions —
+    spreading, subduction, and transform faulting — produce earthquakes, volcanism,
+    and mountain building, and explain continental drift.
+  sources: [usgs:plate-tectonics]
+
+- id: volcanism-001
+  domain: physics
+  tags: [geology, earth-science]
+  keywords: [volcano, magma, eruption, lava, igneous]
+  text: |
+    Volcanism is the surface eruption of molten rock and gases from a planetary
+    interior. On Earth most volcanism occurs at plate boundaries — mid-ocean ridges
+    and subduction zones — and at intraplate hotspots; magma composition controls
+    eruption style from gentle effusion to explosive Plinian events.
+  sources: [usgs:volcanoes]
+
+- id: rock-cycle-001
+  domain: physics
+  tags: [geology, earth-science]
+  keywords: [rock, cycle, igneous, sedimentary, metamorphic]
+  text: |
+    The rock cycle describes how the three rock types — igneous, sedimentary, and
+    metamorphic — transform into one another over geologic time through cooling,
+    weathering and deposition, and heat-pressure metamorphism, driven by plate
+    tectonics and surface processes.
+  sources: [textbook:geology]
+
+- id: earthquake-001
+  domain: physics
+  tags: [geology, seismology]
+  keywords: [earthquake, fault, seismic, magnitude, richter, plate]
+  text: |
+    An earthquake is the sudden release of elastic energy stored in rocks along a
+    fault, radiating seismic waves that shake the surface. Magnitude scales like the
+    moment magnitude (Mw) quantify the released energy; intensity scales describe
+    local shaking effects.
+  sources: [usgs:earthquakes]
+
+- id: weathering-001
+  domain: physics
+  tags: [geology, surface]
+  keywords: [weathering, erosion, mechanical, chemical, soil]
+  text: |
+    Weathering breaks rocks and minerals at or near the Earth's surface into smaller
+    fragments and altered products. Mechanical weathering fractures rocks without
+    changing their composition; chemical weathering alters mineral chemistry through
+    reactions with water, oxygen, and acids.
+  sources: [textbook:geology]
+
+# ---------- neuroscience (under biology) ----------
+
+- id: neuroplasticity-001
+  domain: biology
+  tags: [neuroscience, learning]
+  keywords: [neuroplasticity, plasticity, learning, brain, adaptation]
+  text: |
+    Neuroplasticity is the brain's capacity to reorganize its synaptic connections,
+    networks, and even gross structure in response to experience, learning, and
+    injury. It underlies memory formation and is most pronounced — but not limited
+    to — early development.
+  sources: [textbook:neuroscience]
+
+- id: neurotransmitter-001
+  domain: biology
+  tags: [neuroscience, signaling]
+  keywords: [neurotransmitter, synapse, dopamine, serotonin, gaba, glutamate]
+  text: |
+    Neurotransmitters are chemical messengers released by neurons into the synaptic
+    cleft. Glutamate and GABA dominate excitatory and inhibitory signaling; dopamine,
+    serotonin, norepinephrine, and acetylcholine modulate broader brain states such
+    as motivation, mood, attention, and arousal.
+  sources: [textbook:neuroscience]
+
+- id: synaptic-plasticity-001
+  domain: biology
+  tags: [neuroscience, memory]
+  keywords: [synapse, plasticity, ltp, ltd, hebbian, learning]
+  text: |
+    Synaptic plasticity is the activity-dependent change in synaptic strength
+    between neurons. Long-term potentiation (LTP) strengthens repeatedly used
+    synapses while long-term depression (LTD) weakens others; together they encode
+    much of what we mean by learning and memory at the cellular level.
+  sources: [textbook:neuroscience]
+
+- id: dopamine-reward-001
+  domain: biology
+  tags: [neuroscience, motivation]
+  keywords: [dopamine, reward, motivation, addiction, prediction, error]
+  text: |
+    Dopaminergic neurons in the midbrain signal reward prediction error — firing more
+    when outcomes are better than expected and less when worse. This signal supports
+    reinforcement learning and is central to motivation, habit formation, and
+    addiction.
+  sources: [schultz:dopamine-reward]
+
+- id: sleep-stages-001
+  domain: biology
+  tags: [neuroscience, sleep]
+  keywords: [sleep, rem, nrem, circadian, eeg, stage]
+  text: |
+    Mammalian sleep cycles between non-REM stages (N1-N3) marked by progressively
+    slower EEG and REM sleep characterized by rapid eye movements and vivid dreams.
+    Cycles last roughly 90 minutes; N3 supports memory consolidation and physical
+    restoration, while REM is implicated in emotional processing.
+  sources: [textbook:sleep-medicine]
+
+# ---------- engineering / applied physics ----------
+
+- id: solar-cell-001
+  domain: physics
+  tags: [engineering, energy]
+  keywords: [solar, cell, photovoltaic, semiconductor, panel]
+  text: |
+    A solar cell is a semiconductor device that converts photons directly into
+    electrical current via the photovoltaic effect. Photons with energy above the
+    band gap excite electrons across a p-n junction; the resulting flow of charge
+    carriers powers an external load.
+  sources: [nrel:photovoltaics]
+
+- id: lithium-ion-battery-001
+  domain: physics
+  tags: [engineering, energy]
+  keywords: [lithium, ion, battery, electrochemical, anode, cathode]
+  text: |
+    A lithium-ion battery stores energy by shuttling Li+ ions between a graphite
+    anode and a metal-oxide cathode through an electrolyte while electrons travel
+    through the external circuit. High energy density and long cycle life make them
+    standard for electronics and electric vehicles.
+  sources: [textbook:electrochemistry]
+
+- id: jet-engine-001
+  domain: physics
+  tags: [engineering, mechanics]
+  keywords: [jet, engine, turbine, thrust, brayton, compressor]
+  text: |
+    A gas-turbine jet engine compresses incoming air, mixes it with fuel, ignites
+    the mixture, and expands the hot gases through a turbine that drives the
+    compressor. Net thrust comes from the high-velocity exhaust, with the cycle
+    approximated thermodynamically by the Brayton cycle.
+  sources: [textbook:propulsion]
+
+- id: fiber-optic-001
+  domain: physics
+  tags: [engineering, optics]
+  keywords: [fiber, optic, total, internal, reflection, communication]
+  text: |
+    Optical fibers guide light along a glass core surrounded by a lower-index
+    cladding by total internal reflection. They carry digital signals over long
+    distances with low attenuation and high bandwidth, forming the physical layer
+    of modern telecommunications.
+  sources: [textbook:photonics]
+
+- id: mri-physics-001
+  domain: physics
+  tags: [engineering, medical-imaging]
+  keywords: [mri, magnetic, resonance, imaging, nucleus, spin]
+  text: |
+    Magnetic resonance imaging applies a strong static magnetic field to align
+    proton spins, then perturbs them with radiofrequency pulses. As the spins
+    relax, they emit signals whose timing differences between tissues — encoded
+    by gradient fields — are reconstructed into high-contrast cross-sectional
+    images.
+  sources: [textbook:medical-physics]
+
+# ---------- additional medicine ----------
+
+- id: chemotherapy-mechanism-001
+  domain: medicine
+  tags: [oncology, drug]
+  keywords: [chemotherapy, cytotoxic, cancer, mitosis, dna]
+  text: |
+    Chemotherapy uses cytotoxic drugs that preferentially kill rapidly dividing
+    cells by damaging DNA, blocking microtubule assembly, or inhibiting
+    nucleotide synthesis. Cancer cells are more vulnerable because they divide
+    more often, but rapidly turning-over normal tissues — bone marrow, gut
+    lining, hair follicles — produce the typical side effects.
+  sources: [textbook:oncology]
+
+- id: immunotherapy-001
+  domain: medicine
+  tags: [oncology, immunology]
+  keywords: [immunotherapy, checkpoint, inhibitor, car-t, cancer]
+  text: |
+    Cancer immunotherapy harnesses the immune system to attack tumors. Checkpoint
+    inhibitors release built-in brakes (PD-1, CTLA-4) on T cells; CAR-T therapies
+    re-engineer a patient's T cells to recognize tumor antigens. Together they
+    have produced durable responses in cancers that were previously refractory.
+  sources: [nature:immunotherapy-review]
+
+- id: adhd-001
+  domain: medicine
+  tags: [neurology, disorder]
+  keywords: [adhd, attention, hyperactivity, dopamine, stimulant]
+  text: |
+    Attention-deficit/hyperactivity disorder (ADHD) is a neurodevelopmental
+    condition marked by persistent inattention, hyperactivity, and impulsivity.
+    It is associated with differences in dopaminergic and noradrenergic signaling
+    in fronto-striatal circuits and is most often treated with stimulants such
+    as methylphenidate, alongside behavioral therapy.
+  sources: [dsm5:adhd]
+
+# ---------- additional economics ----------
+
+- id: behavioral-economics-001
+  domain: economics
+  tags: [behavior, psychology]
+  keywords: [behavioral, economics, kahneman, heuristic, bias, prospect]
+  text: |
+    Behavioral economics integrates findings from cognitive psychology with
+    economic models, documenting systematic departures from rational-actor
+    predictions. Loss aversion, reference dependence, anchoring, and present
+    bias produce decisions that prospect theory and similar frameworks describe
+    far better than expected-utility theory.
+  sources: [kahneman:thinking-fast-slow]
+
+- id: cryptocurrency-001
+  domain: economics
+  tags: [finance, blockchain]
+  keywords: [cryptocurrency, bitcoin, blockchain, decentralized, ledger]
+  text: |
+    A cryptocurrency is a digital asset whose ownership and transfers are
+    recorded on a decentralized blockchain ledger and secured by cryptography.
+    Without a central issuer, networks rely on consensus mechanisms (proof of
+    work, proof of stake) to validate transactions and create new units.
+  sources: [nakamoto:bitcoin-paper]

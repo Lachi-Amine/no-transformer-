@@ -59,6 +59,66 @@ find einstein,compute
 what is schrodinger,define
 compute schrodinger,compute
 find schrodinger,compute
+what is henderson,define
+compute henderson,compute
+find henderson,compute
+what is beer,define
+compute beer,compute
+find beer,compute
+what is equilibrium,define
+compute equilibrium,compute
+find equilibrium,compute
+what is avogadro,define
+compute avogadro,compute
+find avogadro,compute
+what is mean,define
+compute mean,compute
+find mean,compute
+what is variance,define
+compute variance,compute
+find variance,compute
+what is standard,define
+compute standard,compute
+find standard,compute
+what is zscore,define
+compute zscore,compute
+find zscore,compute
+what is bayes,define
+compute bayes,compute
+find bayes,compute
+what is correlation,define
+compute correlation,compute
+find correlation,compute
+what is logarithm,define
+compute logarithm,compute
+find logarithm,compute
+what is exponential,define
+compute exponential,compute
+find exponential,compute
+what is half,define
+compute half,compute
+find half,compute
+what is heat,define
+compute heat,compute
+find heat,compute
+what is power,define
+compute power,compute
+find power,compute
+what is lens,define
+compute lens,compute
+find lens,compute
+what is future,define
+compute future,compute
+find future,compute
+what is present,define
+compute present,compute
+find present,compute
+what is compound,define
+compute compound,compute
+find compound,compute
+what is npv,define
+compute npv,compute
+find npv,compute
 what is amylase,define
 how does amylase work,explain_process
 explain amylase,explain_process
@@ -131,7 +191,6 @@ explain gdp,explain_process
 what is recession,define
 how does recession work,explain_process
 explain recession,explain_process
-what is compound,define
 how does compound work,explain_process
 explain compound,explain_process
 what is comparative,define
@@ -158,6 +217,102 @@ explain herd,explain_process
 what is market,define
 how does market work,explain_process
 explain market,explain_process
+what is ph,define
+how does ph work,explain_process
+explain ph,explain_process
+what is periodic,define
+how does periodic work,explain_process
+explain periodic,explain_process
+what is ionic,define
+how does ionic work,explain_process
+explain ionic,explain_process
+what is covalent,define
+how does covalent work,explain_process
+explain covalent,explain_process
+what is redox,define
+how does redox work,explain_process
+explain redox,explain_process
+what is catalyst,define
+how does catalyst work,explain_process
+explain catalyst,explain_process
+what is electron,define
+how does electron work,explain_process
+explain electron,explain_process
+what is le,define
+how does le work,explain_process
+explain le,explain_process
+what is polymer,define
+how does polymer work,explain_process
+explain polymer,explain_process
+what is isotope,define
+how does isotope work,explain_process
+explain isotope,explain_process
+what is stoichiometry,define
+how does stoichiometry work,explain_process
+explain stoichiometry,explain_process
+what is solubility,define
+how does solubility work,explain_process
+explain solubility,explain_process
+what is plate,define
+how does plate work,explain_process
+explain plate,explain_process
+what is volcano,define
+how does volcano work,explain_process
+explain volcano,explain_process
+what is rock,define
+how does rock work,explain_process
+explain rock,explain_process
+what is earthquake,define
+how does earthquake work,explain_process
+explain earthquake,explain_process
+what is weathering,define
+how does weathering work,explain_process
+explain weathering,explain_process
+what is neuroplasticity,define
+how does neuroplasticity work,explain_process
+explain neuroplasticity,explain_process
+what is neurotransmitter,define
+how does neurotransmitter work,explain_process
+explain neurotransmitter,explain_process
+what is synapse,define
+how does synapse work,explain_process
+explain synapse,explain_process
+what is dopamine,define
+how does dopamine work,explain_process
+explain dopamine,explain_process
+what is sleep,define
+how does sleep work,explain_process
+explain sleep,explain_process
+what is solar,define
+how does solar work,explain_process
+explain solar,explain_process
+what is lithium,define
+how does lithium work,explain_process
+explain lithium,explain_process
+what is jet,define
+how does jet work,explain_process
+explain jet,explain_process
+what is fiber,define
+how does fiber work,explain_process
+explain fiber,explain_process
+what is mri,define
+how does mri work,explain_process
+explain mri,explain_process
+what is chemotherapy,define
+how does chemotherapy work,explain_process
+explain chemotherapy,explain_process
+what is immunotherapy,define
+how does immunotherapy work,explain_process
+explain immunotherapy,explain_process
+what is adhd,define
+how does adhd work,explain_process
+explain adhd,explain_process
+what is behavioral,define
+how does behavioral work,explain_process
+explain behavioral,explain_process
+what is cryptocurrency,define
+how does cryptocurrency work,explain_process
+explain cryptocurrency,explain_process
 what is trolley,define
 why is trolley contested,interpret
 is trolley justified,interpret
@@ -176,3 +331,21 @@ is ai justified,interpret
 what is free,define
 why is free contested,interpret
 is free justified,interpret
+what is immigration,define
+why is immigration contested,interpret
+is immigration justified,interpret
+what is animal,define
+why is animal contested,interpret
+is animal justified,interpret
+what is distributive,define
+why is distributive contested,interpret
+is distributive justified,interpret
+what is privacy,define
+why is privacy contested,interpret
+is privacy justified,interpret
+what is war,define
+why is war contested,interpret
+is war justified,interpret
+what is religious,define
+why is religious contested,interpret
+is religious justified,interpret

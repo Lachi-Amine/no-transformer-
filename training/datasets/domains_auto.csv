@@ -58,6 +58,63 @@ Einstein's mass-energy equivalence: the rest energy of a body equals its rest ma
 what is schrodinger,physics
 what is quantum,physics
 Time-independent Schrödinger equation: H psi = E psi — the Hamiltonian acting on a stationary state returns the same state scaled by its energy eigenvalue,physics
+what is henderson,chemistry
+what is hasselbalch,chemistry
+Henderson-Hasselbalch equation: pH = pKa + log10([A-]/[HA]) — used to estimate the pH of a buffer solution from the ratio of conjugate base to weak acid,chemistry
+what is beer,chemistry
+what is lambert,chemistry
+Beer-Lambert law: A = e c l — absorbance is proportional to molar absorptivity concentration of the absorbing species and the path length of the light through t,chemistry
+what is equilibrium,chemistry
+what is constant,chemistry
+For a reaction at equilibrium aA + bB <=> cC + dD the equilibrium constant K = ([C]^c [D]^d) / ([A]^a [B]^b),chemistry
+what is avogadro,chemistry
+what is mole,chemistry
+Avogadro's law of counting: the number of particles N in n moles of any substance is N = n * 6,chemistry
+what is mean,math
+what is average,math
+The arithmetic mean of n values is mu = (sum of values) / n,math
+what is variance,math
+what is deviation,math
+Population variance: sigma^2 = (1/n) sum_i (x_i - mu)^2,math
+what is standard,math
+Standard deviation is the square root of variance sigma = sqrt(sigma^2),math
+what is zscore,math
+what is standardize,math
+Z-score: z = (x - mu) / sigma — expresses how many standard deviations an observation lies above or below the mean,math
+what is bayes,math
+what is posterior,math
+Bayes' theorem: P(A|B) = P(B|A) P(A) / P(B),math
+what is correlation,math
+what is pearson,math
+Pearson correlation: r = cov(X Y) / (sigma_X sigma_Y),math
+what is logarithm,math
+what is change,math
+Change of base for logarithms: log_b(x) = log_a(x) / log_a(b),math
+what is exponential,physics
+what is decay,physics
+Exponential decay: N(t) = N_0 e^(-lambda t),physics
+what is half,physics
+what is life,physics
+Half-life: t_1/2 = ln(2) / lambda,physics
+what is heat,physics
+what is capacity,physics
+Heat needed to change the temperature of a mass: Q = m c dT where c is the specific heat capacity of the substance,physics
+what is power,physics
+what is electric,physics
+Electrical power: P = V I — the rate at which a circuit element converts electrical energy,physics
+what is lens,physics
+what is focal,physics
+Thin lens equation: 1/f = 1/u + 1/v relates focal length object distance and image distance for a thin converging or diverging lens,physics
+what is future,economics
+what is value,economics
+Future value with compound interest: FV = PV (1 + r)^n,economics
+what is present,economics
+Present value: PV = FV / (1 + r)^n,economics
+what is compound,economics
+what is interest,economics
+Compound interest with k compounding periods per year: A = P (1 + r/k)^(k t),economics
+what is npv,economics
+Net present value of a single future cash flow: NPV = CF / (1 + r)^t - C0,economics
 what is amylase,biology
 how does amylase work,biology
 explain amylase,biology
@@ -174,10 +231,8 @@ how does recession work,economics
 explain recession,economics
 what is contraction,economics
 A recession is a significant decline in economic activity spread across the economy lasting more than a few months,economics
-what is compound,economics
 how does compound work,economics
 explain compound,economics
-what is interest,economics
 Compound interest is interest computed on principal plus accumulated interest so balances grow geometrically,economics
 what is comparative,economics
 how does comparative work,economics
@@ -219,6 +274,161 @@ explain market,economics
 what is equilibrium,economics
 A market is in equilibrium when the quantity supplied equals the quantity demanded at the prevailing price,economics
 Photosynthesis and cellular respiration are complementary processes that link the biosphere's carbon and oxygen cycles,biology
+what is ph,chemistry
+how does ph work,chemistry
+explain ph,chemistry
+what is acid,chemistry
+pH is the negative base-10 logarithm of the molar hydrogen ion concentration in a solution,chemistry
+what is periodic,chemistry
+how does periodic work,chemistry
+explain periodic,chemistry
+what is table,chemistry
+The periodic table organizes the chemical elements by atomic number and recurring chemical properties,chemistry
+what is ionic,chemistry
+how does ionic work,chemistry
+explain ionic,chemistry
+what is bond,chemistry
+An ionic bond forms when one atom transfers one or more electrons to another producing a positive cation and a negative anion held together by electrostatic att,chemistry
+what is covalent,chemistry
+how does covalent work,chemistry
+explain covalent,chemistry
+A covalent bond is the sharing of one or more electron pairs between two atoms typically nonmetals,chemistry
+what is redox,chemistry
+how does redox work,chemistry
+explain redox,chemistry
+what is oxidation,chemistry
+Redox (oxidation-reduction) reactions involve the transfer of electrons,chemistry
+what is catalyst,chemistry
+how does catalyst work,chemistry
+explain catalyst,chemistry
+what is enzyme,chemistry
+A catalyst speeds up a chemical reaction by providing a lower-energy pathway without being consumed,chemistry
+what is electron,chemistry
+how does electron work,chemistry
+explain electron,chemistry
+what is configuration,chemistry
+The electron configuration of an atom is the arrangement of its electrons among quantized energy levels and orbitals,chemistry
+what is le,chemistry
+how does le work,chemistry
+explain le,chemistry
+what is chatelier,chemistry
+Le Chatelier's principle: when a system at equilibrium is disturbed by a change in concentration temperature or pressure it adjusts to partially counteract the ,chemistry
+what is polymer,chemistry
+how does polymer work,chemistry
+explain polymer,chemistry
+what is monomer,chemistry
+A polymer is a large molecule made of repeating subunits called monomers joined by covalent bonds,chemistry
+what is isotope,chemistry
+how does isotope work,chemistry
+explain isotope,chemistry
+what is atomic,chemistry
+Isotopes are atoms of the same element with the same number of protons but different numbers of neutrons and so different mass numbers,chemistry
+what is stoichiometry,chemistry
+how does stoichiometry work,chemistry
+explain stoichiometry,chemistry
+Stoichiometry is the quantitative study of reactants and products in chemical reactions governed by the mole ratios in a balanced equation,chemistry
+what is solubility,chemistry
+how does solubility work,chemistry
+explain solubility,chemistry
+what is solute,chemistry
+Solubility is the maximum amount of a solute that dissolves in a given solvent at a specified temperature producing a saturated solution,chemistry
+what is plate,physics
+how does plate work,physics
+explain plate,physics
+what is tectonic,physics
+Plate tectonics is the theory that Earth's lithosphere is divided into rigid plates that drift on the underlying ductile asthenosphere,physics
+what is volcano,physics
+how does volcano work,physics
+explain volcano,physics
+what is magma,physics
+Volcanism is the surface eruption of molten rock and gases from a planetary interior,physics
+what is rock,physics
+how does rock work,physics
+explain rock,physics
+what is cycle,physics
+what is earthquake,physics
+how does earthquake work,physics
+explain earthquake,physics
+what is fault,physics
+An earthquake is the sudden release of elastic energy stored in rocks along a fault radiating seismic waves that shake the surface,physics
+what is weathering,physics
+how does weathering work,physics
+explain weathering,physics
+what is erosion,physics
+Weathering breaks rocks and minerals at or near the Earth's surface into smaller fragments and altered products,physics
+what is neuroplasticity,biology
+how does neuroplasticity work,biology
+explain neuroplasticity,biology
+what is plasticity,biology
+Neuroplasticity is the brain's capacity to reorganize its synaptic connections networks and even gross structure in response to experience learning and injury,biology
+what is neurotransmitter,biology
+how does neurotransmitter work,biology
+explain neurotransmitter,biology
+what is synapse,biology
+Neurotransmitters are chemical messengers released by neurons into the synaptic cleft,biology
+how does synapse work,biology
+explain synapse,biology
+Synaptic plasticity is the activity-dependent change in synaptic strength between neurons,biology
+what is dopamine,biology
+how does dopamine work,biology
+explain dopamine,biology
+what is reward,biology
+Dopaminergic neurons in the midbrain signal reward prediction error — firing more when outcomes are better than expected and less when worse,biology
+what is sleep,biology
+how does sleep work,biology
+explain sleep,biology
+what is rem,biology
+Mammalian sleep cycles between non-REM stages (N1-N3) marked by progressively slower EEG and REM sleep characterized by rapid eye movements and vivid dreams,biology
+what is solar,physics
+how does solar work,physics
+explain solar,physics
+what is cell,physics
+A solar cell is a semiconductor device that converts photons directly into electrical current via the photovoltaic effect,physics
+what is lithium,physics
+how does lithium work,physics
+explain lithium,physics
+what is ion,physics
+A lithium-ion battery stores energy by shuttling Li+ ions between a graphite anode and a metal-oxide cathode through an electrolyte while electrons travel throu,physics
+what is jet,physics
+how does jet work,physics
+explain jet,physics
+what is engine,physics
+A gas-turbine jet engine compresses incoming air mixes it with fuel ignites the mixture and expands the hot gases through a turbine that drives the compressor,physics
+what is fiber,physics
+how does fiber work,physics
+explain fiber,physics
+what is optic,physics
+Optical fibers guide light along a glass core surrounded by a lower-index cladding by total internal reflection,physics
+what is mri,physics
+how does mri work,physics
+explain mri,physics
+what is magnetic,physics
+Magnetic resonance imaging applies a strong static magnetic field to align proton spins then perturbs them with radiofrequency pulses,physics
+what is chemotherapy,medicine
+how does chemotherapy work,medicine
+explain chemotherapy,medicine
+what is cytotoxic,medicine
+Chemotherapy uses cytotoxic drugs that preferentially kill rapidly dividing cells by damaging DNA blocking microtubule assembly or inhibiting nucleotide synthes,medicine
+what is immunotherapy,medicine
+how does immunotherapy work,medicine
+explain immunotherapy,medicine
+what is checkpoint,medicine
+Cancer immunotherapy harnesses the immune system to attack tumors,medicine
+what is adhd,medicine
+how does adhd work,medicine
+explain adhd,medicine
+what is attention,medicine
+Attention-deficit/hyperactivity disorder (ADHD) is a neurodevelopmental condition marked by persistent inattention hyperactivity and impulsivity,medicine
+what is behavioral,economics
+how does behavioral work,economics
+explain behavioral,economics
+what is economics,economics
+Behavioral economics integrates findings from cognitive psychology with economic models documenting systematic departures from rational-actor predictions,economics
+what is cryptocurrency,economics
+how does cryptocurrency work,economics
+explain cryptocurrency,economics
+what is bitcoin,economics
+A cryptocurrency is a digital asset whose ownership and transfers are recorded on a decentralized blockchain ledger and secured by cryptography,economics
 what is trolley,philosophy
 why is trolley contested,philosophy
 is trolley morally right,philosophy
@@ -250,3 +460,42 @@ what is will,philosophy
 Compatibilism holds that free will is consistent with determinism,philosophy
 Hard determinists argue that if every event is determined by prior causes then no one could have done otherwise and the libertarian sense of free will is an ill,philosophy
 Libertarian free will (in the metaphysical sense distinct from political libertarianism) maintains that agents can be the genuine ultimate source of at least so,philosophy
+what is immigration,philosophy
+why is immigration contested,philosophy
+is immigration morally right,philosophy
+what is migration,philosophy
+Communitarians argue that political communities are constituted by shared histories languages and civic practices and that they retain a legitimate interest in ,philosophy
+what is animal,philosophy
+why is animal contested,philosophy
+is animal morally right,philosophy
+what is rights,philosophy
+The utilitarian case (Peter Singer) is grounded in equal consideration of interests: if an animal is sentient and capable of suffering its suffering counts mora,philosophy
+Tom Regan's rights view holds that mammals are subjects-of-a-life with inherent value and so possess basic moral rights — not to be treated merely as resources,philosophy
+Virtue-ethical accounts ask what a person of good character would do toward creatures dependent on us — emphasizing compassion gratitude and the moral importanc,philosophy
+what is distributive,philosophy
+why is distributive contested,philosophy
+is distributive morally right,philosophy
+what is justice,philosophy
+Nozick's entitlement theory takes a distribution to be just if and only if it arose by just acquisition and just transfer,philosophy
+Rawls's difference principle holds that social and economic inequalities are just only insofar as they are arranged to benefit the least advantaged,philosophy
+what is privacy,philosophy
+why is privacy contested,philosophy
+is privacy morally right,philosophy
+what is surveillance,philosophy
+The libertarian view treats privacy as a corollary of self-ownership and contract,philosophy
+The communitarian view balances privacy against the goods of accountability public health and trust,philosophy
+what is war,philosophy
+why is war contested,philosophy
+is war morally right,philosophy
+what is just,philosophy
+what is pacifism,philosophy
+Pacifism holds that organized killing in war is morally impermissible,philosophy
+what is realism,philosophy
+Political realism takes states to inhabit an anarchic system in which moral categories applied to individuals do not transfer cleanly to international relations,philosophy
+what is religious,philosophy
+why is religious contested,philosophy
+is religious morally right,philosophy
+what is freedom,philosophy
+The libertarian view treats religious practice as a free expression of conscience that the state must not coerce or favor,philosophy
+Communitarians stress that religious traditions are constitutive sources of moral identity for their adherents and for political communities,philosophy
+The secular-liberal view defends religious freedom while insisting that public reasons given in political deliberation be accessible to citizens of all faiths a,philosophy

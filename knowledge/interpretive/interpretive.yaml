@@ -242,3 +242,255 @@
     least some of their actions. This typically requires either indeterminism in the
     causal chain or a special form of agent causation.
   sources: [kane:significance-of-free-will]
+
+# ---------- topic: immigration ----------
+
+- id: immigration-utilitarian-001
+  domain: philosophy
+  topic: immigration
+  tradition: utilitarian
+  tags: [politics, ethics]
+  keywords: [immigration, migration, borders, refugee, welfare]
+  text: |
+    The utilitarian calculation on immigration weighs the substantial welfare gains
+    to migrants and host-country consumers against possible wage pressure on
+    competing native workers and short-run fiscal costs. Most empirical reviews
+    conclude open or expanded migration is welfare-maximizing in aggregate.
+  sources: [clemens:economics-and-emigration]
+
+- id: immigration-libertarian-001
+  domain: philosophy
+  topic: immigration
+  tradition: libertarian
+  tags: [politics, freedom]
+  keywords: [immigration, migration, borders, freedom, movement]
+  text: |
+    The libertarian view treats freedom of movement and voluntary association as
+    presumptive rights — denying a person work or residence based on birthplace is
+    a coercive act that requires extraordinary justification. Borders, on this view,
+    should be largely open absent specific harms.
+  sources: [carens:case-for-open-borders]
+
+- id: immigration-communitarian-001
+  domain: philosophy
+  topic: immigration
+  tradition: communitarian
+  tags: [politics, community]
+  keywords: [immigration, migration, borders, community, identity]
+  text: |
+    Communitarians argue that political communities are constituted by shared
+    histories, languages, and civic practices, and that they retain a legitimate
+    interest in regulating membership. Immigration policy should therefore balance
+    humanitarian duties with the community's capacity to integrate newcomers and
+    sustain its collective life.
+  sources: [walzer:spheres-of-justice]
+
+# ---------- topic: animal_rights ----------
+
+- id: animal-utilitarian-001
+  domain: philosophy
+  topic: animal_rights
+  tradition: utilitarian
+  tags: [ethics, animals]
+  keywords: [animal, rights, welfare, sentience, suffering, speciesism]
+  text: |
+    The utilitarian case (Peter Singer) is grounded in equal consideration of
+    interests: if an animal is sentient and capable of suffering, its suffering
+    counts morally. Practices like factory farming impose enormous suffering for
+    marginal human benefit and so are unjustified.
+  sources: [singer:animal-liberation]
+
+- id: animal-deontological-001
+  domain: philosophy
+  topic: animal_rights
+  tradition: deontological
+  tags: [ethics, animals, rights]
+  keywords: [animal, rights, regan, subjects, life, inherent, value]
+  text: |
+    Tom Regan's rights view holds that mammals are subjects-of-a-life with inherent
+    value and so possess basic moral rights — not to be treated merely as resources.
+    Their rights cannot be overridden by aggregate human welfare; using them in
+    research, food production, or entertainment is therefore wrong in principle.
+  sources: [regan:case-for-animal-rights]
+
+- id: animal-virtue-001
+  domain: philosophy
+  topic: animal_rights
+  tradition: virtue
+  tags: [ethics, animals, character]
+  keywords: [animal, rights, character, compassion, virtue, ethics]
+  text: |
+    Virtue-ethical accounts ask what a person of good character would do toward
+    creatures dependent on us — emphasizing compassion, gratitude, and the moral
+    importance of how cruelty habituates us. The wrongness of factory farming on
+    this view lies in the kind of agents and societies the practice produces.
+  sources: [hursthouse:applying-virtue-ethics]
+
+# ---------- topic: distributive_justice ----------
+
+- id: distributive-libertarian-001
+  domain: philosophy
+  topic: distributive_justice
+  tradition: libertarian
+  tags: [politics, justice, property]
+  keywords: [distributive, justice, libertarian, nozick, property, entitlement]
+  text: |
+    Nozick's entitlement theory takes a distribution to be just if and only if it
+    arose by just acquisition and just transfer. Patterned distributions — to each
+    according to need, merit, or equality — necessarily violate liberty because
+    they require ongoing redistribution of legitimately-held holdings.
+  sources: [nozick:anarchy-state-utopia]
+
+- id: distributive-egalitarian-001
+  domain: philosophy
+  topic: distributive_justice
+  tradition: egalitarian
+  tags: [politics, justice, fairness]
+  keywords: [distributive, justice, rawls, difference, principle, equality]
+  text: |
+    Rawls's difference principle holds that social and economic inequalities are
+    just only insofar as they are arranged to benefit the least advantaged. Behind
+    a veil of ignorance, rational parties would choose this principle to secure
+    fair shares without knowing where they will land in the distribution.
+  sources: [rawls:theory-of-justice]
+
+- id: distributive-communitarian-001
+  domain: philosophy
+  topic: distributive_justice
+  tradition: communitarian
+  tags: [politics, justice, community]
+  keywords: [distributive, justice, communitarian, sphere, social, meaning]
+  text: |
+    Walzer's pluralist account argues that different goods — money, healthcare,
+    citizenship, education — belong to different distributive spheres governed by
+    different principles, drawn from the social meanings of those goods within a
+    particular community. Justice is preventing dominance of one sphere over
+    another, not imposing a single pattern.
+  sources: [walzer:spheres-of-justice]
+
+# ---------- topic: privacy ----------
+
+- id: privacy-libertarian-001
+  domain: philosophy
+  topic: privacy
+  tradition: libertarian
+  tags: [politics, privacy, autonomy]
+  keywords: [privacy, surveillance, autonomy, freedom, data]
+  text: |
+    The libertarian view treats privacy as a corollary of self-ownership and
+    contract. Surveillance, mandated data sharing, and pre-emptive monitoring are
+    intrusions on autonomy that require strong justification; voluntary consent
+    is what legitimates data collection, not promises of public benefit.
+  sources: [posner:economics-of-privacy]
+
+- id: privacy-communitarian-001
+  domain: philosophy
+  topic: privacy
+  tradition: communitarian
+  tags: [politics, privacy, community]
+  keywords: [privacy, surveillance, public, accountability, community]
+  text: |
+    The communitarian view balances privacy against the goods of accountability,
+    public health, and trust. Excessive privacy can shield wrongdoing and corrode
+    civic life; legitimate surveillance for shared purposes — public safety,
+    preventing fraud — has a place provided it is transparent and proportionate.
+  sources: [etzioni:limits-of-privacy]
+
+- id: privacy-utilitarian-001
+  domain: philosophy
+  topic: privacy
+  tradition: utilitarian
+  tags: [politics, privacy, welfare]
+  keywords: [privacy, surveillance, welfare, harm, utility]
+  text: |
+    The utilitarian view evaluates privacy regimes by their consequences:
+    chilling effects on speech and innovation, the welfare losses of identity
+    theft, and the gains from targeted services and security. The optimum is
+    rarely all-or-nothing, calling for context-dependent rules that maximize
+    aggregate wellbeing.
+  sources: [solove:nothing-to-hide]
+
+# ---------- topic: war ----------
+
+- id: war-just-war-001
+  domain: philosophy
+  topic: war
+  tradition: just_war
+  tags: [ethics, war, jus]
+  keywords: [war, just, jus, bellum, augustine, aquinas, proportionality]
+  text: |
+    Just war theory, articulated from Augustine and Aquinas through modern
+    formulations, sets criteria for both going to war (jus ad bellum) — just
+    cause, legitimate authority, last resort, proportionality — and conduct in
+    war (jus in bello) — discrimination between combatants and civilians and
+    proportional means.
+  sources: [walzer:just-and-unjust-wars]
+
+- id: war-pacifist-001
+  domain: philosophy
+  topic: war
+  tradition: pacifist
+  tags: [ethics, war, nonviolence]
+  keywords: [war, pacifism, nonviolence, gandhi, conscientious]
+  text: |
+    Pacifism holds that organized killing in war is morally impermissible. Strict
+    versions reject all violence; contingent pacifists argue that modern war's
+    technologies and politics make any prospective war unjust in fact, even if
+    war could be permissible in principle.
+  sources: [gandhi:nonviolent-resistance]
+
+- id: war-realist-001
+  domain: philosophy
+  topic: war
+  tradition: realist
+  tags: [ethics, war, statecraft]
+  keywords: [war, realism, statecraft, security, hobbes, machiavelli]
+  text: |
+    Political realism takes states to inhabit an anarchic system in which moral
+    categories applied to individuals do not transfer cleanly to international
+    relations. Statecraft, including the use of force, is judged primarily by
+    prudence and the survival and security interests of the state.
+  sources: [morgenthau:politics-among-nations]
+
+# ---------- topic: religious_freedom ----------
+
+- id: religion-libertarian-001
+  domain: philosophy
+  topic: religious_freedom
+  tradition: libertarian
+  tags: [politics, religion, freedom]
+  keywords: [religious, freedom, liberty, conscience, exemption]
+  text: |
+    The libertarian view treats religious practice as a free expression of
+    conscience that the state must not coerce or favor. It defends both broad
+    religious-exemption claims and a strict limit on state involvement: the
+    state may neither establish a religion nor punish its peaceful practice.
+  sources: [locke:letter-on-toleration]
+
+- id: religion-communitarian-001
+  domain: philosophy
+  topic: religious_freedom
+  tradition: communitarian
+  tags: [politics, religion, community]
+  keywords: [religious, freedom, community, tradition, public]
+  text: |
+    Communitarians stress that religious traditions are constitutive sources of
+    moral identity for their adherents and for political communities. Religious
+    freedom should protect not only individual conscience but also the capacity
+    of religious communities to sustain their practices and shape their
+    institutions, balanced against shared civic commitments.
+  sources: [sandel:liberalism-and-the-limits-of-justice]
+
+- id: religion-secular-001
+  domain: philosophy
+  topic: religious_freedom
+  tradition: secular
+  tags: [politics, religion, secularism]
+  keywords: [religious, freedom, secular, separation, public, reason]
+  text: |
+    The secular-liberal view defends religious freedom while insisting that
+    public reasons given in political deliberation be accessible to citizens of
+    all faiths and none. Religiously grounded conscience claims may exempt
+    individuals, but state action and shared civic discourse should rest on
+    public reasons rather than sectarian doctrine.
+  sources: [rawls:political-liberalism]

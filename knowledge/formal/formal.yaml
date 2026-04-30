@@ -294,3 +294,308 @@
     Time-independent Schrödinger equation: H psi = E psi — the Hamiltonian acting on a
     stationary state returns the same state scaled by its energy eigenvalue.
   sources: [textbook:quantum-mechanics]
+
+# ---------- chemistry ----------
+
+- id: henderson-hasselbalch-001
+  domain: chemistry
+  tags: [acid, base, ph, buffer]
+  keywords: [henderson, hasselbalch, ph, pka, buffer, acid, base]
+  equation: "pH = pKa + log10(A/HA)"
+  variables:
+    pH: pH of the buffer
+    pKa: acid dissociation constant (negative log)
+    A: concentration of conjugate base (mol/L)
+    HA: concentration of weak acid (mol/L)
+  text: |
+    Henderson-Hasselbalch equation: pH = pKa + log10([A-]/[HA]) — used to estimate the
+    pH of a buffer solution from the ratio of conjugate base to weak acid.
+  sources: [textbook:chemistry]
+
+- id: beer-lambert-001
+  domain: chemistry
+  tags: [spectroscopy, absorbance]
+  keywords: [beer, lambert, absorbance, concentration, spectroscopy]
+  equation: "A = e*c*l"
+  variables:
+    A: absorbance
+    e: molar absorptivity (L/(mol cm))
+    c: concentration (mol/L)
+    l: path length (cm)
+  text: |
+    Beer-Lambert law: A = e c l — absorbance is proportional to molar absorptivity,
+    concentration of the absorbing species, and the path length of the light through
+    the sample.
+  sources: [textbook:analytical-chemistry]
+
+- id: equilibrium-constant-001
+  domain: chemistry
+  tags: [equilibrium, kinetics]
+  keywords: [equilibrium, constant, reaction, products, reactants]
+  equation: "K = P/R"
+  variables:
+    K: equilibrium constant
+    P: product activity (or concentration)
+    R: reactant activity (or concentration)
+  text: |
+    For a reaction at equilibrium aA + bB <=> cC + dD, the equilibrium constant
+    K = ([C]^c [D]^d) / ([A]^a [B]^b). The simplified form K = P / R captures the
+    products-over-reactants structure for symmetric one-to-one reactions.
+  sources: [textbook:chemistry]
+
+- id: avogadro-mole-001
+  domain: chemistry
+  tags: [mole, count]
+  keywords: [avogadro, mole, particles, molecules]
+  equation: "N = n*Na"
+  variables:
+    N: number of particles
+    n: amount of substance (mol)
+    Na: Avogadro's number ~ 6.022e23
+  defaults:
+    Na: 6.022e23
+  text: |
+    Avogadro's law of counting: the number of particles N in n moles of any substance
+    is N = n * 6.022e23, since one mole always contains Avogadro's number of entities.
+  sources: [textbook:chemistry]
+
+# ---------- statistics & probability ----------
+
+- id: arithmetic-mean-001
+  domain: math
+  tags: [statistics, average]
+  keywords: [mean, average, arithmetic, expected]
+  equation: "mu = S/n"
+  variables:
+    mu: arithmetic mean
+    S: sum of all values
+    n: number of values
+  text: |
+    The arithmetic mean of n values is mu = (sum of values) / n. It is the most common
+    measure of central tendency for numerical data.
+  sources: [textbook:statistics]
+
+- id: variance-001
+  domain: math
+  tags: [statistics, dispersion]
+  keywords: [variance, deviation, dispersion]
+  equation: "sigma2 = SS/n"
+  variables:
+    sigma2: population variance
+    SS: sum of squared deviations from the mean
+    n: number of values
+  text: |
+    Population variance: sigma^2 = (1/n) sum_i (x_i - mu)^2. It measures how far
+    individual observations spread from the mean.
+  sources: [textbook:statistics]
+
+- id: stddev-001
+  domain: math
+  tags: [statistics, dispersion]
+  keywords: [standard, deviation, sigma, spread]
+  equation: "sigma = sqrt(sigma2)"
+  variables:
+    sigma: standard deviation
+    sigma2: variance
+  text: |
+    Standard deviation is the square root of variance, sigma = sqrt(sigma^2). Same
+    units as the original data, which makes it easier to interpret.
+  sources: [textbook:statistics]
+
+- id: zscore-001
+  domain: math
+  tags: [statistics, standardize]
+  keywords: [zscore, standardize, normal]
+  equation: "z = (x - mu)/sigma"
+  variables:
+    z: standard score
+    x: observation
+    mu: mean
+    sigma: standard deviation
+  text: |
+    Z-score: z = (x - mu) / sigma — expresses how many standard deviations an
+    observation lies above or below the mean.
+  sources: [textbook:statistics]
+
+- id: bayes-theorem-001
+  domain: math
+  tags: [probability, inference]
+  keywords: [bayes, posterior, prior, conditional]
+  equation: "P_AB = P_BA*P_A/P_B"
+  variables:
+    P_AB: posterior P(A|B)
+    P_BA: likelihood P(B|A)
+    P_A: prior P(A)
+    P_B: marginal P(B)
+  text: |
+    Bayes' theorem: P(A|B) = P(B|A) P(A) / P(B). It updates the prior probability of
+    A in light of evidence B and is the core engine of Bayesian inference.
+  sources: [textbook:probability]
+
+- id: correlation-001
+  domain: math
+  tags: [statistics, association]
+  keywords: [correlation, pearson, association, r]
+  equation: "r = covXY/(sigmaX*sigmaY)"
+  variables:
+    r: Pearson correlation coefficient
+    covXY: covariance of X and Y
+    sigmaX: standard deviation of X
+    sigmaY: standard deviation of Y
+  text: |
+    Pearson correlation: r = cov(X, Y) / (sigma_X sigma_Y). It measures the strength
+    and direction of a linear relationship; r in [-1, 1].
+  sources: [textbook:statistics]
+
+- id: log-change-base-001
+  domain: math
+  tags: [logarithm, identity]
+  keywords: [logarithm, change, base, log]
+  equation: "y = log(x)/log(b)"
+  variables:
+    y: log_b(x), the result we want
+    x: argument
+    b: target base
+  text: |
+    Change of base for logarithms: log_b(x) = log_a(x) / log_a(b). Lets you compute
+    a logarithm in any base using the natural log or base-10 log on a calculator.
+  sources: [textbook:algebra]
+
+- id: exp-decay-001
+  domain: physics
+  tags: [decay, radiation]
+  keywords: [exponential, decay, radioactive, half, life]
+  equation: "N = N0*exp(-lam*t)"
+  variables:
+    N: amount remaining at time t
+    N0: initial amount
+    lam: decay constant (1/s)
+    t: time (s)
+  text: |
+    Exponential decay: N(t) = N_0 e^(-lambda t). Describes radioactive decay, capacitor
+    discharge, and any first-order rate process where the rate is proportional to the
+    amount present.
+  sources: [textbook:physics]
+
+# ---------- physics extras ----------
+
+- id: half-life-001
+  domain: physics
+  tags: [decay, radiation]
+  keywords: [half, life, halflife, decay, lambda]
+  equation: "thalf = log(2)/lam"
+  variables:
+    thalf: half-life (s)
+    lam: decay constant (1/s)
+  text: |
+    Half-life: t_1/2 = ln(2) / lambda. The time for half of the initial population to
+    decay in a first-order process.
+  sources: [textbook:physics]
+
+- id: heat-capacity-001
+  domain: physics
+  tags: [thermodynamics, heat]
+  keywords: [heat, capacity, specific, temperature, energy]
+  equation: "Q = m*c*dT"
+  variables:
+    Q: heat energy (J)
+    m: mass (kg)
+    c: specific heat capacity (J/(kg K))
+    dT: temperature change (K)
+  text: |
+    Heat needed to change the temperature of a mass: Q = m c dT, where c is the
+    specific heat capacity of the substance.
+  sources: [textbook:thermodynamics]
+
+- id: electric-power-001
+  domain: physics
+  tags: [electricity, power]
+  keywords: [power, electric, voltage, current, watt]
+  equation: "P = V*I"
+  variables:
+    P: electrical power (W)
+    V: voltage (V)
+    I: current (A)
+  text: |
+    Electrical power: P = V I — the rate at which a circuit element converts electrical
+    energy. For ohmic loads this also equals I^2 R or V^2 / R.
+  sources: [textbook:electromagnetism]
+
+- id: lens-equation-001
+  domain: physics
+  tags: [optics, lens]
+  keywords: [lens, focal, length, object, image, thin]
+  equation: "1/f = 1/u + 1/v"
+  variables:
+    f: focal length (m)
+    u: object distance (m)
+    v: image distance (m)
+  text: |
+    Thin lens equation: 1/f = 1/u + 1/v relates focal length, object distance, and
+    image distance for a thin converging or diverging lens.
+  sources: [textbook:optics]
+
+# ---------- finance / economics ----------
+
+- id: future-value-001
+  domain: economics
+  tags: [finance, time-value]
+  keywords: [future, value, compound, interest, fv]
+  equation: "FV = PV*(1 + r)**n"
+  variables:
+    FV: future value
+    PV: present value
+    r: per-period interest rate (decimal)
+    n: number of periods
+  text: |
+    Future value with compound interest: FV = PV (1 + r)^n. Tells you how much an
+    investment of PV grows to after n compounding periods at rate r.
+  sources: [textbook:finance]
+
+- id: present-value-001
+  domain: economics
+  tags: [finance, time-value]
+  keywords: [present, value, discount, pv]
+  equation: "PV = FV/(1 + r)**n"
+  variables:
+    PV: present value
+    FV: future cash flow
+    r: per-period discount rate (decimal)
+    n: number of periods
+  text: |
+    Present value: PV = FV / (1 + r)^n. The amount that a future cash flow FV is worth
+    today after discounting at rate r over n periods.
+  sources: [textbook:finance]
+
+- id: compound-interest-formula-001
+  domain: economics
+  tags: [finance, interest]
+  keywords: [compound, interest, principal, rate, compounding]
+  equation: "A = P*(1 + r/k)**(k*t)"
+  variables:
+    A: ending balance
+    P: principal
+    r: nominal annual rate (decimal)
+    k: compounding periods per year
+    t: years
+  text: |
+    Compound interest with k compounding periods per year: A = P (1 + r/k)^(k t).
+    As k -> infinity this approaches A = P e^(r t) (continuous compounding).
+  sources: [textbook:finance]
+
+- id: net-present-value-001
+  domain: economics
+  tags: [finance, valuation]
+  keywords: [npv, present, value, cash, flow, investment]
+  equation: "NPV = CF/(1 + r)**t - C0"
+  variables:
+    NPV: net present value
+    CF: cash flow at time t
+    r: per-period discount rate
+    t: time period
+    C0: initial investment
+  text: |
+    Net present value of a single future cash flow: NPV = CF / (1 + r)^t - C0. For a
+    series of cash flows, sum the discounted values and subtract the initial outlay.
+    Positive NPV means the project adds value.
+  sources: [textbook:corporate-finance]

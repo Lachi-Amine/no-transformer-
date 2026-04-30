@@ -4,7 +4,7 @@ from dataclasses import dataclass, field, asdict
 from typing import Any
 
 DOMAINS = [
-    "math", "physics", "biology", "medicine", "economics",
+    "math", "physics", "chemistry", "biology", "medicine", "economics",
     "history", "philosophy", "general",
 ]
 
