@@ -73,9 +73,10 @@ def test_render_green_yellow_red_order():
     g = EvidenceRecord(engine="green", claim="G", support=("g-1",), score=1.0)
     y = EvidenceRecord(engine="yellow", claim="Y", support=("y-1",), score=0.7)
     r = EvidenceRecord(engine="red", claim="R", support=("r-1",), score=0.6)
-    # records intentionally out of order
+    # records intentionally out of order; use interpret intent so synthesis doesn't merge green+yellow
+    interpret_cls = Classification(domain="biology", intent="interpret", domain_probs={}, intent_probs={})
     out = render(
-        _query(), _cls(), EpistemicVector(g=0.4, y=0.3, r=0.3),
+        _query(), interpret_cls, EpistemicVector(g=0.4, y=0.3, r=0.3),
         FusedEvidence(records=(y, r, g)), 0.7,
     )
     g_pos = out.index("Formally:")
@@ -239,3 +240,136 @@ def test_bench_total_is_sum_of_stages(pipeline):
     sum_stages = sum(v for k, v in timings.items() if k != "total")
     # total is computed as sum of stages
     assert abs(timings["total"] - sum_stages) < 1e-9
+
+
+# --- cross-engine synthesis (M13) ---
+
+def _q():
+    return Query(raw="x", normalized="x", tokens=("x",), entities={})
+
+
+def _cls_with(intent="define", domain="physics"):
+    return Classification(domain=domain, intent=intent, domain_probs={}, intent_probs={})
+
+
+def _green_record(claim="Newton's second law: F = m a.", supports=("newton-second-001",)):
+    return EvidenceRecord(engine="green", claim=claim, support=supports, score=1.0)
+
+
+def _yellow_record(claim="In real fluids friction reduces acceleration.", supports=("friction-001",)):
+    return EvidenceRecord(engine="yellow", claim=claim, support=supports, score=0.7)
+
+
+def test_synthesis_define_template():
+    from pipeline.orchestrator import render
+    out = render(
+        _q(), _cls_with(intent="define"),
+        EpistemicVector(g=0.6, y=0.3, r=0.1),
+        FusedEvidence(records=(_green_record(), _yellow_record())),
+        0.7,
+    )
+    assert "In practice," in out
+    assert "Newton's second law" in out
+    assert "in real fluids" in out
+    assert "Formally:" not in out  # synthesis replaces the prefix
+    assert "Empirically:" not in out
+
+
+def test_synthesis_compute_template():
+    from pipeline.orchestrator import render
+    out = render(
+        _q(), _cls_with(intent="compute"),
+        EpistemicVector(g=0.7, y=0.2, r=0.1),
+        FusedEvidence(records=(_green_record("Computed: F = 15 N."), _yellow_record())),
+        0.8,
+    )
+    assert "In broader context," in out
+    assert "Computed: F = 15 N." in out
+
+
+def test_synthesis_explain_process_template():
+    from pipeline.orchestrator import render
+    out = render(
+        _q(), _cls_with(intent="explain_process"),
+        EpistemicVector(g=0.5, y=0.4, r=0.1),
+        FusedEvidence(records=(_green_record(), _yellow_record())),
+        0.7,
+    )
+    assert "Empirically," in out
+
+
+def test_synthesis_summarize_template():
+    from pipeline.orchestrator import render
+    out = render(
+        _q(), _cls_with(intent="summarize"),
+        EpistemicVector(g=0.4, y=0.5, r=0.1),
+        FusedEvidence(records=(_green_record(), _yellow_record())),
+        0.7,
+    )
+    assert "Formally," in out
+
+
+def test_no_synthesis_when_only_green():
+    from pipeline.orchestrator import render
+    out = render(
+        _q(), _cls_with(intent="define"),
+        EpistemicVector(g=0.8, y=0.1, r=0.1),
+        FusedEvidence(records=(_green_record(),)),
+        0.7,
+    )
+    assert "Formally:" in out
+    assert "In practice," not in out
+
+
+def test_no_synthesis_when_only_yellow():
+    from pipeline.orchestrator import render
+    out = render(
+        _q(), _cls_with(intent="define"),
+        EpistemicVector(g=0.1, y=0.8, r=0.1),
+        FusedEvidence(records=(_yellow_record(),)),
+        0.7,
+    )
+    assert "Empirically:" in out
+    assert "In practice," not in out
+
+
+def test_no_synthesis_for_unsupported_intent():
+    from pipeline.orchestrator import render
+    out = render(
+        _q(), _cls_with(intent="interpret"),
+        EpistemicVector(g=0.4, y=0.5, r=0.1),
+        FusedEvidence(records=(_green_record(), _yellow_record())),
+        0.7,
+    )
+    # interpret has no template; falls back to per-engine lines
+    assert "Formally:" in out
+    assert "Empirically:" in out
+
+
+def test_synthesis_combines_supports():
+    from pipeline.orchestrator import render
+    out = render(
+        _q(), _cls_with(intent="define"),
+        EpistemicVector(g=0.5, y=0.4, r=0.1),
+        FusedEvidence(records=(
+            _green_record(supports=("newton-second-001",)),
+            _yellow_record(supports=("friction-001", "drag-001")),
+        )),
+        0.7,
+    )
+    assert "newton-second-001" in out
+    assert "friction-001" in out
+    assert "drag-001" in out
+
+
+def test_synthesis_keeps_red_separate():
+    from pipeline.orchestrator import render
+    red = EvidenceRecord(engine="red", claim="From the Aristotelian view: motion requires effort.", support=("aristotle-001",), score=0.6)
+    out = render(
+        _q(), _cls_with(intent="define"),
+        EpistemicVector(g=0.4, y=0.4, r=0.2),
+        FusedEvidence(records=(_green_record(), _yellow_record(), red)),
+        0.7,
+    )
+    assert "In practice," in out
+    assert "Interpretively:" in out

@@ -58,12 +58,12 @@ class YellowRetrievalEngine(Engine):
         linked_score_floor = float(cfg.get("linked_score_floor", 0.3))
 
         scores = self._bm25.get_scores(q_tokens)
+        q_set = set(q_tokens)
 
         global_best = max(range(len(self.entries)), key=lambda i: scores[i])
         global_best_score = float(scores[global_best])
 
         if cls.domain == "general":
-            q_set = set(q_tokens)
             candidate_idx = [
                 i for i, e in enumerate(self.entries)
                 if q_set & {k.lower() for k in (e.get("keywords") or [])}
@@ -86,6 +86,10 @@ class YellowRetrievalEngine(Engine):
             ranked = sorted(range(len(self.entries)), key=lambda i: -scores[i])
 
         if top_score < bm25_threshold:
+            return None
+
+        top_keywords = {k.lower() for k in (self.entries[top_idx].get("keywords") or [])}
+        if not (q_set & top_keywords):
             return None
 
         top_domain = self.entries[top_idx].get("domain")

@@ -176,6 +176,13 @@ def _resolve_coref(raw: str, history: list[Response]) -> tuple[str, dict | None]
 
 _ENGINE_LABELS = {"green": "Formally", "yellow": "Empirically", "red": "Interpretively"}
 
+_SYNTHESIS_TEMPLATES: dict[str, str] = {
+    "compute":         "{green} In broader context, {yellow_lc}",
+    "define":          "{green} In practice, {yellow_lc}",
+    "explain_process": "{green} Empirically, {yellow_lc}",
+    "summarize":       "{yellow} Formally, {green_lc}",
+}
+
 
 def render(query, cls, epi: EpistemicVector, evidence: FusedEvidence, confidence: float) -> str:
     if not evidence.records:
@@ -189,14 +196,27 @@ def render(query, cls, epi: EpistemicVector, evidence: FusedEvidence, confidence
     for r in evidence.records:
         by_engine.setdefault(r.engine, []).append(r)
 
-    for engine_name in ("green", "yellow", "red"):
-        for record in by_engine.get(engine_name, []):
-            label = _ENGINE_LABELS.get(engine_name, engine_name.capitalize())
-            citation = _format_citation(record.support)
-            line = f"{label}: {record.claim}"
-            if citation:
-                line = f"{line} {citation}"
-            lines.append(line)
+    synthesized = _try_synthesize(by_engine, cls.intent)
+    if synthesized is not None:
+        text, support = synthesized
+        citation = _format_citation(tuple(support))
+        line = text if not citation else f"{text} {citation}"
+        lines.append(line)
+        for record in by_engine.get("red", []):
+            cite = _format_citation(record.support)
+            r_line = f"Interpretively: {record.claim}"
+            if cite:
+                r_line = f"{r_line} {cite}"
+            lines.append(r_line)
+    else:
+        for engine_name in ("green", "yellow", "red"):
+            for record in by_engine.get(engine_name, []):
+                label = _ENGINE_LABELS.get(engine_name, engine_name.capitalize())
+                citation = _format_citation(record.support)
+                line = f"{label}: {record.claim}"
+                if citation:
+                    line = f"{line} {citation}"
+                lines.append(line)
 
     if evidence.contradictions:
         lines.append("")
@@ -209,6 +229,44 @@ def render(query, cls, epi: EpistemicVector, evidence: FusedEvidence, confidence
                 lines.append(f"  - [{rec_b.engine}] {rec_b.claim}")
 
     return "\n".join(lines)
+
+
+def _try_synthesize(by_engine: dict[str, list], intent: str):
+    template = _SYNTHESIS_TEMPLATES.get(intent)
+    if template is None:
+        return None
+    if not by_engine.get("green") or not by_engine.get("yellow"):
+        return None
+
+    green = by_engine["green"][0]
+    yellow = by_engine["yellow"][0]
+
+    green_text = _ensure_period(green.claim.strip())
+    yellow_text = _ensure_period(yellow.claim.strip())
+
+    text = template.format(
+        green=green_text,
+        yellow=yellow_text,
+        green_lc=_lower_first(green_text),
+        yellow_lc=_lower_first(yellow_text),
+    )
+
+    support = list(green.support) + [s for s in yellow.support if s not in green.support]
+    return text, support
+
+
+def _ensure_period(s: str) -> str:
+    if not s:
+        return s
+    if s[-1] in ".!?":
+        return s
+    return s + "."
+
+
+def _lower_first(s: str) -> str:
+    if not s:
+        return s
+    return s[0].lower() + s[1:]
 
 
 def _format_citation(support: tuple) -> str:
