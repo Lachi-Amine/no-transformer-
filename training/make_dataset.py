@@ -119,12 +119,47 @@ def _validate_qa_pairs(path: Path) -> int:
     return len(issues)
 
 
+def _validate_feedback(path: Path) -> int:
+    if not path.exists():
+        return 0
+    rows = 0
+    issues = []
+    n_pos = n_neg = 0
+    with path.open(encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            rows += 1
+            if not r.get("query", "").strip():
+                issues.append(f"row {rows}: empty query")
+                continue
+            try:
+                label = float(r["label"])
+            except (KeyError, ValueError):
+                issues.append(f"row {rows}: bad label")
+                continue
+            if not 0.0 <= label <= 1.0:
+                issues.append(f"row {rows}: label {label} out of [0,1]")
+            if label >= 0.5:
+                n_pos += 1
+            else:
+                n_neg += 1
+    print(f"\n=== {path.name} === total rows: {rows}")
+    print(f"  positive (label >= 0.5): {n_pos}")
+    print(f"  negative (label  < 0.5): {n_neg}")
+    if issues:
+        print(f"  issues ({len(issues)}):")
+        for i in issues[:5]:
+            print(f"    - {i}")
+    return len(issues)
+
+
 def main() -> int:
     fail = 0
     fail += _validate_classification(DATASETS / "domains.csv", DOMAINS, DOMAIN_TARGET)
     fail += _validate_classification(DATASETS / "intents.csv", INTENTS, INTENT_TARGET)
     fail += _validate_epistemic(DATASETS / "epistemic.csv")
     fail += _validate_qa_pairs(DATASETS / "qa_pairs.csv")
+    fail += _validate_feedback(DATASETS / "feedback.csv")
     print()
     if fail:
         print(f"FAIL: {fail} issue(s)")

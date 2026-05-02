@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from pipeline import feedback as feedback_mod
 from pipeline.orchestrator import Pipeline
 from pipeline.schemas import Response
 
@@ -21,6 +22,9 @@ Commands:
   :why           explain the last response (evidence + contradictions)
   :history       show the last few questions and answers
   :forget        clear the in-session conversation memory
+  :good          mark the last response as correct (logs to feedback.csv)
+  :bad           mark the last response as wrong   (logs to feedback.csv)
+  :rate N        rate the last response 1-5        (logs to feedback.csv)
   :exit          quit (Ctrl-D also works)
 Type any other text to ask a question.
 Pronouns (it, that, this, they) in your question are resolved against the
@@ -86,6 +90,36 @@ def main() -> int:
             if cmd == "forget":
                 pipeline.forget()
                 print("conversation memory cleared.")
+                continue
+            if cmd in {"good", "bad", "rate"}:
+                if last is None:
+                    print("no previous response to rate.")
+                    continue
+                if cmd == "good":
+                    label = 1.0
+                elif cmd == "bad":
+                    label = 0.0
+                else:
+                    try:
+                        n = int(arg)
+                    except ValueError:
+                        print("usage: :rate N  where N is 1..5")
+                        continue
+                    if not 1 <= n <= 5:
+                        print("rating must be between 1 and 5")
+                        continue
+                    label = (n - 1) / 4.0
+                try:
+                    feedback_mod.record(
+                        query=last.query.raw,
+                        label=label,
+                        rendered=last.rendered,
+                        confidence=last.confidence,
+                    )
+                except Exception as exc:
+                    print(f"error logging feedback: {exc}")
+                    continue
+                print(f"logged: label={label:.2f} (confidence at time was {last.confidence:.2f})")
                 continue
             print(f"unknown command: :{cmd}  (try :help)")
             continue
