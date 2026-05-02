@@ -19,8 +19,12 @@ Commands:
   :debug on/off  toggle full pipeline trace
   :reload        re-read trained models from disk
   :why           explain the last response (evidence + contradictions)
+  :history       show the last few questions and answers
+  :forget        clear the in-session conversation memory
   :exit          quit (Ctrl-D also works)
 Type any other text to ask a question.
+Pronouns (it, that, this, they) in your question are resolved against the
+previous question's main topic.
 """
 
 
@@ -76,6 +80,13 @@ def main() -> int:
                 else:
                     _explain(last)
                 continue
+            if cmd == "history":
+                _print_history(pipeline)
+                continue
+            if cmd == "forget":
+                pipeline.forget()
+                print("conversation memory cleared.")
+                continue
             print(f"unknown command: :{cmd}  (try :help)")
             continue
 
@@ -98,10 +109,27 @@ def _print_status(pipeline: Pipeline) -> None:
     print()
 
 
+def _print_history(pipeline: Pipeline) -> None:
+    if not pipeline.history:
+        print("no history yet.")
+        return
+    print(f"history ({len(pipeline.history)} of {pipeline._max_history} turns):")
+    for i, resp in enumerate(pipeline.history):
+        first_line = resp.rendered.split("\n", 1)[0]
+        if len(first_line) > 80:
+            first_line = first_line[:77] + "..."
+        print(f"  [{i}] Q: {resp.query.raw}")
+        print(f"      A: {first_line}")
+    print()
+
+
 def _print_response(resp: Response, debug: bool) -> None:
     cls = resp.classification
     epi = resp.epistemic
     print()
+    coref = resp.debug.get("coref")
+    if coref is not None:
+        print(f"(resolved pronoun -> '{coref['topic']}' from previous query)")
     print(f"domain: {cls.domain}   intent: {cls.intent}")
     print(f"epistemic: g={epi.g:.2f}  y={epi.y:.2f}  r={epi.r:.2f}")
 
@@ -135,6 +163,11 @@ def _explain(resp: Response) -> None:
     print(f"tokens: {list(resp.query.tokens)}")
     if resp.query.entities:
         print(f"entities: {resp.query.entities}")
+
+    coref = resp.debug.get("coref")
+    if coref is not None:
+        print(f"coref: pronoun resolved to '{coref['topic']}' (from: {coref['from_query']!r})")
+        print(f"       expanded to: {coref['expanded']!r}")
     print()
 
     print(f"domain: {cls.domain}")

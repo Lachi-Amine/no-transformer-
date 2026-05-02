@@ -135,3 +135,81 @@ def test_pipeline_engine_status_present(pipeline):
 def test_pipeline_empty_query_raises(pipeline):
     with pytest.raises(ValueError):
         pipeline.run("")
+
+
+# --- conversation memory (M9) ---
+
+def _fresh():
+    return Pipeline()
+
+
+def test_history_grows_then_caps():
+    p = _fresh()
+    assert p.history == []
+    p.run("what is amylase")
+    p.run("what is photosynthesis")
+    p.run("what is mitosis")
+    assert len(p.history) == 3
+    p.run("what is dna")
+    assert len(p.history) == 3
+    assert p.history[0].query.raw == "what is photosynthesis"
+    assert p.history[-1].query.raw == "what is dna"
+
+
+def test_forget_clears_history():
+    p = _fresh()
+    p.run("what is amylase")
+    assert len(p.history) == 1
+    p.forget()
+    assert p.history == []
+
+
+def test_coref_resolves_pronoun_to_previous_topic():
+    p = _fresh()
+    p.run("what is amylase")
+    resp = p.run("how does it work")
+    coref = resp.debug.get("coref")
+    assert coref is not None
+    assert coref["topic"] == "amylase"
+    assert "amylase" in coref["expanded"]
+    assert "amylase" in resp.query.tokens
+    # Original raw is preserved for display
+    assert resp.query.raw == "how does it work"
+
+
+def test_coref_no_history_no_resolution():
+    p = _fresh()
+    resp = p.run("how does it work")
+    assert resp.debug.get("coref") is None
+
+
+def test_coref_no_pronoun_no_resolution():
+    p = _fresh()
+    p.run("what is amylase")
+    resp = p.run("what is photosynthesis")
+    assert resp.debug.get("coref") is None
+
+
+def test_coref_topic_is_longest_distinctive_token():
+    p = _fresh()
+    p.run("what is photosynthesis")
+    resp = p.run("explain it")
+    assert resp.debug["coref"]["topic"] == "photosynthesis"
+
+
+def test_coref_threading_across_three_turns():
+    p = _fresh()
+    p.run("what is amylase")
+    resp2 = p.run("how does it work")
+    # After turn 2, the topic of the LAST query is now amylase (resolved tokens include it)
+    resp3 = p.run("where is it found")
+    assert resp3.debug["coref"]["topic"] in {"amylase", "found", "where"}
+    # Pronoun got expanded into something
+    assert "it" not in resp3.debug["coref"]["expanded"].lower().split()
+
+
+def test_reload_does_not_clear_history():
+    p = _fresh()
+    p.run("what is amylase")
+    p.reload()
+    assert len(p.history) == 1

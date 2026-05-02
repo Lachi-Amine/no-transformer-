@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from typing import Iterable
 
 from engines.base import Engine
@@ -12,10 +13,25 @@ from .confidence import ConfidenceEstimator
 from .domain_classifier import DomainClassifier
 from .intent_classifier import IntentClassifier
 from .router import EpistemicRouter
-from .schemas import EpistemicVector, FusedEvidence, Response
+from .schemas import EpistemicVector, FusedEvidence, Query, Response
+
+_PRONOUN_RE = re.compile(
+    r"\b(it|its|that|this|they|them|their|those|these)\b", re.IGNORECASE
+)
+_TOPIC_STOPWORDS = {
+    "what", "is", "are", "the", "a", "an", "how", "does", "do", "of", "and",
+    "or", "but", "in", "on", "for", "to", "by", "with", "from", "this", "that",
+    "those", "these", "it", "they", "them", "their", "its", "be", "was", "were",
+    "can", "could", "should", "would", "will", "may", "might", "compare", "between",
+    "explain", "tell", "give", "say", "your", "you", "we", "our", "my", "i",
+    "why", "when", "where", "who", "which", "which", "kind", "type", "find",
+    "compute", "calculate", "solve", "predict", "summarize", "describe",
+}
 
 
 class Pipeline:
+    DEFAULT_HISTORY_SIZE = 3
+
     def __init__(self) -> None:
         self.domain_clf = DomainClassifier()
         self.intent_clf = IntentClassifier()
@@ -26,12 +42,17 @@ class Pipeline:
             YellowRetrievalEngine(),
             RedSynthesisEngine(),
         )
+        self._max_history = self.DEFAULT_HISTORY_SIZE
+        self.history: list[Response] = []
 
     def reload(self) -> None:
         self.domain_clf = DomainClassifier()
         self.intent_clf = IntentClassifier()
         self.router = EpistemicRouter()
         self.confidence = ConfidenceEstimator()
+
+    def forget(self) -> None:
+        self.history.clear()
 
     def status(self) -> dict[str, str]:
         return {
@@ -42,7 +63,19 @@ class Pipeline:
         }
 
     def run(self, raw: str) -> Response:
-        query = query_processing.process(raw)
+        expanded, coref_info = _resolve_coref(raw, self.history)
+
+        processed = query_processing.process(expanded)
+        if coref_info is not None:
+            query = Query(
+                raw=raw,
+                normalized=processed.normalized,
+                tokens=processed.tokens,
+                entities={**processed.entities, "coref_topic": coref_info["topic"]},
+            )
+        else:
+            query = processed
+
         cls_domain = self.domain_clf.predict(query)
         cls = self.intent_clf.predict(query, cls_domain)
         epi = self.router.predict(query, cls)
@@ -50,15 +83,51 @@ class Pipeline:
         confidence = self.confidence.predict(epi, evidence)
         rendered = render(query, cls, epi, evidence, confidence)
 
-        return Response(
+        debug = {
+            "engine_status": engine_status,
+            "status": self.status(),
+            "coref": coref_info,
+        }
+
+        response = Response(
             query=query,
             classification=cls,
             epistemic=epi,
             evidence=evidence,
             confidence=confidence,
             rendered=rendered,
-            debug={"engine_status": engine_status, "status": self.status()},
+            debug=debug,
         )
+
+        self.history.append(response)
+        if len(self.history) > self._max_history:
+            self.history = self.history[-self._max_history:]
+        return response
+
+
+def _extract_topic(query: Query) -> str | None:
+    candidates = [t for t in query.tokens if t.lower() not in _TOPIC_STOPWORDS and len(t) >= 4]
+    if not candidates:
+        return None
+    return max(candidates, key=len)
+
+
+def _resolve_coref(raw: str, history: list[Response]) -> tuple[str, dict | None]:
+    if not history:
+        return raw, None
+    if not _PRONOUN_RE.search(raw):
+        return raw, None
+
+    topic = _extract_topic(history[-1].query)
+    if not topic:
+        return raw, None
+
+    expanded = _PRONOUN_RE.sub(topic, raw)
+    return expanded, {
+        "topic": topic,
+        "from_query": history[-1].query.raw,
+        "expanded": expanded,
+    }
 
 
 _ENGINE_LABELS = {"green": "Formally", "yellow": "Empirically", "red": "Interpretively"}
