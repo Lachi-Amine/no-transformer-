@@ -213,3 +213,29 @@ def test_reload_does_not_clear_history():
     p.run("what is amylase")
     p.reload()
     assert len(p.history) == 1
+
+
+# --- :bench (M11) ---
+
+def test_bench_returns_per_stage_timings(pipeline):
+    timings = pipeline.bench("what is amylase")
+    expected_stages = {
+        "query_processing", "domain_classifier", "intent_classifier",
+        "epistemic_router", "fusion_engines", "confidence", "render", "total",
+    }
+    assert set(timings.keys()) == expected_stages
+    for stage, secs in timings.items():
+        assert secs >= 0
+
+
+def test_bench_does_not_grow_history(pipeline):
+    before = len(pipeline.history)
+    pipeline.bench("what is amylase")
+    assert len(pipeline.history) == before
+
+
+def test_bench_total_is_sum_of_stages(pipeline):
+    timings = pipeline.bench("what is photosynthesis")
+    sum_stages = sum(v for k, v in timings.items() if k != "total")
+    # total is computed as sum of stages
+    assert abs(timings["total"] - sum_stages) < 1e-9

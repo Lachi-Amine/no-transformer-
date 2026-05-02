@@ -8,6 +8,7 @@ from engines.green_symbolic import GreenSymbolicEngine
 from engines.red_synthesis import RedSynthesisEngine
 from engines.yellow_retrieval import YellowRetrievalEngine
 
+from . import config as _config
 from . import fusion, query_processing
 from .confidence import ConfidenceEstimator
 from .domain_classifier import DomainClassifier
@@ -30,8 +31,6 @@ _TOPIC_STOPWORDS = {
 
 
 class Pipeline:
-    DEFAULT_HISTORY_SIZE = 3
-
     def __init__(self) -> None:
         self.domain_clf = DomainClassifier()
         self.intent_clf = IntentClassifier()
@@ -42,7 +41,7 @@ class Pipeline:
             YellowRetrievalEngine(),
             RedSynthesisEngine(),
         )
-        self._max_history = self.DEFAULT_HISTORY_SIZE
+        self._max_history = int(_config.get("orchestrator", "history_size", 3))
         self.history: list[Response] = []
 
     def reload(self) -> None:
@@ -53,6 +52,51 @@ class Pipeline:
 
     def forget(self) -> None:
         self.history.clear()
+
+    def bench(self, raw: str) -> dict[str, float]:
+        import time
+        timings: dict[str, float] = {}
+
+        t0 = time.perf_counter()
+        expanded, coref_info = _resolve_coref(raw, self.history)
+        processed = query_processing.process(expanded)
+        if coref_info is not None:
+            query = Query(
+                raw=raw,
+                normalized=processed.normalized,
+                tokens=processed.tokens,
+                entities={**processed.entities, "coref_topic": coref_info["topic"]},
+            )
+        else:
+            query = processed
+        timings["query_processing"] = time.perf_counter() - t0
+
+        t0 = time.perf_counter()
+        cls_domain = self.domain_clf.predict(query)
+        timings["domain_classifier"] = time.perf_counter() - t0
+
+        t0 = time.perf_counter()
+        cls = self.intent_clf.predict(query, cls_domain)
+        timings["intent_classifier"] = time.perf_counter() - t0
+
+        t0 = time.perf_counter()
+        epi = self.router.predict(query, cls)
+        timings["epistemic_router"] = time.perf_counter() - t0
+
+        t0 = time.perf_counter()
+        evidence, _ = fusion.fuse(query, cls, epi, self.engines)
+        timings["fusion_engines"] = time.perf_counter() - t0
+
+        t0 = time.perf_counter()
+        confidence = self.confidence.predict(epi, evidence)
+        timings["confidence"] = time.perf_counter() - t0
+
+        t0 = time.perf_counter()
+        render(query, cls, epi, evidence, confidence)
+        timings["render"] = time.perf_counter() - t0
+
+        timings["total"] = sum(timings.values())
+        return timings
 
     def status(self) -> dict[str, str]:
         return {

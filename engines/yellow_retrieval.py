@@ -5,13 +5,12 @@ from pathlib import Path
 
 from pipeline.schemas import Classification, EvidenceRecord, Query
 
+from pipeline import config as _config
+
 from .base import Engine, load_knowledge
 
 KNOWLEDGE_DIR = Path(__file__).resolve().parent.parent / "knowledge" / "empirical"
 _TOKEN_RE = re.compile(r"[a-z]+")
-_BM25_THRESHOLD = 1.0
-_BM25_NORMALIZER = 10.0
-_DOMAIN_FALLBACK_RATIO = 2.0
 
 
 class YellowRetrievalEngine(Engine):
@@ -46,6 +45,13 @@ class YellowRetrievalEngine(Engine):
         if not q_tokens:
             return None
 
+        cfg = _config.load()["yellow"]
+        bm25_threshold = float(cfg["bm25_threshold"])
+        bm25_normalizer = float(cfg["bm25_normalizer"])
+        domain_fallback_ratio = float(cfg["domain_fallback_ratio"])
+        secondary_floor_ratio = float(cfg["secondary_floor_ratio"])
+        max_passages = int(cfg["max_passages"])
+
         scores = self._bm25.get_scores(q_tokens)
 
         global_best = max(range(len(self.entries)), key=lambda i: scores[i])
@@ -69,18 +75,18 @@ class YellowRetrievalEngine(Engine):
         top_idx = ranked[0]
         top_score = float(scores[top_idx])
 
-        if global_best_score > top_score * _DOMAIN_FALLBACK_RATIO and global_best_score >= _BM25_THRESHOLD:
+        if global_best_score > top_score * domain_fallback_ratio and global_best_score >= bm25_threshold:
             top_idx = global_best
             top_score = global_best_score
             ranked = sorted(range(len(self.entries)), key=lambda i: -scores[i])
 
-        if top_score < _BM25_THRESHOLD:
+        if top_score < bm25_threshold:
             return None
 
         top_domain = self.entries[top_idx].get("domain")
-        secondary_floor = max(_BM25_THRESHOLD * 1.5, top_score * 0.65)
+        secondary_floor = max(bm25_threshold * 1.5, top_score * secondary_floor_ratio)
         selected = []
-        for i in ranked[:3]:
+        for i in ranked[:max_passages]:
             if i == top_idx:
                 selected.append(i)
                 continue
@@ -115,5 +121,5 @@ class YellowRetrievalEngine(Engine):
             engine="yellow",
             claim=claim,
             support=tuple(support_ids),
-            score=min(1.0, top_score / _BM25_NORMALIZER),
+            score=min(1.0, top_score / bm25_normalizer),
         )

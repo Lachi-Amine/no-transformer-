@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import argparse
 import sys
 import traceback
+import warnings
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -11,6 +13,12 @@ if str(ROOT) not in sys.path:
 from pipeline import feedback as feedback_mod
 from pipeline.orchestrator import Pipeline
 from pipeline.schemas import Response
+
+HISTORY_FILE = Path.home() / ".no_transformer_history"
+SLASH_COMMANDS = [
+    ":help", ":status", ":debug on", ":debug off", ":reload", ":why",
+    ":history", ":forget", ":good", ":bad", ":rate ", ":bench ", ":exit",
+]
 
 
 HELP_TEXT = """\
@@ -25,6 +33,7 @@ Commands:
   :good          mark the last response as correct (logs to feedback.csv)
   :bad           mark the last response as wrong   (logs to feedback.csv)
   :rate N        rate the last response 1-5        (logs to feedback.csv)
+  :bench QUERY   print per-stage latency for QUERY (does not log to history)
   :exit          quit (Ctrl-D also works)
 Type any other text to ask a question.
 Pronouns (it, that, this, they) in your question are resolved against the
@@ -32,7 +41,19 @@ previous question's main topic.
 """
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(prog="no-transformer", add_help=True)
+    parser.add_argument("-q", "--quiet", action="store_true",
+                        help="suppress non-fatal warnings (e.g. sklearn version skew)")
+    parser.add_argument("-v", "--verbose", action="store_true",
+                        help="show all warnings (overrides --quiet)")
+    args = parser.parse_args(argv)
+
+    if args.quiet and not args.verbose:
+        warnings.filterwarnings("ignore")
+
+    read_line = _make_reader()
+
     pipeline = Pipeline()
     debug = False
     last: Response | None = None
@@ -43,7 +64,7 @@ def main() -> int:
 
     while True:
         try:
-            line = input("> ").strip()
+            line = read_line().strip()
         except (EOFError, KeyboardInterrupt):
             print()
             return 0
@@ -91,6 +112,12 @@ def main() -> int:
                 pipeline.forget()
                 print("conversation memory cleared.")
                 continue
+            if cmd == "bench":
+                if not arg:
+                    print("usage: :bench QUERY")
+                    continue
+                _print_bench(pipeline, arg)
+                continue
             if cmd in {"good", "bad", "rate"}:
                 if last is None:
                     print("no previous response to rate.")
@@ -135,6 +162,28 @@ def main() -> int:
         _print_response(last, debug)
 
 
+def _make_reader():
+    """Return a callable that reads one line of input. Uses prompt_toolkit if
+    available (file-backed history + tab completion on slash commands); falls
+    back to plain input()."""
+    try:
+        from prompt_toolkit import PromptSession
+        from prompt_toolkit.completion import WordCompleter
+        from prompt_toolkit.history import FileHistory
+    except ImportError:
+        return lambda: input("> ")
+
+    completer = WordCompleter(SLASH_COMMANDS, ignore_case=True, sentence=True)
+    try:
+        session = PromptSession(history=FileHistory(str(HISTORY_FILE)), completer=completer)
+    except Exception:
+        return lambda: input("> ")
+
+    def read():
+        return session.prompt("> ")
+    return read
+
+
 def _print_status(pipeline: Pipeline) -> None:
     print("model status:")
     for name, state in pipeline.status().items():
@@ -154,6 +203,24 @@ def _print_history(pipeline: Pipeline) -> None:
             first_line = first_line[:77] + "..."
         print(f"  [{i}] Q: {resp.query.raw}")
         print(f"      A: {first_line}")
+    print()
+
+
+def _print_bench(pipeline: Pipeline, query: str) -> None:
+    try:
+        timings = pipeline.bench(query)
+    except Exception as exc:
+        print(f"error: {exc}")
+        return
+    total_ms = timings["total"] * 1000
+    print(f"\nbench({query!r}) — total {total_ms:.1f} ms")
+    for stage, secs in timings.items():
+        if stage == "total":
+            continue
+        ms = secs * 1000
+        pct = 100 * secs / timings["total"] if timings["total"] else 0
+        bar = "#" * int(pct / 2)
+        print(f"  {stage:20s} {ms:6.1f} ms  {pct:5.1f}%  {bar}")
     print()
 
 

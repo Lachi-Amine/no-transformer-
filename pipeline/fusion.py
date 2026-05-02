@@ -4,6 +4,7 @@ from typing import Iterable
 
 from engines.base import Engine
 
+from . import config as _config
 from . import contradiction
 from .schemas import (
     Classification,
@@ -13,8 +14,6 @@ from .schemas import (
     Query,
 )
 
-_MIN_WEIGHT = 0.05
-
 
 def fuse(
     query: Query,
@@ -23,12 +22,13 @@ def fuse(
     engines: Iterable[Engine],
 ) -> tuple[FusedEvidence, dict[str, str]]:
     weights = epistemic.as_weights()
+    min_weight = float(_config.get("fusion", "min_engine_weight", 0.05))
     fired: list[EvidenceRecord] = []
     engine_status: dict[str, str] = {}
 
     for engine in engines:
         w = weights.get(engine.name, 0.0)
-        if w < _MIN_WEIGHT:
+        if w < min_weight:
             engine_status[engine.name] = "skipped"
             continue
         record = engine.run(query, cls)
