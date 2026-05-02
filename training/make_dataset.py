@@ -91,11 +91,40 @@ def _validate_epistemic(path: Path) -> int:
     return len(issues)
 
 
+def _validate_qa_pairs(path: Path) -> int:
+    if not path.exists():
+        return 0
+    rows = 0
+    blank_kw = 0
+    issues = []
+    with path.open(encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            rows += 1
+            if "query" not in r or "expected_keywords" not in r:
+                issues.append(f"row {rows}: missing required columns")
+                continue
+            if not r["query"].strip():
+                issues.append(f"row {rows}: empty query")
+            if not (r.get("expected_keywords") or "").strip():
+                blank_kw += 1
+    print(f"\n=== {path.name} === total rows: {rows}")
+    print(f"  rows with blank expected_keywords (always label 0): {blank_kw}")
+    if rows < 50:
+        print(f"  [LOW] only {rows} QA pairs (target: 80-150)")
+    if issues:
+        print(f"  issues ({len(issues)}):")
+        for i in issues[:5]:
+            print(f"    - {i}")
+    return len(issues)
+
+
 def main() -> int:
     fail = 0
     fail += _validate_classification(DATASETS / "domains.csv", DOMAINS, DOMAIN_TARGET)
     fail += _validate_classification(DATASETS / "intents.csv", INTENTS, INTENT_TARGET)
     fail += _validate_epistemic(DATASETS / "epistemic.csv")
+    fail += _validate_qa_pairs(DATASETS / "qa_pairs.csv")
     print()
     if fail:
         print(f"FAIL: {fail} issue(s)")

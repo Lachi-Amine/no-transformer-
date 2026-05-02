@@ -1,0 +1,109 @@
+query,expected_keywords
+what is amylase,amylase|enzyme|starch
+what is photosynthesis,photosynthesis|chlorophyll|glucose
+what is mitosis,mitosis|cell|division
+what is dna,dna|nucleotide|helix
+what is cellular respiration,respiration|atp|glucose
+what is insulin,insulin|hormone|pancreas
+how does evolution by natural selection work,evolution|selection|fitness
+what is mendelian inheritance,mendel|allele|inheritance
+what is type 2 diabetes,diabetes|insulin|resistance
+what is hypertension,hypertension|blood|pressure
+how does aspirin reduce inflammation,aspirin|cyclooxygenase|prostaglandin
+what is myocardial infarction,myocardial|infarction|heart
+what are blood types,abo|rh|antigen|blood
+what is supply and demand,supply|demand|equilibrium
+what is gdp,gdp|gross|domestic|product
+what is opportunity cost,opportunity|cost|alternative
+what is comparative advantage,comparative|advantage|trade|ricardo
+how does compound interest grow,compound|interest|principal
+what is the periodic table,periodic|elements|atomic
+what is ph,ph|hydrogen|acid
+what is an ionic bond,ionic|electron|cation|anion
+what is a covalent bond,covalent|electron|sharing
+what is a redox reaction,redox|oxidation|reduction|electron
+what is le chatelier's principle,chatelier|equilibrium|stress
+what is a polymer,polymer|monomer|chain
+what is an isotope,isotope|neutron|atomic
+what is plate tectonics,tectonic|plate|lithosphere
+what is volcanism,volcan|magma|eruption
+what is the rock cycle,igneous|sedimentary|metamorphic
+what is neuroplasticity,neuroplasticity|synaptic|brain
+what is a neurotransmitter,neurotransmitter|synapse|dopamine
+what is dopamine,dopamine|reward|motivation
+how do mrna vaccines work,mrna|vaccine|antigen
+what is penicillin,penicillin|antibiotic|fleming
+what is herd immunity,herd|immunity|threshold
+what is antibiotic resistance,resistance|antibiotic|mutation
+what is photosynthesis-respiration coupling,photosynthesis|respiration|carbon|oxygen
+how do solar cells work,solar|photovoltaic|semiconductor
+how does mri work,magnetic|resonance|proton
+what is behavioral economics,behavioral|kahneman|prospect|loss
+compute the kinetic energy of a 5 kg object at 10 m/s,250
+compute the kinetic energy with mass 2 and velocity 3,9
+compute the period of a pendulum of length 1 m,2.0061|2.01
+compute force with mass 5 and acceleration 3,15
+compute resistance with V = 12 and I = 2,6
+compute the wave speed with frequency 100 and wavelength 3,300
+compute the heat with mass 2 specific heat 4186 and temperature change 10,83720
+compute the present value with future value 1000 rate 0.05 and 5 years,783
+compute the future value with present value 1000 rate 0.05 and 5 years,1276
+compute the half-life with decay constant 0.693,1.0|0.693
+compute the gravitational force with m1 = 10 m2 = 10 r = 1,6.674e-9|6.674
+compute beer-lambert with e = 2 c = 0.1 l = 1,0.2|absorbance
+compute the lens equation with u = 30 and v = 60,20|focal
+compute the gas pressure with V = 0.025 n = 1 R = 8.314 T = 300,99|pressure
+compute coulomb force with q1 = 1 q2 = 1 r = 1,8.99|coulomb
+compute the standard deviation given variance 25,5|standard
+compute the z-score with x = 70 mu = 60 sigma = 10,1.0|z
+compute pV = nRT with V = 0.05 n = 2 R = 8.314 T = 300,99|99000|pressure
+compute the future value at 5 percent for 10 years with PV = 1000,1628|future
+compute mass-energy equivalence for m = 1,8.988e16|2.998e8|energy
+solve x^2 - 5*x + 6 = 0,2|3
+compute the integral of cos(x) from 0 to pi,integral
+compute the integral of x**2 from 0 to 2,8/3|integral
+derivative of x^3,3*x|derivative
+derivative of sin(x),cos|derivative
+compute 7 factorial,5040
+compute 2^10,1024
+solve 2*x + 4 = 10,x = 3
+simplify (x^2 - 1)/(x - 1),x + 1
+should we pull the lever in the trolley problem,utilitarian|deontological|virtue
+is capital punishment justified,utilitarian|deontological|retribut
+is lying ever justified,utilitarian|deontological|kantian
+is income inequality unjust,libertarian|egalitarian|rawls
+can ai be conscious,functionalist|biological|naturalism
+do humans have free will,compatibilist|determinist|libertarian
+should borders be open immigration,utilitarian|libertarian|communitarian
+are animal rights real,utilitarian|deontological|virtue|singer
+is distributive justice possible,libertarian|egalitarian|communitarian
+should religious freedom be absolute,libertarian|secular|communitarian
+is war ever just,just war|pacifist|realist
+how should we think about privacy and surveillance,privacy|libertarian|communitarian|utilitarian
+what is the best taco shop near me,do not have sufficient knowledge
+write me a poem about the ocean,do not have sufficient knowledge
+what is xyzzy zlork,do not have sufficient knowledge
+how do I plan a trip to japan,do not have sufficient knowledge
+what should I have for dinner tonight,do not have sufficient knowledge
+who won the world cup in 2022,do not have sufficient knowledge
+what is the weather today,do not have sufficient knowledge
+how do I make pasta from scratch,do not have sufficient knowledge
+what is the latest news,do not have sufficient knowledge
+how does python's GIL work,do not have sufficient knowledge
+what is a transformer in deep learning,do not have sufficient knowledge
+how do I improve my golf swing,do not have sufficient knowledge
+what is the longest river in the world,do not have sufficient knowledge
+who was the first person to climb Mount Everest,do not have sufficient knowledge
+how do I write a thank you note,do not have sufficient knowledge
+what is reinforcement learning,do not have sufficient knowledge
+what is the meaning of bohemian rhapsody,do not have sufficient knowledge
+how do I take care of leather shoes,do not have sufficient knowledge
+how do I dance better at parties,do not have sufficient knowledge
+what is the latest fashion trend,do not have sufficient knowledge
+what is graph theory,do not have sufficient knowledge
+what is the best book to read this year,do not have sufficient knowledge
+how do I keep houseplants alive,do not have sufficient knowledge
+how do I get rid of a hiccup,do not have sufficient knowledge
+how do I host a small dinner party,do not have sufficient knowledge
+what is jazz music,do not have sufficient knowledge
+how do I navigate a busy airport,do not have sufficient knowledge
