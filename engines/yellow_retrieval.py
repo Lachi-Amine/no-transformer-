@@ -6,6 +6,7 @@ from pathlib import Path
 from pipeline.schemas import Classification, EvidenceRecord, Query
 
 from pipeline import config as _config
+from pipeline.knowledge_graph import KnowledgeGraph
 
 from .base import Engine, load_knowledge
 
@@ -20,8 +21,10 @@ class YellowRetrievalEngine(Engine):
         self.entries = load_knowledge(KNOWLEDGE_DIR)
         self._bm25 = None
         self._corpus: list[list[str]] = []
+        self.graph: KnowledgeGraph | None = None
         if self.entries:
             self._build_index()
+            self.graph = KnowledgeGraph(self.entries)
 
     def _build_index(self) -> None:
         try:
@@ -51,6 +54,8 @@ class YellowRetrievalEngine(Engine):
         domain_fallback_ratio = float(cfg["domain_fallback_ratio"])
         secondary_floor_ratio = float(cfg["secondary_floor_ratio"])
         max_passages = int(cfg["max_passages"])
+        max_linked = int(cfg.get("max_linked", 2))
+        linked_score_floor = float(cfg.get("linked_score_floor", 0.3))
 
         scores = self._bm25.get_scores(q_tokens)
 
@@ -115,6 +120,40 @@ class YellowRetrievalEngine(Engine):
 
         if not sentences:
             return None
+
+        if self.graph is not None and max_linked > 0:
+            primary_entry = self.entries[top_idx]
+            already = {self.entries[i].get("id") for i in selected if self.entries[i].get("id")}
+            linked = self.graph.linked_entries(primary_entry, exclude_ids=already)
+            id_to_idx = {e.get("id"): i for i, e in enumerate(self.entries) if e.get("id")}
+            scored: list[tuple[int, float]] = []
+            for entry in linked:
+                eid = entry.get("id")
+                if eid not in id_to_idx:
+                    continue
+                if entry.get("domain") != top_domain:
+                    continue
+                idx = id_to_idx[eid]
+                scored.append((idx, float(scores[idx])))
+            scored.sort(key=lambda p: -p[1])
+
+            link_floor = top_score * linked_score_floor
+            for idx, sc in scored[:max_linked]:
+                if sc < link_floor:
+                    break
+                e = self.entries[idx]
+                text = (e.get("text") or "").strip()
+                if not text:
+                    continue
+                sent = text.split(".")[0].strip()
+                if not sent:
+                    continue
+                head = sent[:24].lower()
+                if head in seen_starts:
+                    continue
+                seen_starts.add(head)
+                sentences.append("Related: " + sent + ".")
+                support_ids.append(e.get("id") or f"entry-{idx}")
 
         claim = " ".join(sentences)
         return EvidenceRecord(

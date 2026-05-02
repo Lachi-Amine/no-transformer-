@@ -459,3 +459,55 @@ Quality-of-life wins, no new behavior.
 - **External LLM for response wording.** Locked out by §10.
 - **Web fetch / live search.** Possible but would add network dependency and provider risk; revisit after M9.
 - **GUI / web frontend.** Requirement §0 says CLI only.
+
+---
+
+## 12. Reasoning roadmap (M12+)
+
+The M-series above made the system *correct* and *operable*. This series makes it *thoughtful*: instead of returning one isolated fact, the system connects entries, decomposes questions, and synthesizes across engines. All without transformers.
+
+### M12 — Multi-hop retrieval (1 day)
+
+When YELLOW matches an empirical entry, scan its `text` for terms that are keywords/tags of *other* entries; pull a sentence from each linked entry as connecting context.
+
+- New `pipeline/knowledge_graph.py`: at boot, builds `term -> entry_id` index from all empirical entries' keywords, tags, and id slugs. Provides `linked_entries(source)`.
+- `engines/yellow_retrieval.py` calls the graph after primary match; appends up to N linked sentences with a "Related:" prefix.
+- New config knobs: `yellow.max_linked` (default 2), `yellow.linked_score_floor` (default 0.3).
+- Output goes from "Amylase is an enzyme that catalyzes hydrolysis of starch" to that *plus* a related sentence on glucose metabolism / cellular respiration / etc., when those entries exist.
+
+### M13 — Cross-engine synthesis (1 day)
+
+When GREEN and YELLOW both fire, weave them into a single coherent paragraph instead of separate `Formally:` / `Empirically:` lines.
+
+- Templates per intent: for `compute`, "Using the formula X [GREEN], Y [computed value]; in practice Z [YELLOW context]."
+- For `define` with both GREEN and YELLOW: "X is Y [definition]. The relevant equation is Z [formula]. In practice... [empirical detail]."
+
+### M14 — Question decomposition (1–2 days)
+
+Per-intent reasoning templates that decompose the query before retrieval.
+
+- `compare X and Y` → two separate retrievals + structured diff (matched on shared keywords).
+- `why X` → match against entries containing causal phrasing; walk the chain back to a root cause.
+- `is it true that X` → check against formal constraints; fall back to empirical context.
+- `what if X` → freeform compute via GREEN.
+
+### M15 — Knowledge graph (2–3 days)
+
+Formalize what M12 does ad-hoc. Entries as nodes, shared keywords/tags/id-slugs as edges. Used for:
+
+- multi-hop retrieval (already in M12)
+- "show me related entries" CLI command
+- contradiction detection across topics (entries linked by topic but disagreeing on a claim)
+- domain coverage analysis (which entries are isolated vs well-connected)
+
+### M16 — Per-intent reasoning rules (2–3 days)
+
+Domain-specific logic that goes beyond keyword matching:
+
+- chemistry: if answer mentions an acid, surface its pH range from the formal entries.
+- physics: for any motion query, check kinetic-energy formula relevance.
+- biology: causal chains (X -> Y -> Z) walked rule-based.
+
+### Recommended order
+
+12 -> 13 -> 14. M15 and M16 are foundations for harder work later; do them once 12-14 prove the synthesis approach.

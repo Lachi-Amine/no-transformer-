@@ -6,6 +6,8 @@ yellow:
   domain_fallback_ratio: 2.0   # if global best > ratio * in-domain best, use global
   secondary_floor_ratio: 0.65  # secondaries must score >= this fraction of the top
   max_passages: 3              # at most this many sentences in one yellow record
+  max_linked: 2                # multi-hop: pull this many linked-entry sentences
+  linked_score_floor: 0.0      # multi-hop: linked entry must score >= floor * top_score (0 = no gate; relevance comes from the source's text mentioning the linked entry)
 
 fusion:
   min_engine_weight: 0.05      # engines below this weight are skipped

@@ -13,6 +13,8 @@ DEFAULTS: dict[str, dict[str, Any]] = {
         "domain_fallback_ratio": 2.0,
         "secondary_floor_ratio": 0.65,
         "max_passages": 3,
+        "max_linked": 2,
+        "linked_score_floor": 0.0,
     },
     "fusion": {
         "min_engine_weight": 0.05,

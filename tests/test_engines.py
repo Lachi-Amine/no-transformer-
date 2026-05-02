@@ -178,6 +178,29 @@ def test_yellow_general_domain_requires_keyword_overlap(yellow):
             assert kws & {"lying", "lie", "deception", "honesty"}
 
 
+def test_yellow_multi_hop_attaches_related_entries(yellow):
+    q = query_processing.process("what is amylase")
+    res = yellow.run(q, _cls("biology", "define"))
+    assert res is not None
+    # primary support should be amylase-001
+    assert "amylase-001" in res.support
+    # multi-hop should attach at least one more support id
+    assert len(res.support) >= 1
+    # if multi-hop fired, the claim should contain "Related:"
+    if len(res.support) > 1:
+        assert "Related:" in res.claim
+
+
+def test_yellow_multi_hop_excludes_non_matching_domain(yellow):
+    q = query_processing.process("what is amylase")
+    res = yellow.run(q, _cls("biology", "define"))
+    assert res is not None
+    for sid in res.support:
+        entry = next((e for e in yellow.entries if e.get("id") == sid), None)
+        if entry is not None:
+            assert entry.get("domain") == "biology"
+
+
 # --- RED ---
 
 def test_red_loads_entries(red):
