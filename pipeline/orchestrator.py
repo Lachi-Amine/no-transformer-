@@ -13,7 +13,7 @@ from pathlib import Path
 from engines.base import load_knowledge
 
 from . import config as _config
-from . import decomposition, fusion, query_processing
+from . import decomposition, fusion, query_processing, reasoning_rules
 from .confidence import ConfidenceEstimator
 from .domain_classifier import DomainClassifier
 from .intent_classifier import IntentClassifier
@@ -135,10 +135,46 @@ class Pipeline:
         else:
             response = self._inner_run(raw, history=self.history)
 
+        response = self._apply_reasoning_rules(response)
+
         self.history.append(response)
         if len(self.history) > self._max_history:
             self.history = self.history[-self._max_history:]
         return response
+
+    def _apply_reasoning_rules(self, response: Response) -> Response:
+        hits = reasoning_rules.apply_rules(response, self.knowledge_graph)
+        if not hits:
+            return response
+
+        new_records = tuple(list(response.evidence.records) + [h.record for h in hits])
+        new_evidence = FusedEvidence(
+            records=new_records,
+            contradictions=response.evidence.contradictions,
+        )
+        new_rendered = render(
+            response.query,
+            response.classification,
+            response.epistemic,
+            new_evidence,
+            response.confidence,
+        )
+        new_debug = {
+            **response.debug,
+            "reasoning_rules": [
+                {"name": h.rule_name, "explanation": h.explanation}
+                for h in hits
+            ],
+        }
+        return Response(
+            query=response.query,
+            classification=response.classification,
+            epistemic=response.epistemic,
+            evidence=new_evidence,
+            confidence=response.confidence,
+            rendered=new_rendered,
+            debug=new_debug,
+        )
 
     def _inner_run(self, raw: str, history: list[Response] | None = None) -> Response:
         history = history if history is not None else []
@@ -349,6 +385,14 @@ def render(query, cls, epi: EpistemicVector, evidence: FusedEvidence, confidence
                 if citation:
                     line = f"{line} {citation}"
                 lines.append(line)
+
+    rule_records = [r for r in evidence.records if r.engine == "rule"]
+    if rule_records:
+        lines.append("")
+        for record in rule_records:
+            citation = _format_citation(record.support)
+            r_line = record.claim if not citation else f"{record.claim} {citation}"
+            lines.append(r_line)
 
     if evidence.contradictions:
         lines.append("")
