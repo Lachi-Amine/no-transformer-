@@ -27,6 +27,14 @@ class KnowledgeGraph:
             for term in self._terms_for(entry):
                 self.term_to_ids.setdefault(term, set()).add(entry_id)
 
+        # Adjacency list: entry_id -> set of linked entry_ids (precomputed)
+        self.edges: dict[str, set[str]] = {}
+        for entry in self.entries:
+            entry_id = entry.get("id")
+            if not entry_id:
+                continue
+            self.edges[entry_id] = set(self.linked_ids(entry))
+
     @staticmethod
     def _terms_for(entry: dict) -> set[str]:
         terms: set[str] = set()
@@ -76,3 +84,53 @@ class KnowledgeGraph:
             for eid in self.linked_ids(source_entry, exclude_ids)
             if eid in self.id_to_entry
         ]
+
+    def neighbors(self, entry_id: str) -> set[str]:
+        """Precomputed adjacency lookup."""
+        return self.edges.get(entry_id, set())
+
+    def find_by_term(self, term: str) -> list[dict]:
+        """Return all entries matched by an exact term (keyword/tag/slug)."""
+        ids = self.term_to_ids.get(term.lower(), set())
+        return [self.id_to_entry[i] for i in ids if i in self.id_to_entry]
+
+    def stats(self) -> dict:
+        n_nodes = len(self.id_to_entry)
+        # undirected unique edges
+        unique_pairs: set[tuple[str, str]] = set()
+        for src, dsts in self.edges.items():
+            for dst in dsts:
+                unique_pairs.add(tuple(sorted([src, dst])))
+        n_edges = len(unique_pairs)
+
+        isolated = sorted(eid for eid, neigh in self.edges.items() if not neigh)
+        most_connected = sorted(
+            self.edges.items(), key=lambda kv: -len(kv[1])
+        )[:5]
+
+        by_domain: dict[str, dict[str, int]] = {}
+        for entry in self.entries:
+            d = entry.get("domain") or "unknown"
+            by_domain.setdefault(d, {"nodes": 0, "edges": 0})
+            by_domain[d]["nodes"] += 1
+        # domain-internal edge counts
+        for src, dsts in self.edges.items():
+            src_entry = self.id_to_entry.get(src)
+            if not src_entry:
+                continue
+            src_domain = src_entry.get("domain") or "unknown"
+            for dst in dsts:
+                dst_entry = self.id_to_entry.get(dst)
+                if not dst_entry:
+                    continue
+                if dst_entry.get("domain") == src_domain and src < dst:
+                    by_domain[src_domain]["edges"] += 1
+
+        return {
+            "nodes": n_nodes,
+            "edges": n_edges,
+            "isolated_count": len(isolated),
+            "isolated_ids": isolated,
+            "most_connected": [(eid, len(neigh)) for eid, neigh in most_connected],
+            "by_domain": by_domain,
+        }

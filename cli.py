@@ -17,7 +17,8 @@ from pipeline.schemas import Response
 HISTORY_FILE = Path.home() / ".no_transformer_history"
 SLASH_COMMANDS = [
     ":help", ":status", ":debug on", ":debug off", ":reload", ":why",
-    ":history", ":forget", ":good", ":bad", ":rate ", ":bench ", ":exit",
+    ":history", ":forget", ":good", ":bad", ":rate ", ":bench ",
+    ":related ", ":graph", ":exit",
 ]
 
 
@@ -34,6 +35,8 @@ Commands:
   :bad           mark the last response as wrong   (logs to feedback.csv)
   :rate N        rate the last response 1-5        (logs to feedback.csv)
   :bench QUERY   print per-stage latency for QUERY (does not log to history)
+  :related TOPIC show knowledge entries linked to TOPIC
+  :graph         show knowledge-graph stats (nodes, edges, isolated entries)
   :exit          quit (Ctrl-D also works)
 Type any other text to ask a question.
 Pronouns (it, that, this, they) in your question are resolved against the
@@ -117,6 +120,15 @@ def main(argv: list[str] | None = None) -> int:
                     print("usage: :bench QUERY")
                     continue
                 _print_bench(pipeline, arg)
+                continue
+            if cmd == "related":
+                if not arg:
+                    print("usage: :related TOPIC  (TOPIC can be a keyword or an entry id)")
+                    continue
+                _print_related(pipeline, arg)
+                continue
+            if cmd == "graph":
+                _print_graph_stats(pipeline)
                 continue
             if cmd in {"good", "bad", "rate"}:
                 if last is None:
@@ -221,6 +233,59 @@ def _print_bench(pipeline: Pipeline, query: str) -> None:
         pct = 100 * secs / timings["total"] if timings["total"] else 0
         bar = "#" * int(pct / 2)
         print(f"  {stage:20s} {ms:6.1f} ms  {pct:5.1f}%  {bar}")
+    print()
+
+
+def _print_related(pipeline: Pipeline, topic: str) -> None:
+    g = pipeline.knowledge_graph
+    topic_l = topic.strip().lower()
+
+    # First, try as an entry id directly
+    if topic_l in g.id_to_entry:
+        seed_entries = [g.id_to_entry[topic_l]]
+    else:
+        seed_entries = g.find_by_term(topic_l)
+        if not seed_entries:
+            print(f"no entries found for term {topic!r}")
+            return
+
+    seen: set[str] = set()
+    for seed in seed_entries:
+        seed_id = seed.get("id", "")
+        if seed_id in seen:
+            continue
+        seen.add(seed_id)
+        domain = seed.get("domain", "?")
+        first_sent = (seed.get("text") or "").strip().split(".", 1)[0]
+        print(f"\n[{domain}] {seed_id}: {first_sent[:100]}")
+
+        neigh = sorted(g.neighbors(seed_id))
+        if not neigh:
+            print("  (no linked entries)")
+            continue
+        for nid in neigh[:8]:
+            n_entry = g.id_to_entry.get(nid, {})
+            n_dom = n_entry.get("domain", "?")
+            n_first = (n_entry.get("text") or "").strip().split(".", 1)[0]
+            print(f"  -> [{n_dom:10}] {nid}: {n_first[:80]}")
+    print()
+
+
+def _print_graph_stats(pipeline: Pipeline) -> None:
+    s = pipeline.knowledge_graph.stats()
+    print()
+    print(f"knowledge graph: {s['nodes']} entries, {s['edges']} undirected edges")
+    print(f"isolated entries: {s['isolated_count']}")
+    if s["isolated_count"]:
+        sample = ", ".join(s["isolated_ids"][:8])
+        print(f"  examples: {sample}")
+    print("most-connected entries:")
+    for eid, deg in s["most_connected"]:
+        print(f"  {deg:3d} links  {eid}")
+    print("by domain (entries / internal edges):")
+    for dom in sorted(s["by_domain"]):
+        info = s["by_domain"][dom]
+        print(f"  {dom:12s}  {info['nodes']:3d} entries  {info['edges']:3d} edges")
     print()
 
 

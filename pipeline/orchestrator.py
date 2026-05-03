@@ -8,11 +8,16 @@ from engines.green_symbolic import GreenSymbolicEngine
 from engines.red_synthesis import RedSynthesisEngine
 from engines.yellow_retrieval import YellowRetrievalEngine
 
+from pathlib import Path
+
+from engines.base import load_knowledge
+
 from . import config as _config
 from . import decomposition, fusion, query_processing
 from .confidence import ConfidenceEstimator
 from .domain_classifier import DomainClassifier
 from .intent_classifier import IntentClassifier
+from .knowledge_graph import KnowledgeGraph
 from .router import EpistemicRouter
 from .schemas import (
     Classification,
@@ -22,6 +27,8 @@ from .schemas import (
     Query,
     Response,
 )
+
+_KNOWLEDGE_DIR = Path(__file__).resolve().parent.parent / "knowledge"
 
 _PRONOUN_RE = re.compile(
     r"\b(it|its|that|this|they|them|their|those|these)\b", re.IGNORECASE
@@ -50,6 +57,14 @@ class Pipeline:
         )
         self._max_history = int(_config.get("orchestrator", "history_size", 3))
         self.history: list[Response] = []
+        self.knowledge_graph = self._load_full_graph()
+
+    @staticmethod
+    def _load_full_graph() -> KnowledgeGraph:
+        all_entries: list[dict] = []
+        for sub in ("formal", "empirical", "interpretive"):
+            all_entries.extend(load_knowledge(_KNOWLEDGE_DIR / sub))
+        return KnowledgeGraph(all_entries)
 
     def reload(self) -> None:
         self.domain_clf = DomainClassifier()
