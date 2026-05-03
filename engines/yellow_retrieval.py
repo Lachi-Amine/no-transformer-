@@ -14,6 +14,14 @@ KNOWLEDGE_DIR = Path(__file__).resolve().parent.parent / "knowledge" / "empirica
 _TOKEN_RE = re.compile(r"[a-z]+")
 
 
+def _stem(word: str) -> str:
+    if word.endswith("ies") and len(word) > 4:
+        return word[:-3] + "y"
+    if word.endswith("s") and not word.endswith("ss") and len(word) > 3:
+        return word[:-1]
+    return word
+
+
 class YellowRetrievalEngine(Engine):
     name = "yellow"
 
@@ -37,14 +45,15 @@ class YellowRetrievalEngine(Engine):
                 " ".join(e.get("keywords", []) or []),
                 " ".join(e.get("tags", []) or []),
             ]).lower()
-            self._corpus.append(_TOKEN_RE.findall(blob))
+            tokens = _TOKEN_RE.findall(blob)
+            self._corpus.append([_stem(t) for t in tokens])
         self._bm25 = BM25Okapi(self._corpus)
 
     def run(self, query: Query, cls: Classification) -> EvidenceRecord | None:
         if self._bm25 is None or not self.entries:
             return None
 
-        q_tokens = [t.lower() for t in query.tokens if t.isalpha()]
+        q_tokens = [_stem(t.lower()) for t in query.tokens if t.isalpha()]
         if not q_tokens:
             return None
 
@@ -88,8 +97,17 @@ class YellowRetrievalEngine(Engine):
         if top_score < bm25_threshold:
             return None
 
-        top_keywords = {k.lower() for k in (self.entries[top_idx].get("keywords") or [])}
-        if not (q_set & top_keywords):
+        top_entry = self.entries[top_idx]
+        top_keywords = {k.lower() for k in (top_entry.get("keywords") or [])}
+        top_id = (top_entry.get("id") or "").lower()
+        if "-" in top_id:
+            slug = top_id.rsplit("-", 1)[0]
+            for tok in re.split(r"[-_\s]+", slug):
+                if len(tok) >= 4:
+                    top_keywords.add(tok)
+        q_stems = q_set | {_stem(t) for t in q_set}
+        kw_stems = top_keywords | {_stem(k) for k in top_keywords}
+        if not (q_stems & kw_stems):
             return None
 
         top_domain = self.entries[top_idx].get("domain")

@@ -373,3 +373,51 @@ def test_synthesis_keeps_red_separate():
     )
     assert "In practice," in out
     assert "Interpretively:" in out
+
+
+# --- decomposition: compare (M14) ---
+
+def test_compare_dispatch_runs_two_subqueries(pipeline):
+    resp = pipeline.run("compare mitosis and meiosis")
+    assert resp.classification.intent == "compare"
+    assert "mitosis" in resp.rendered.lower()
+    assert "meiosis" in resp.rendered.lower()
+    assert "Comparing" in resp.rendered
+    assert resp.debug.get("decomposition", {}).get("kind") == "compare"
+    assert resp.debug["decomposition"]["x"] == "mitosis"
+    assert resp.debug["decomposition"]["y"] == "meiosis"
+
+
+def test_compare_does_not_pollute_history(pipeline):
+    pipeline.forget()
+    pipeline.run("compare mitosis and meiosis")
+    # Only the compare-itself response is added; the two inner runs are not
+    assert len(pipeline.history) == 1
+    assert pipeline.history[0].classification.intent == "compare"
+
+
+def test_compare_finds_shared_themes(pipeline):
+    resp = pipeline.run("compare mitosis and meiosis")
+    # Both are about cell division — the theme diff should surface shared keywords
+    rendered = resp.rendered
+    assert "Both relate to:" in rendered or "Distinct to" in rendered
+
+
+def test_compare_difference_between(pipeline):
+    resp = pipeline.run("what is the difference between dna and rna")
+    assert resp.classification.intent == "compare"
+    assert resp.debug["decomposition"]["x"] == "dna"
+    assert resp.debug["decomposition"]["y"] == "rna"
+
+
+def test_compare_vs_form(pipeline):
+    resp = pipeline.run("amylase vs insulin")
+    assert resp.classification.intent == "compare"
+    assert resp.debug["decomposition"]["x"] == "amylase"
+    assert resp.debug["decomposition"]["y"] == "insulin"
+
+
+def test_non_compare_query_unaffected(pipeline):
+    resp = pipeline.run("what is amylase")
+    assert resp.debug.get("decomposition") is None
+    assert resp.classification.intent != "compare" or "amylase" in resp.rendered.lower()

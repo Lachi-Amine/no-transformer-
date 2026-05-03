@@ -9,12 +9,19 @@ from engines.red_synthesis import RedSynthesisEngine
 from engines.yellow_retrieval import YellowRetrievalEngine
 
 from . import config as _config
-from . import fusion, query_processing
+from . import decomposition, fusion, query_processing
 from .confidence import ConfidenceEstimator
 from .domain_classifier import DomainClassifier
 from .intent_classifier import IntentClassifier
 from .router import EpistemicRouter
-from .schemas import EpistemicVector, FusedEvidence, Query, Response
+from .schemas import (
+    Classification,
+    EpistemicVector,
+    EvidenceRecord,
+    FusedEvidence,
+    Query,
+    Response,
+)
 
 _PRONOUN_RE = re.compile(
     r"\b(it|its|that|this|they|them|their|those|these)\b", re.IGNORECASE
@@ -107,7 +114,20 @@ class Pipeline:
         }
 
     def run(self, raw: str) -> Response:
-        expanded, coref_info = _resolve_coref(raw, self.history)
+        decomp = decomposition.detect(raw)
+        if decomp is not None and decomp.kind == "compare":
+            response = self._handle_compare(decomp.parts[0], decomp.parts[1], raw)
+        else:
+            response = self._inner_run(raw, history=self.history)
+
+        self.history.append(response)
+        if len(self.history) > self._max_history:
+            self.history = self.history[-self._max_history:]
+        return response
+
+    def _inner_run(self, raw: str, history: list[Response] | None = None) -> Response:
+        history = history if history is not None else []
+        expanded, coref_info = _resolve_coref(raw, history)
 
         processed = query_processing.process(expanded)
         if coref_info is not None:
@@ -133,7 +153,7 @@ class Pipeline:
             "coref": coref_info,
         }
 
-        response = Response(
+        return Response(
             query=query,
             classification=cls,
             epistemic=epi,
@@ -143,10 +163,107 @@ class Pipeline:
             debug=debug,
         )
 
-        self.history.append(response)
-        if len(self.history) > self._max_history:
-            self.history = self.history[-self._max_history:]
-        return response
+    def _handle_compare(self, x_subj: str, y_subj: str, original_raw: str) -> Response:
+        x_resp = self._inner_run(f"what is {x_subj}")
+        y_resp = self._inner_run(f"what is {y_subj}")
+
+        x_first = _first_meaningful_sentence(x_resp.rendered) or "(no information available)"
+        y_first = _first_meaningful_sentence(y_resp.rendered) or "(no information available)"
+
+        lines: list[str] = [
+            f"Comparing {x_subj} and {y_subj}:",
+            "",
+            f"  {x_subj}: {x_first}",
+            "",
+            f"  {y_subj}: {y_first}",
+        ]
+
+        shared, x_only, y_only = self._theme_diff(x_resp, y_resp, x_subj, y_subj)
+        if shared:
+            lines.append("")
+            lines.append(f"  Both relate to: {', '.join(sorted(shared)[:8])}")
+        if x_only or y_only:
+            if x_only:
+                lines.append(f"  Distinct to {x_subj}: {', '.join(sorted(x_only)[:6])}")
+            if y_only:
+                lines.append(f"  Distinct to {y_subj}: {', '.join(sorted(y_only)[:6])}")
+
+        rendered = "\n".join(lines)
+
+        query = query_processing.process(original_raw)
+        cls = Classification(
+            domain=x_resp.classification.domain,
+            intent="compare",
+            domain_probs=x_resp.classification.domain_probs,
+            intent_probs={"compare": 1.0},
+        )
+        epi = EpistemicVector(g=0.34, y=0.33, r=0.33)
+        records = tuple(list(x_resp.evidence.records) + list(y_resp.evidence.records))
+        evidence = FusedEvidence(records=records)
+        confidence = (x_resp.confidence + y_resp.confidence) / 2.0
+
+        debug = {
+            "engine_status": {},
+            "status": self.status(),
+            "coref": None,
+            "decomposition": {
+                "kind": "compare",
+                "x": x_subj,
+                "y": y_subj,
+                "x_sources": [s for r in x_resp.evidence.records for s in r.support],
+                "y_sources": [s for r in y_resp.evidence.records for s in r.support],
+            },
+        }
+
+        return Response(
+            query=query,
+            classification=cls,
+            epistemic=epi,
+            evidence=evidence,
+            confidence=confidence,
+            rendered=rendered,
+            debug=debug,
+        )
+
+    def _theme_diff(
+        self,
+        x_resp: Response,
+        y_resp: Response,
+        x_subj: str,
+        y_subj: str,
+    ) -> tuple[set[str], set[str], set[str]]:
+        yellow_engine = next((e for e in self.engines if e.name == "yellow"), None)
+        if yellow_engine is None or not getattr(yellow_engine, "entries", None):
+            return set(), set(), set()
+
+        id_to_keywords: dict[str, set[str]] = {}
+        for entry in yellow_engine.entries:
+            eid = entry.get("id")
+            if not eid:
+                continue
+            id_to_keywords[eid] = {
+                k.lower() for k in (entry.get("keywords") or [])
+                if isinstance(k, str)
+            }
+
+        def collect(resp: Response) -> set[str]:
+            terms: set[str] = set()
+            for rec in resp.evidence.records:
+                for sid in rec.support:
+                    if sid in id_to_keywords:
+                        terms |= id_to_keywords[sid]
+            return terms
+
+        x_terms = collect(x_resp)
+        y_terms = collect(y_resp)
+        # Remove the subjects themselves from "shared" (they're trivially shared)
+        x_subj_tokens = {t.lower() for t in x_subj.split()}
+        y_subj_tokens = {t.lower() for t in y_subj.split()}
+        trivial = x_subj_tokens | y_subj_tokens
+        shared = (x_terms & y_terms) - trivial
+        x_only = (x_terms - y_terms) - trivial
+        y_only = (y_terms - x_terms) - trivial
+        return shared, x_only, y_only
 
 
 def _extract_topic(query: Query) -> str | None:
@@ -267,6 +384,25 @@ def _lower_first(s: str) -> str:
     if not s:
         return s
     return s[0].lower() + s[1:]
+
+
+def _first_meaningful_sentence(text: str) -> str:
+    """Strip prefix labels (Empirically:/Formally:/Interpretively:) and
+    citation tokens, then return the first sentence."""
+    if not text:
+        return ""
+    body = text.strip()
+    for label in ("Empirically:", "Formally:", "Interpretively:"):
+        if body.startswith(label):
+            body = body[len(label):].lstrip()
+            break
+    # Drop trailing citation
+    body = re.sub(r"\s*\[(?:source|sources):[^\]]+\]\s*$", "", body)
+    # First sentence-ish: split on ". " and take first chunk
+    chunk = body.split(". ", 1)[0].strip()
+    if chunk and not chunk.endswith("."):
+        chunk += "."
+    return chunk
 
 
 def _format_citation(support: tuple) -> str:

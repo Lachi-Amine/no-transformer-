@@ -111,9 +111,7 @@ class GreenSymbolicEngine(Engine):
 def _stem(word: str) -> str:
     if word.endswith("ies") and len(word) > 4:
         return word[:-3] + "y"
-    if word.endswith("es") and len(word) > 4:
-        return word[:-2]
-    if word.endswith("s") and len(word) > 3:
+    if word.endswith("s") and not word.endswith("ss") and len(word) > 3:
         return word[:-1]
     return word
 
